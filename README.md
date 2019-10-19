@@ -6,3 +6,4 @@ Installer les paquets suivants (sur debian):
 > bison
 > flex
 > libz3-dev
+> doxygen
