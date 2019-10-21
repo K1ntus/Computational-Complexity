@@ -20,32 +20,82 @@ Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node
 }
 
 
+Z3_ast graphsToValideFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength) {
+    Z3_ast res_all_graph[numGraphs+1];
+    Z3_ast res_final_formula;
+    Z3_ast res_two_node;
+
+    for(unsigned int graph_number = 0; graph_number < numGraphs; graph_number++) {
+        printf("- Graph Number: %d\n", graph_number);
+        printf("--- Graph have: %d nodes.\n",graphs[graph_number].numNodes);
+
+        // printGraph(graphs[graph_number]);
+
+
+        // Z3_ast* res_array = (Z3_ast*) malloc(sizeof(Z3_ast) * 1500);
+        for(unsigned int node_number = 0; node_number < 5; node_number++){
+            printf("--- Node Number: %d\n", node_number);
+            
+            Z3_ast source;
+            Z3_ast target;
+
+            if(isSource(graphs[graph_number], node_number)){
+                source = getNodeVariable(ctx, graph_number, pathLength, numGraphs, pathLength);
+            }
+            if(isTarget(graphs[graph_number], node_number)){
+                target = getNodeVariable(ctx, graph_number, pathLength, numGraphs, pathLength);
+            }
+            if(source == 0x0 || target == 0x0)
+                continue;
+
+            Z3_ast node[2] = {source,target};
+
+            res_two_node = Z3_mk_and(ctx,2,node);
+            printf("Formula %s created.\n",Z3_ast_to_string(ctx,res_two_node));
+
+        }
+        res_all_graph[graph_number] = res_two_node;
+
+        printf("\n");
+    }
+
+    // for(int i = 0; i < numGraphs; i++) {
+    //     final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+    // }
+
+    // printf("-----> %s\n",Z3_ast_to_string(ctx,res));
+
+        return NULL;
+
+}
 
 
 Z3_ast graphsToPathFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength) {
-    for(unsigned int graph_number = 0; graph_number < numGraphs; graph_number++) {
-        printf("- Graph Number: %d\n", graph_number);
-        // Z3_ast* res_array = (Z3_ast*) malloc(sizeof(Z3_ast) * 1500);
+
+    Z3_ast res1 = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
+    // for(unsigned int graph_number = 0; graph_number < numGraphs; graph_number++) {
+    //     printf("- Graph Number: %d\n", graph_number);
+    //     // Z3_ast* res_array = (Z3_ast*) malloc(sizeof(Z3_ast) * 1500);
 
 
-        for(unsigned int node_number = 0; node_number < pathLength; node_number++){
-            printf("--- Node Number: %d\n", node_number);
+    //     for(unsigned int node_number = 0; node_number < pathLength; node_number++){
+    //         printf("--- Node Number: %d\n", node_number);
             
-            Z3_ast x = getNodeVariable(ctx, graph_number, node_number, numGraphs, 0);
-            Z3_ast y = getNodeVariable(ctx, graph_number, node_number+1, numGraphs, 0);
+    //         Z3_ast x = getNodeVariable(ctx, graph_number, node_number, numGraphs, 0);
+    //         Z3_ast y = getNodeVariable(ctx, graph_number, node_number+1, numGraphs, 0);
              
 
-            Z3_ast resTab[2] = {x,y};
-            Z3_ast res = Z3_mk_and(ctx,2,resTab);
-            printf("Formula %s created.\n",Z3_ast_to_string(ctx,res));
+    //         Z3_ast resTab[2] = {x,y};
+    //         Z3_ast res = Z3_mk_and(ctx,2,resTab);
+    //         printf("Formula %s created.\n",Z3_ast_to_string(ctx,res));
 
-        }
-        printf("\n");
+    //     }
+    //     printf("\n");
 
-        // free(res_array);
+    //     // free(res_array);
 
 
-    }
+    // }
 
     return NULL;
 }

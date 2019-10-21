@@ -13,25 +13,35 @@ int main ( int argc, char* argv[] ) {
         return EXIT_FAILURE;
     }
     
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
     Graph * graphList =  (Graph *) malloc(sizeof(Graph) * (argc-1));
     int nbGraph = 0;
-    {
         printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
-        for(; nbGraph < argc; nbGraph++){
+        for(; nbGraph < argc-1; nbGraph++){
             printf("- Loading Graph: %d\n", nbGraph);
             Graph tmp = loadGraph(argv[nbGraph+1]);
             graphList[nbGraph] = tmp;
         }
 
         printf("\n\n*******************\n* [INFO] %d graph loaded.\n*******************\n\n", nbGraph);
-    }
 
 
     Z3_context ctx = makeContext();
     printf(" * [INFO] Creating the context. Must be destroyed at the end of the program.\n");
 
 
-    {
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
         printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************\n\n");
 
         int pathLength = 3; //Make variable
@@ -41,7 +51,6 @@ int main ( int argc, char* argv[] ) {
 
         
         printf("\n\n*******************\n* [INFO]  sat generated.\n*******************\n\n");
-    }
 
     // Z3_ast x = mk_bool_var(ctx,"x");
     // printf("Variable %s created.\n",Z3_ast_to_string(ctx,x));
@@ -109,7 +118,7 @@ int main ( int argc, char* argv[] ) {
 
 
 
-    for(int i = 0; i < argc; i++){
+    for(int i = 0; i < nbGraph; i++){
         printf("Deleting Graph: %d.\n", i);
         // deleteGraph(graphList[i]);
     }
