@@ -14,81 +14,94 @@ int main ( int argc, char* argv[] ) {
     }
     
     Graph * graphList =  (Graph *) malloc(sizeof(Graph) * (argc-1));
+    int nbGraph = 0;
     {
         printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
-        int i = 1;
-        for(; i < argc; i++){
-            printf("- Loading Graph: %d\n", i);
-            Graph tmp = loadGraph(argv[i]);
-            graphList[i] = tmp;
+        for(; nbGraph < argc; nbGraph++){
+            printf("- Loading Graph: %d\n", nbGraph);
+            Graph tmp = loadGraph(argv[nbGraph+1]);
+            graphList[nbGraph] = tmp;
         }
 
-        printf("\n\n*******************\n* [INFO] %d graph loaded.\n*******************\n\n", i-1);
+        printf("\n\n*******************\n* [INFO] %d graph loaded.\n*******************\n\n", nbGraph);
     }
 
 
     Z3_context ctx = makeContext();
-    printf("Creating the context. Must be destroyed at the end of the program.\n");
+    printf(" * [INFO] Creating the context. Must be destroyed at the end of the program.\n");
 
-    Z3_ast x = mk_bool_var(ctx,"x");
-    printf("Variable %s created.\n",Z3_ast_to_string(ctx,x));
 
-    Z3_ast y = mk_bool_var(ctx,"y");
-    printf("Variable %s created.\n",Z3_ast_to_string(ctx,y));
+    {
+        printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************\n\n");
 
-    Z3_ast negX = Z3_mk_not(ctx,x);
-    printf("Formula %s created.\n",Z3_ast_to_string(ctx,negX));
+        int pathLength = 3; //Make variable
+        Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
 
-    Z3_ast absurdTab[3] = {x,y,negX};
-    Z3_ast absurd = Z3_mk_and(ctx,3,absurdTab);
-    printf("Formula %s created.\n",Z3_ast_to_string(ctx,absurd));
 
-    Z3_ast anOtherTab[3] = {negX,y,absurd};
-    Z3_ast easy = Z3_mk_or(ctx,3,anOtherTab);
-    printf("We have now: %s\n\n",Z3_ast_to_string(ctx,easy));
 
-    Z3_lbool isSat = isFormulaSat(ctx,absurd);
-
-    switch (isSat) {
-        case Z3_L_FALSE:
-            printf("%s is not satisfiable.\n",Z3_ast_to_string(ctx,absurd));
-            break;
-
-        case Z3_L_UNDEF:
-            printf("We don't know if %s is satisfiable.\n",Z3_ast_to_string(ctx,absurd));
-            break;
-
-        case Z3_L_TRUE:
-            printf("%s is satisfiable.\n",Z3_ast_to_string(ctx,absurd));
-            Z3_model model = getModelFromSatFormula(ctx,absurd);
-            printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,absurd));
-            printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,x),valueOfVarInModel(ctx,model,x));
-            printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,y),valueOfVarInModel(ctx,model,y));
-            printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,negX),valueOfVarInModel(ctx,model,negX));
-            break;
+        
+        printf("\n\n*******************\n* [INFO]  sat generated.\n*******************\n\n");
     }
 
-    isSat = isFormulaSat(ctx,easy);
-    printf("\n");
+    // Z3_ast x = mk_bool_var(ctx,"x");
+    // printf("Variable %s created.\n",Z3_ast_to_string(ctx,x));
 
-    switch (isSat) {
-        case Z3_L_FALSE:
-            printf("%s is not satisfiable.\n",Z3_ast_to_string(ctx,easy));
-            break;
+    // Z3_ast y = mk_bool_var(ctx,"y");
+    // printf("Variable %s created.\n",Z3_ast_to_string(ctx,y));
 
-        case Z3_L_UNDEF:
-            printf("We don't know if %s is satisfiable.\n",Z3_ast_to_string(ctx,easy));
-            break;
+    // Z3_ast negX = Z3_mk_not(ctx,x);
+    // printf("Formula %s created.\n",Z3_ast_to_string(ctx,negX));
 
-        case Z3_L_TRUE:
-            printf("%s is satisfiable.\n",Z3_ast_to_string(ctx,easy));
-            Z3_model model = getModelFromSatFormula(ctx,easy);
-            printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,easy));
-            printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,x),valueOfVarInModel(ctx,model,x));
-            printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,y),valueOfVarInModel(ctx,model,y));
-            printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,negX),valueOfVarInModel(ctx,model,negX));
-            break;
-    }
+    // Z3_ast absurdTab[3] = {x,y,negX};
+    // Z3_ast absurd = Z3_mk_and(ctx,3,absurdTab);
+    // printf("Formula %s created.\n",Z3_ast_to_string(ctx,absurd));
+
+    // Z3_ast anOtherTab[3] = {negX,y,absurd};
+    // Z3_ast easy = Z3_mk_or(ctx,3,anOtherTab);
+    // printf("We have now: %s\n\n",Z3_ast_to_string(ctx,easy));
+
+    // Z3_lbool isSat = isFormulaSat(ctx,absurd);
+
+    // switch (isSat) {
+    //     case Z3_L_FALSE:
+    //         printf("%s is not satisfiable.\n",Z3_ast_to_string(ctx,absurd));
+    //         break;
+
+    //     case Z3_L_UNDEF:
+    //         printf("We don't know if %s is satisfiable.\n",Z3_ast_to_string(ctx,absurd));
+    //         break;
+
+    //     case Z3_L_TRUE:
+    //         printf("%s is satisfiable.\n",Z3_ast_to_string(ctx,absurd));
+    //         Z3_model model = getModelFromSatFormula(ctx,absurd);
+    //         printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,absurd));
+    //         printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,x),valueOfVarInModel(ctx,model,x));
+    //         printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,y),valueOfVarInModel(ctx,model,y));
+    //         printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,negX),valueOfVarInModel(ctx,model,negX));
+    //         break;
+    // }
+
+    // isSat = isFormulaSat(ctx,easy);
+    // printf("\n");
+
+    // switch (isSat) {
+    //     case Z3_L_FALSE:
+    //         printf("%s is not satisfiable.\n",Z3_ast_to_string(ctx,easy));
+    //         break;
+
+    //     case Z3_L_UNDEF:
+    //         printf("We don't know if %s is satisfiable.\n",Z3_ast_to_string(ctx,easy));
+    //         break;
+
+    //     case Z3_L_TRUE:
+    //         printf("%s is satisfiable.\n",Z3_ast_to_string(ctx,easy));
+    //         Z3_model model = getModelFromSatFormula(ctx,easy);
+    //         printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,easy));
+    //         printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,x),valueOfVarInModel(ctx,model,x));
+    //         printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,y),valueOfVarInModel(ctx,model,y));
+    //         printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,negX),valueOfVarInModel(ctx,model,negX));
+    //         break;
+    // }
 
     Z3_del_context(ctx);
     printf("Context deleted, memory is now clean.\n");
@@ -96,11 +109,15 @@ int main ( int argc, char* argv[] ) {
 
 
 
-    for(int i = 1; i < argc; i++){
+    for(int i = 0; i < argc; i++){
         printf("Deleting Graph: %d.\n", i);
-        deleteGraph(graphList[i]);
+        // deleteGraph(graphList[i]);
     }
+    // free(graphList);
     printf("Graphes successfully deleted.\n");
+
+
+
     return 0;
 }
 
