@@ -107,11 +107,11 @@ Z3_ast graphsToValideFormula( Z3_context ctx, Graph *graphs,unsigned int numGrap
 
             if(isSource(tmp_graph, node_number)){
                 printf("----- Found source. \n");
-                source = getNodeVariable(ctx, graph_number, 0, numGraphs, node_number);
+                source = getNodeVariable(ctx, graph_number, 0, pathLength, node_number);
             }
             if(isTarget(tmp_graph, node_number)){
                 printf("----- Found target. \n");
-                target = getNodeVariable(ctx, graph_number, pathLength, numGraphs, node_number);
+                target = getNodeVariable(ctx, graph_number, pathLength, pathLength, node_number);
             }
 
             if(source == NULL || target == NULL)
