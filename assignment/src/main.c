@@ -120,9 +120,9 @@ int main ( int argc, char* argv[] ) {
 
     for(int i = 0; i < nbGraph; i++){
         printf("Deleting Graph: %d.\n", i);
-        // deleteGraph(graphList[i]);
+        deleteGraph(graphList[i]);
     }
-    // free(graphList);
+    free(graphList);
     printf("Graphes successfully deleted.\n");
 
 
