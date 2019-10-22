@@ -146,18 +146,20 @@ Graph loadGraph (char* argv){
 
     // printf("detailed informations:\n");
 
-    // printf(" There are %d vertices.\n",orderG(graph));
-    // printf(" There are %d edges.\n",sizeG(graph));
+    // printf("- There are %d vertices.\n",orderG(graph));
+    // printf("- There are %d edges.\n",sizeG(graph));
 
     // printf("\n Note: all graphs provided will have a single source and single target.\n");
     int node;
     for(node=0;node<orderG(graph) && !isSource(graph,node);node++);
-    printf("----- The source is %s.\n",getNodeName(graph,node));
+    printf("----- The source is %s. At ID: %d.\n",getNodeName(graph,node), node);
 
     for(node=0;node<orderG(graph) && !isTarget(graph,node);node++);
-    printf("----- The target is %s.\n",getNodeName(graph,node));
+    printf("----- The target is %s. At ID: %d\n",getNodeName(graph,node), node);
 
     // if(isEdge(graph,0,1)) printf(" There is an edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
     // else printf("\n There is no edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
+
+    return graph;
 
 }
