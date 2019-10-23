@@ -3,8 +3,10 @@
 #include "Z3Tools.h"
 #include <string.h> // <cstring> en C++
 
+int binomialCoeff(int n, int k);
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+
 
 Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node)
 {
@@ -21,6 +23,7 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
 {
 
     Z3_ast valide_formula = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
+    Z3_ast phi1_1 = uniqueVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
     // for(unsigned int graph_number = 0; graph_number < numGraphs; graph_number++) {
     //     printf("- Graph Number: %d\n", graph_number);
     //     // Z3_ast* res_array = (Z3_ast*) malloc(sizeof(Z3_ast) * 1500);
