@@ -71,18 +71,23 @@ void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGr
 
 Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
 {
-    Z3_ast res_all_graph[numGraphs + 1]; //Array that will contains every z3 formula for each graph
-    Z3_ast res_final_formula;            //The final formula which concatene every graphs formula
+    Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
+    Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
     //Loop through each graph
+    int graph_count=0;
     for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
     {
         //Loop every node in the graph
         int size_graph = sizeG(graphs[graph_number]);
+        Z3_ast all_vertex_formula[size_graph];
+        int vertex_count = 0;
+        int nb_subset = binomialCoeff(pathLength, 2);
+        Z3_ast subset_formula[nb_subset];
+
         for (unsigned int node_number = 0; node_number < size_graph; node_number++)
         {
-            int nb_subset = binomialCoeff(size_graph,2);
-            Z3_ast all_subset_formula[nb_subset]; 
-            int count =0;
+           
+            int subset_count =0;
             //creat terms for subset of 2 elements from pathLength
             for (int i = 1; i <= pathLength; i++)
             {
@@ -93,14 +98,21 @@ Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGr
                     Z3_ast termB = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
                     Z3_ast negTermB = Z3_mk_not(ctx,termB);
                     Z3_ast node[2] = {negTermA, negTermB};
-                    all_subset_formula[count] = Z3_mk_or(ctx, 2, node);
-                    count++;
+                    subset_formula[subset_count] = Z3_mk_or(ctx, 2, node);
+                    subset_count++;
                 }
             }
 
-            
+            all_vertex_formula[vertex_count] = Z3_mk_and(ctx, nb_subset, subset_formula);
+            vertex_count++;
         }
+        res_all_graph[graph_count] = Z3_mk_and(ctx, size_graph, all_vertex_formula);
+        graph_count++;
     }
+    res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+    printf("uniqueVertexAtEachIndex-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
+
+    return res_final_formula;
 }
 
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
