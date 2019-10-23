@@ -1,38 +1,35 @@
 #include "Solving.h"
 #include <stdlib.h>
 #include "Z3Tools.h"
-#include <string.h>  // <cstring> en C++
+#include <string.h> // <cstring> en C++
 
+Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 
-
-
-Z3_ast graphsToValideFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength);
-
-Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node) {
+Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node)
+{
     char buffer[64];
     sprintf(buffer, "x %d,%d,%d,%d", number, position, k, node);
-    
-    Z3_ast res = mk_bool_var(ctx,buffer);
 
-    printf("----- Variable %s created.\n",Z3_ast_to_string(ctx,res));
+    Z3_ast res = mk_bool_var(ctx, buffer);
+
+    printf("----- Variable %s created.\n", Z3_ast_to_string(ctx, res));
     return res;
 }
 
-
-Z3_ast graphsToPathFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength) {
+Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+{
 
     Z3_ast valide_formula = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
     // for(unsigned int graph_number = 0; graph_number < numGraphs; graph_number++) {
     //     printf("- Graph Number: %d\n", graph_number);
     //     // Z3_ast* res_array = (Z3_ast*) malloc(sizeof(Z3_ast) * 1500);
 
-
     //     for(unsigned int node_number = 0; node_number < pathLength; node_number++){
     //         printf("--- Node Number: %d\n", node_number);
-            
+
     //         Z3_ast x = getNodeVariable(ctx, graph_number, node_number, numGraphs, 0);
     //         Z3_ast y = getNodeVariable(ctx, graph_number, node_number+1, numGraphs, 0);
-             
 
     //         Z3_ast resTab[2] = {x,y};
     //         Z3_ast res = Z3_mk_and(ctx,2,resTab);
@@ -43,91 +40,121 @@ Z3_ast graphsToPathFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs
 
     //     // free(res_array);
 
-
     // }
 
     return NULL;
 }
 
-
-Z3_ast graphsToFullFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs) {
+Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs)
+{
 
     return NULL;
 }
 
-
-
-int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs) {
-
-
+int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
+{
 
     return 0;
 }
 
-
-
-void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength) {
-
+void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength)
+{
 
     return;
 }
 
-
-
-
-void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char* name) {
-
+void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char *name)
+{
 
     return;
 }
 
+Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+{
+    Z3_ast res_all_graph[numGraphs + 1]; //Array that will contains every z3 formula for each graph
+    Z3_ast res_final_formula;            //The final formula which concatene every graphs formula
+    //Loop through each graph
+    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+    {
+        //Loop every node in the graph
+        int size_graph = sizeG(graphs[graph_number]);
+        for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+        {
+            int nb_subset = binomialCoeff(size_graph,2);
+            Z3_ast all_subset_formula[nb_subset]; 
+            int count =0;
+            //creat terms for subset of 2 elements from pathLength
+            for (int i = 1; i <= pathLength; i++)
+            {
+                Z3_ast termA = getNodeVariable(ctx, graph_number, i, pathLength, node_number);
+                Z3_ast negTermA = Z3_mk_not(ctx,termA);
+                for (int j = i + 1; j <= pathLength; j++)
+                {
+                    Z3_ast termB = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+                    Z3_ast negTermB = Z3_mk_not(ctx,termB);
+                    Z3_ast node[2] = {negTermA, negTermB};
+                    all_subset_formula[count] = Z3_mk_or(ctx, 2, node);
+                    count++;
+                }
+            }
 
-
-
-Z3_ast graphsToValideFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength) {
-    Z3_ast res_all_graph[numGraphs+1];
-    Z3_ast res_final_formula;
-    Z3_ast res_two_node = NULL;
-
-    for(unsigned int graph_number = 0; graph_number < numGraphs; graph_number++) {
-        printf("- Graph Number: %d\n", graph_number);
-        printf("--- Graph have: %d nodes.\n",graphs[graph_number].numNodes);
-
-        // printGraph(graphs[graph_number]);
-
-
-        Z3_ast source = NULL;
-        Z3_ast target = NULL;
-        res_two_node = NULL;
-        // Z3_ast* res_array = (Z3_ast*) malloc(sizeof(Z3_ast) * 1500);
-        for(unsigned int node_number = 0; node_number < sizeG(graphs[graph_number]); node_number++){
-            Graph tmp_graph = graphs[graph_number];
-            printf("--- Node Number: %d\n", node_number);
             
+        }
+    }
+}
 
-            if(isSource(tmp_graph, node_number)){
+Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+{
+
+    Z3_ast res_all_graph[numGraphs + 1]; //Array that will contains every z3 formula for each graph
+    Z3_ast res_final_formula;            //The final formula which concatene every graphs formula
+    Z3_ast res_two_node = NULL;          //A node that will contain two valuation of a graph
+
+    // Search every graphe
+    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+    {
+        printf("- Graph Number: %d\n", graph_number);
+        printf("--- Graph have: %d nodes.\n", graphs[graph_number].numNodes);
+
+        Z3_ast source = NULL; //Node that will contains the source
+        Z3_ast target = NULL; //Node that will contains the target
+        res_two_node = NULL;  //reinitialize the value of the node
+
+        // Look every node of the graph
+        for (unsigned int node_number = 0; node_number < sizeG(graphs[graph_number]); node_number++)
+        {
+            Graph tmp_graph = graphs[graph_number]; //Local copy bcz more useful
+            printf("--- Node Number: %d\n", node_number);
+
+            if (isSource(tmp_graph, node_number))
+            { //If node is the source, then save a sat valuation
                 printf("----- Found source. \n");
                 source = getNodeVariable(ctx, graph_number, 0, pathLength, node_number);
             }
-            if(isTarget(tmp_graph, node_number)){
+            if (isTarget(tmp_graph, node_number))
+            { //If node is the target, then save a sat valuation
                 printf("----- Found target. \n");
                 target = getNodeVariable(ctx, graph_number, pathLength, pathLength, node_number);
             }
 
-            if(source == NULL || target == NULL)
+            //If not both source or target nodes are defined
+            // next iteration and search for new source or target
+            if (source == NULL || target == NULL)
                 continue;
 
-            Z3_ast node[2] = {source,target};
+            //Reached when source and target nodes has been find
+            Z3_ast node[2] = {source, target};
 
-            res_two_node = Z3_mk_and(ctx,2,node);
-            printf("+ Formula %s created.\n",Z3_ast_to_string(ctx,res_two_node));
+            //Set a new and node with source and destination for this graph
+            res_two_node = Z3_mk_and(ctx, 2, node);
+            printf("+ Formula %s created.\n", Z3_ast_to_string(ctx, res_two_node));
             break;
-
         }
 
-        if(res_two_node == NULL) {
+        if (res_two_node == NULL)
+        {
             printf("----- Lack of at least the source or the target edge.\n");
-            res_two_node = mk_bool_var(ctx,"false");
+            res_two_node = mk_bool_var(ctx, "false");
         }
         res_all_graph[graph_number] = res_two_node;
 
@@ -135,10 +162,21 @@ Z3_ast graphsToValideFormula( Z3_context ctx, Graph *graphs,unsigned int numGrap
     }
 
     //Concatene each formula coming from each graph
-    for(int i = 0; i < numGraphs; i++) {    
+    for (int i = 0; i < numGraphs; i++)
+    {
         res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
     }
-    printf("-----> %s\n",Z3_ast_to_string(ctx,res_final_formula));
+    printf("-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
 
     return res_final_formula;
 }
+
+int binomialCoeff(int n, int k) 
+{ 
+  // Base Cases 
+  if (k==0 || k==n) 
+    return 1; 
+  
+  // Recur 
+  return  binomialCoeff(n-1, k-1) + binomialCoeff(n-1, k); 
+} 
