@@ -52,8 +52,22 @@ Z3_ast graphsToPathFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs
     sat_checker(ctx, phi1_3);
     printf("- Check Path Formula\n");
     sat_checker(ctx, edge_between_nodes);
-    printf("- Check Path Formula\n");
-    sat_checker(ctx, edge_between_nodes);
+    printf("- Check Valide Formula\n");
+    sat_checker(ctx, valide_formula);
+
+
+    printf("\n\n- Merge sub-formula\n");
+    Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
+    Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
+    Z3_model res_formula_model = getModelFromSatFormula(ctx, res_formula);
+    printf("- Model for length=%d:\n", pathLength);
+    
+            // printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,easy));
+    printf("    The value of Phi 1.1 is: %d\n", valueOfVarInModel(ctx,res_formula_model,phi1_1));
+    printf("    The value of Phi 1.2 is: %d\n", valueOfVarInModel(ctx,res_formula_model,phi1_2));
+    printf("    The value of Phi 1.3 is: %d\n", valueOfVarInModel(ctx,res_formula_model,phi1_3));
+    printf("    The value of edges between nodes is: %d\n", valueOfVarInModel(ctx,res_formula_model,edge_between_nodes));
+    printf("    The value of valide graph is: %d\n", valueOfVarInModel(ctx,res_formula_model,valide_formula));
 
     return NULL;
 }
