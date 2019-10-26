@@ -33,19 +33,14 @@ Z3_ast graphsToPathFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs
     Z3_ast edge_between_nodes = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
 
 
-    Z3_ast decomposed_formula[2] = {valide_formula, edge_between_nodes};
-    Z3_ast final_formula = Z3_mk_and(ctx, 2, decomposed_formula);
 
-    printf("\n\n- Check main Formula\n");
-    if(!sat_checker(ctx, final_formula)){
-        printf("- Check Valide Formula\n");
-        sat_checker(ctx, valide_formula);
-        printf("- Check Path Formula\n");
-        sat_checker(ctx, edge_between_nodes);
-        return NULL;
+    printf("\n\n");
+    printf("- Check Valide Formula\n");
+    sat_checker(ctx, valide_formula);
+    printf("- Check Path Formula\n");
+    sat_checker(ctx, edge_between_nodes);
 
-    }
-    return final_formula;
+    return NULL;
 }
 
 
@@ -227,6 +222,11 @@ int sat_checker(Z3_context ctx, Z3_ast formula) {
 
         case Z3_L_TRUE:
             printf("--- This formula is sat-solvable.\n",Z3_ast_to_string(ctx,formula));
+            // Z3_model model = getModelFromSatFormula(ctx,easy);
+            // printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,easy));
+            // printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,x),valueOfVarInModel(ctx,model,x));
+            // printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,y),valueOfVarInModel(ctx,model,y));
+            // printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,negX),valueOfVarInModel(ctx,model,negX));
             return 1;
     }
     return 0;
