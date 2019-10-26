@@ -9,7 +9,7 @@
 
 Z3_ast graphsToValideFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength);
 Z3_ast graphsToExistsPath( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength);
-
+int sat_checker(Z3_context ctx, Z3_ast formula);
 
 
 
@@ -26,14 +26,26 @@ Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node
 
 
 Z3_ast graphsToPathFormula( Z3_context ctx, Graph *graphs,unsigned int numGraphs, int pathLength) {
-
     printf("\n\n+ Graphes validity +\n");
     Z3_ast valide_formula = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
 
     printf("\n\n+ Path between edges +\n");
-    Z3_ast edge_formula = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
+    Z3_ast edge_between_nodes = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
 
-    return NULL;
+
+    Z3_ast decomposed_formula[2] = {valide_formula, edge_between_nodes};
+    Z3_ast final_formula = Z3_mk_and(ctx, 2, decomposed_formula);
+
+    printf("\n\n- Check main Formula\n");
+    if(!sat_checker(ctx, final_formula)){
+        printf("- Check Valide Formula\n");
+        sat_checker(ctx, valide_formula);
+        printf("- Check Path Formula\n");
+        sat_checker(ctx, edge_between_nodes);
+        return NULL;
+
+    }
+    return final_formula;
 }
 
 
@@ -197,4 +209,25 @@ Z3_ast graphsToExistsPath( Z3_context ctx, Graph *graphs,unsigned int numGraphs,
     printf("-----> %s\n",Z3_ast_to_string(ctx,res_final_formula));
 
     return res_final_formula;
+}
+
+
+int sat_checker(Z3_context ctx, Z3_ast formula) {
+
+    Z3_lbool isSat = isFormulaSat(ctx,formula);
+
+    switch (isSat) {
+        case Z3_L_FALSE:
+            printf("--- This formula is not sat-solvable.\n",Z3_ast_to_string(ctx,formula));
+            break;
+
+        case Z3_L_UNDEF:
+            printf("--- We don't know if %s is sat-solvable.\n",Z3_ast_to_string(ctx,formula));
+            break;
+
+        case Z3_L_TRUE:
+            printf("--- This formula is sat-solvable.\n",Z3_ast_to_string(ctx,formula));
+            return 1;
+    }
+    return 0;
 }
