@@ -45,14 +45,16 @@ int main ( int argc, char* argv[] ) {
     printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************\n\n");
 
     int pathLength = 3; //Make variable
-    Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, 3);
+    Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
+ 
+    if(res!=NULL){
+        printf("graphsToPathFormula-----> %s\n", Z3_ast_to_string(ctx, res));
+        printf("\n\n*******************\n* [INFO]  sat generated.\n*******************\n\n");
 
-
-
-        
-    printf("\n\n*******************\n* [INFO]  sat generated.\n*******************\n\n");
-
-
+        Z3_model model = getModelFromSatFormula(ctx, res);
+        printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
+    }
+    
 
     Z3_del_context(ctx);
     printf("Context deleted, memory is now clean.\n");
