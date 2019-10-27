@@ -10,17 +10,17 @@ An implementation of the Coca project for 2019 year. Convert a set of graphs to 
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-Z3\+\_\+ast \hyperlink{Solving_8h_ab7cc93761499ad757a97af20d39e2cad}{get\+Node\+Variable} (Z3\+\_\+context ctx, int number, int position, int k, int node)
+Z3\+\_\+ast \mbox{\hyperlink{Solving_8h_ab7cc93761499ad757a97af20d39e2cad}{get\+Node\+Variable}} (Z3\+\_\+context ctx, int number, int position, int k, int node)
 \begin{DoxyCompactList}\small\item\em Generates a formula consisting of a variable representing the fact that {\ttfamily node} of graph number {\ttfamily number} is at position {\ttfamily position} of an accepting path. \end{DoxyCompactList}\item 
-Z3\+\_\+ast \hyperlink{Solving_8h_adda1df41c9465c0e108f80e81c453a0d}{graphs\+To\+Path\+Formula} (Z3\+\_\+context ctx, \hyperlink{structGraph}{Graph} $\ast$graphs, unsigned int num\+Graphs, int path\+Length)
+Z3\+\_\+ast \mbox{\hyperlink{Solving_8h_adda1df41c9465c0e108f80e81c453a0d}{graphs\+To\+Path\+Formula}} (Z3\+\_\+context ctx, \mbox{\hyperlink{structGraph}{Graph}} $\ast$graphs, unsigned int num\+Graphs, int path\+Length)
 \begin{DoxyCompactList}\small\item\em Generates a S\+A\+T formula satisfiable if and only if all graphs of {\ttfamily graphs} contain an accepting path of length {\ttfamily path\+Length}. \end{DoxyCompactList}\item 
-Z3\+\_\+ast \hyperlink{Solving_8h_ae8aded1b4a2f57bb85db5e6e2f074471}{graphs\+To\+Full\+Formula} (Z3\+\_\+context ctx, \hyperlink{structGraph}{Graph} $\ast$graphs, unsigned int num\+Graphs)
+Z3\+\_\+ast \mbox{\hyperlink{Solving_8h_ae8aded1b4a2f57bb85db5e6e2f074471}{graphs\+To\+Full\+Formula}} (Z3\+\_\+context ctx, \mbox{\hyperlink{structGraph}{Graph}} $\ast$graphs, unsigned int num\+Graphs)
 \begin{DoxyCompactList}\small\item\em Generates a S\+A\+T formula satisfiable if and only if all graphs of {\ttfamily graphs} contain an accepting path of common length. \end{DoxyCompactList}\item 
-int \hyperlink{Solving_8h_ac8dbc6ac32b172dad22d8b5bb45cb816}{get\+Solution\+Length\+From\+Model} (Z3\+\_\+context ctx, Z3\+\_\+model model, \hyperlink{structGraph}{Graph} $\ast$graphs)
+int \mbox{\hyperlink{Solving_8h_ac8dbc6ac32b172dad22d8b5bb45cb816}{get\+Solution\+Length\+From\+Model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{structGraph}{Graph}} $\ast$graphs)
 \begin{DoxyCompactList}\small\item\em Gets the length of the solution from a given model. \end{DoxyCompactList}\item 
-void \hyperlink{Solving_8h_aa39f14fe67a7e58945b07a6c469ebc1e}{print\+Paths\+From\+Model} (Z3\+\_\+context ctx, Z3\+\_\+model model, \hyperlink{structGraph}{Graph} $\ast$graphs, int num\+Graph, int path\+Length)
+void \mbox{\hyperlink{Solving_8h_aa39f14fe67a7e58945b07a6c469ebc1e}{print\+Paths\+From\+Model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{structGraph}{Graph}} $\ast$graphs, int num\+Graph, int path\+Length)
 \begin{DoxyCompactList}\small\item\em Displays the paths of length {\ttfamily path\+Length} of each graphs in {\ttfamily graphs} described by {\ttfamily model}. \end{DoxyCompactList}\item 
-void \hyperlink{Solving_8h_aec9dd13cadae02d10bd3825716d8b3d6}{create\+Dot\+From\+Model} (Z3\+\_\+context ctx, Z3\+\_\+model model, \hyperlink{structGraph}{Graph} $\ast$graphs, int num\+Graph, int path\+Length, char $\ast$name)
+void \mbox{\hyperlink{Solving_8h_aec9dd13cadae02d10bd3825716d8b3d6}{create\+Dot\+From\+Model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{structGraph}{Graph}} $\ast$graphs, int num\+Graph, int path\+Length, char $\ast$name)
 \begin{DoxyCompactList}\small\item\em Creates the file (\char`\"{}\%s-\/l\%d.\+dot\char`\"{},name,path\+Length) representing the solution to the problem described by {\ttfamily model}, or (\char`\"{}result-\/l\%d.\+dot,path\+Length\char`\"{}) if name is N\+U\+LL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -46,7 +46,7 @@ Copyright (c) 2019
 \index{Solving.\+h@{Solving.\+h}!create\+Dot\+From\+Model@{create\+Dot\+From\+Model}}
 \index{create\+Dot\+From\+Model@{create\+Dot\+From\+Model}!Solving.\+h@{Solving.\+h}}
 \subsubsection{\texorpdfstring{create\+Dot\+From\+Model()}{createDotFromModel()}}
-{\footnotesize\ttfamily void create\+Dot\+From\+Model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\hyperlink{structGraph}{Graph} $\ast$}]{graphs,  }\item[{int}]{num\+Graph,  }\item[{int}]{path\+Length,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void create\+Dot\+From\+Model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{structGraph}{Graph}} $\ast$}]{graphs,  }\item[{int}]{num\+Graph,  }\item[{int}]{path\+Length,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
 
 
 
@@ -97,7 +97,7 @@ Z3\+\_\+ast The formula.
 \index{Solving.\+h@{Solving.\+h}!get\+Solution\+Length\+From\+Model@{get\+Solution\+Length\+From\+Model}}
 \index{get\+Solution\+Length\+From\+Model@{get\+Solution\+Length\+From\+Model}!Solving.\+h@{Solving.\+h}}
 \subsubsection{\texorpdfstring{get\+Solution\+Length\+From\+Model()}{getSolutionLengthFromModel()}}
-{\footnotesize\ttfamily int get\+Solution\+Length\+From\+Model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\hyperlink{structGraph}{Graph} $\ast$}]{graphs }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int get\+Solution\+Length\+From\+Model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{structGraph}{Graph}} $\ast$}]{graphs }\end{DoxyParamCaption})}
 
 
 
@@ -119,7 +119,7 @@ int The length of a common simple accepting path in all graphs from {\ttfamily g
 \index{Solving.\+h@{Solving.\+h}!graphs\+To\+Full\+Formula@{graphs\+To\+Full\+Formula}}
 \index{graphs\+To\+Full\+Formula@{graphs\+To\+Full\+Formula}!Solving.\+h@{Solving.\+h}}
 \subsubsection{\texorpdfstring{graphs\+To\+Full\+Formula()}{graphsToFullFormula()}}
-{\footnotesize\ttfamily Z3\+\_\+ast graphs\+To\+Full\+Formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\hyperlink{structGraph}{Graph} $\ast$}]{graphs,  }\item[{unsigned int}]{num\+Graphs }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Z3\+\_\+ast graphs\+To\+Full\+Formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{structGraph}{Graph}} $\ast$}]{graphs,  }\item[{unsigned int}]{num\+Graphs }\end{DoxyParamCaption})}
 
 
 
@@ -141,7 +141,7 @@ Z3\+\_\+ast The formula.
 \index{Solving.\+h@{Solving.\+h}!graphs\+To\+Path\+Formula@{graphs\+To\+Path\+Formula}}
 \index{graphs\+To\+Path\+Formula@{graphs\+To\+Path\+Formula}!Solving.\+h@{Solving.\+h}}
 \subsubsection{\texorpdfstring{graphs\+To\+Path\+Formula()}{graphsToPathFormula()}}
-{\footnotesize\ttfamily Z3\+\_\+ast graphs\+To\+Path\+Formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\hyperlink{structGraph}{Graph} $\ast$}]{graphs,  }\item[{unsigned int}]{num\+Graphs,  }\item[{int}]{path\+Length }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Z3\+\_\+ast graphs\+To\+Path\+Formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{structGraph}{Graph}} $\ast$}]{graphs,  }\item[{unsigned int}]{num\+Graphs,  }\item[{int}]{path\+Length }\end{DoxyParamCaption})}
 
 
 
@@ -165,7 +165,7 @@ Z3\+\_\+ast The formula.
 \index{Solving.\+h@{Solving.\+h}!print\+Paths\+From\+Model@{print\+Paths\+From\+Model}}
 \index{print\+Paths\+From\+Model@{print\+Paths\+From\+Model}!Solving.\+h@{Solving.\+h}}
 \subsubsection{\texorpdfstring{print\+Paths\+From\+Model()}{printPathsFromModel()}}
-{\footnotesize\ttfamily void print\+Paths\+From\+Model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\hyperlink{structGraph}{Graph} $\ast$}]{graphs,  }\item[{int}]{num\+Graph,  }\item[{int}]{path\+Length }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void print\+Paths\+From\+Model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{structGraph}{Graph}} $\ast$}]{graphs,  }\item[{int}]{num\+Graph,  }\item[{int}]{path\+Length }\end{DoxyParamCaption})}
 
 
 

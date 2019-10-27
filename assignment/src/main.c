@@ -44,7 +44,7 @@ int main ( int argc, char* argv[] ) {
      */
     printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************\n\n");
 
-    int pathLength = 3; //Make variable
+    int pathLength = 2; //Make variable
     Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
  
     if(res!=NULL){

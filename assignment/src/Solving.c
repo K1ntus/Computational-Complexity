@@ -38,8 +38,8 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     Z3_ast phi1_3 = atMostOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
 
     printf("\n\n+ Path between edges +\n");
-    Z3_ast edge_between_nodes = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
-    // Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
+    // Z3_ast edge_between_nodes = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
+    Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
 
     printf("\n\n");
     printf("- Check Phi1.1 Formula\n");
@@ -96,10 +96,9 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
     for (unsigned int graph_number = 0; graph_number < numGraph; graph_number++)
     {
 
-        //reserve first and second index for source and target
         int nb_vertex_positions = pathLength + 1;
         int nodes[nb_vertex_positions];
-        int nodes_counter = 1;
+        int nodes_counter = 0;
         //loop through nodes
         int size_graph = orderG(graphs[graph_number]);
         for (unsigned int node_number = 0; node_number < size_graph; node_number++)
@@ -114,14 +113,15 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
                 {
                     if (isSource(graphs[graph_number], node_number))
                     {
+                        //reserve first index for source
                         nodes[0] = node_number;
-                    }
-                    else if (isTarget(graphs[graph_number], node_number))
-                    {
-                        nodes[1] = node_number;
+                    }else if(isTarget(graphs[graph_number],node_number)){
+                        //reserve last index for target
+                        nodes[nb_vertex_positions-1] = node_number;
                     }
                     else
                     {
+                        //rest index for other satisfied variable
                         nodes_counter++;
                         nodes[nodes_counter] = node_number;
                     }
@@ -129,37 +129,45 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
                 }
             }
         }
-
-        for (int i = 0; i < nb_vertex_positions; i++)
+        // check for pathLength
+        if (nodes_counter != pathLength-1)
         {
-            printf("node number %d\n", nodes[i]);
+            printf("printPathsFromModel-->FAiled on Graph N°%d\n", graph_number);
         }
-        //check for pathLength
-        // if (nodes_counter != pathLength-1){
-        //     printf("printPathsFromModel-->FAiled on Graph N°%d\n",graph_number);
-        // }else{
-        sortAndDisplayPath(graphs[graph_number], nodes, nb_vertex_positions);
-        // }
-        //create path;
+        else
+        {
+            //create path;
+            sortAndDisplayPath(graphs[graph_number], nodes, nb_vertex_positions);
+        }
     }
     return;
 }
-
+/*
+ * @brief sort array nodes @p nodes and display the correct path
+ * 
+ * @param g A graph.
+ * @param nodes An array of nodes, first index must be source and last index must be target.
+ * @param nb_vertex_positions The size of the array.
+*/
 void sortAndDisplayPath(Graph g, int nodes[], int nb_vertex_positions)
 {
     int path[nb_vertex_positions];
+    printf("nb_vertex %d\n",nb_vertex_positions);
+    //first index contains a path's source
     path[0] = nodes[0];
-    path[nb_vertex_positions - 1] = nodes[1];
     int path_index = 0;
-    for (int node_index = 2; node_index < nb_vertex_positions; node_index++)
+    for (int path_index = 0; path_index < nb_vertex_positions; path_index++)
     {
-        if (isEdge(g, path[path_index], nodes[node_index]))
+        for (int node_index = 1; node_index < nb_vertex_positions; node_index++)
         {
-            path_index++;
-            path[path_index] = nodes[node_index];
+            if (isEdge(g, path[path_index], nodes[node_index]))
+            {
+                    path[path_index + 1] = nodes[node_index];
+                    break;
+            }
         }
     }
-    
+
     for (int i = 0; i < nb_vertex_positions; i++)
     {
         if (i != nb_vertex_positions - 1)
@@ -307,7 +315,7 @@ Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pat
 {
     Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
     Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
-    int nb_vertex_positions = pathLength ;
+    int nb_vertex_positions = pathLength;
 
     //Loop through each graph
     for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
@@ -327,12 +335,12 @@ Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pat
             for (unsigned int node_number_A = 0; node_number_A < size_graph; node_number_A++)
             {
                 // loop every node in the graph
-                for (unsigned int node_number_B=0; node_number_B < size_graph; node_number_B++)
+                for (unsigned int node_number_B = 0; node_number_B < size_graph; node_number_B++)
                 {
                     if (isEdge(graphs[graph_number], node_number_A, node_number_B))
                     {
                         Z3_ast termA = getNodeVariable(ctx, graph_number, j, pathLength, node_number_A);
-                        Z3_ast termB = getNodeVariable(ctx, graph_number, j+1, pathLength, node_number_B);
+                        Z3_ast termB = getNodeVariable(ctx, graph_number, j + 1, pathLength, node_number_B);
                         Z3_ast node[2] = {termA, termB};
                         subset_formula[subset_count] = Z3_mk_and(ctx, 2, node);
                         subset_count++;
