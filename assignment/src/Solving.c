@@ -20,6 +20,8 @@ Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pat
 
 void sortAndDisplayPath(Graph g, int nodes[], int pathLength);
 
+
+void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes);
 Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node)
 {
     char buffer[64];
@@ -45,25 +47,12 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     // Z3_ast edge_between_nodes = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
     Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
 
-    printf("\n\n");
-    if (mode_extended_verbose) {
-        printf("- Check Phi1.1 Formula\n");
-        sat_checker(ctx, phi1_1);
-        printf("- Check Phi1.2 Formula\n");
-        sat_checker(ctx, phi1_2);
-        printf("- Check Phi1.3 Formula\n");
-        sat_checker(ctx, phi1_3);
-        printf("- Check Path Formula\n");
-        sat_checker(ctx, edge_between_nodes);
-        printf("- Check Valide Formula\n");
-        sat_checker(ctx, valide_formula);
-        printf("\n\n- Merge sub-formula\n");
-    }
+    testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
     Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
     Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
     if (mode_extended_verbose)
         printf("- Check Final Formula\n");
-        
+
     if (sat_checker(ctx, res_formula) == 1)
     {
         return res_formula;
@@ -149,7 +138,7 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
 void sortAndDisplayPath(Graph g, int nodes[], int nb_vertex_positions)
 {
     int path[nb_vertex_positions];
-    printf("nb_vertex %d\n",nb_vertex_positions);
+    // printf("nb_vertex %d\n",nb_vertex_positions);
     //first index contains a path's source
     path[0] = nodes[0];
     int path_index = 0;
@@ -505,6 +494,23 @@ Z3_ast graphsToExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs,
         printf("-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
 
     return res_final_formula;
+}
+
+void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes){
+    if (mode_extended_verbose) {
+        printf("\n\n");
+        printf("- Check Phi1.1 Formula\n");
+        sat_checker(ctx, phi1_1);
+        printf("- Check Phi1.2 Formula\n");
+        sat_checker(ctx, phi1_2);
+        printf("- Check Phi1.3 Formula\n");
+        sat_checker(ctx, phi1_3);
+        printf("- Check Path Formula\n");
+        sat_checker(ctx, edge_between_nodes);
+        printf("- Check Valide Formula\n");
+        sat_checker(ctx, valide_formula);
+        printf("\n\n- Merge sub-formula\n");
+    }
 }
 
 int sat_checker(Z3_context ctx, Z3_ast formula)

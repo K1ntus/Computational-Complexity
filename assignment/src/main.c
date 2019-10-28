@@ -69,7 +69,7 @@ int main ( int argc, char* argv[] ) {
 
 
     Z3_context ctx = makeContext();
-    printf(" * [INFO] Creating the context. Must be destroyed at the end of the program.\n");
+    printf("* [INFO] Creating the context. Must be destroyed at the end of the program.\n");
 
 
 
@@ -79,7 +79,7 @@ int main ( int argc, char* argv[] ) {
      * 
      * 
      */
-    printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************\n\n");
+    printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************");
 
     int pathLength = 2; //Make variable
     Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
@@ -87,8 +87,8 @@ int main ( int argc, char* argv[] ) {
     if(res!=NULL){
         if(mode_display_formula){
             printf("graphsToPathFormula-----> %s\n", Z3_ast_to_string(ctx, res));
-            printf("\n\n*******************\n* [INFO]  sat generated.\n*******************\n\n");
         }
+        printf("\n\n*******************\n* [INFO] Sat Generated.\n*******************\n\n");
 
         Z3_model model = getModelFromSatFormula(ctx, res);
 
@@ -98,7 +98,7 @@ int main ( int argc, char* argv[] ) {
     
 
     Z3_del_context(ctx);
-    printf("Context deleted, memory is now clean.\n");
+    printf("\n\nContext deleted, memory is now clean.\n");
  
 
 
@@ -159,23 +159,21 @@ void printHelp() {
 //  Some of the flags are interpreted here; some in system.cc.
 //
 	printf (
-        "* Usage:\n"
+        "Usage:\n"
         "./equalPath -v/V <verbose flag> -F <full formula>\n"
         "       -t <display paths found> -f <output file>\n"
         "       -o <NAME.dot> <GRAPHS.dot TO TEST>\n"
-        "* Example:\n"
-        "./equalPath -v -F -t \n"
-        "       graphs/assignment-instance/triangle.dot \n"
-        "       graphs/assignment-instance/G1.dot \n"
-        "* Options:\n"
-        "DEBUG:\n"
+        "Example:\n"
+        "./equalPath -v -F -t graphs/assignment-instance/triangle.dot graphs/assignment-instance/G1.dot \n"
+        "Options:\n"
+        "* DEBUG:\n"
         "   -h Displays this help\n"
         "   -v Activate the Verbose Mode (displays parsed graphes)\n"
         "   -V Activate the Extended Verbose Mode (More for debugging)\n"
         "   -F Displays the formula computed\n"
         "   -t Displays the paths found on the terminal [if not present, only displays the existence of the path].\n"
         "\n"
-        "FILE\n"
+        "* FILE:\n"
         "   TODO: -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
         "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
     );
