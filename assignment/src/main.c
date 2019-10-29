@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include <string.h>
 #include "Z3Tools.h"
 #include <Graph.h>
 #include <Parsing.h>
@@ -7,11 +8,47 @@
 
 
 Graph loadGraph (char* argv);
+void printHelp(void);
+
+bool mode_verbose = false;
+bool mode_extended_verbose = false;
+bool mode_display_formula = false;
+bool mode_paths_found = false;
 
 int main ( int argc, char* argv[] ) {
+    int begin_args_graph = 1;
     if(argc < 2) {
         return EXIT_FAILURE;
     }
+
+
+    if (argc > 1 && !strcmp(argv[1], "-h")) { // print help 
+        printHelp();
+        return EXIT_SUCCESS;
+    }
+
+    if (argc > 1 && !strcmp (argv[1], "-V")) { // activate verbose
+        mode_extended_verbose = true;
+        mode_verbose = true;
+        mode_display_formula = true;
+        mode_paths_found = true;
+        begin_args_graph += 1;
+    } else if (argc > 1 && !strcmp (argv[1], "-v")) { // activate verbose
+        mode_verbose = true;
+        begin_args_graph += 1;
+    }
+
+    if ((argc > 2 && !strcmp (argv[2], "-F")) || (argc > 1 && !strcmp (argv[1], "-F")) ) { // activate verbose
+        mode_display_formula = true;
+        begin_args_graph += 1;
+    }
+
+    if ((argc > 3 && !strcmp (argv[3], "-t")) || (argc > 2 && !strcmp (argv[2], "-t")) ) { // activate verbose
+        mode_paths_found = true;
+        begin_args_graph += 1;
+    }
+
+    
     
     /**
      * 
@@ -20,11 +57,11 @@ int main ( int argc, char* argv[] ) {
      * 
      */
     Graph * graphList =  (Graph *) malloc(sizeof(Graph) * (argc-1));
-    int nbGraph = 0;
         printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
-        for(; nbGraph < argc-1; nbGraph++){
+        int nbGraph = 0;
+        for(; nbGraph+begin_args_graph < argc; nbGraph++){
             printf("- Loading Graph: %d\n", nbGraph);
-            Graph tmp = loadGraph(argv[nbGraph+1]);
+            Graph tmp = loadGraph(argv[begin_args_graph+nbGraph]);
             graphList[nbGraph] = tmp;
         }
 
@@ -32,7 +69,7 @@ int main ( int argc, char* argv[] ) {
 
 
     Z3_context ctx = makeContext();
-    printf(" * [INFO] Creating the context. Must be destroyed at the end of the program.\n");
+    printf("* [INFO] Creating the context. Must be destroyed at the end of the program.\n");
 
 
 
@@ -42,20 +79,26 @@ int main ( int argc, char* argv[] ) {
      * 
      * 
      */
-    printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************\n\n");
+    printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************");
 
-    int pathLength = 3; //Make variable
-    Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, 3);
+    int pathLength = 2; //Make variable
+    Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
+ 
+    if(res!=NULL){
+        if(mode_display_formula){
+            printf("graphsToPathFormula-----> %s\n", Z3_ast_to_string(ctx, res));
+        }
+        printf("\n\n*******************\n* [INFO] Sat Generated.\n*******************\n\n");
 
+        Z3_model model = getModelFromSatFormula(ctx, res);
 
-
-        
-    printf("\n\n*******************\n* [INFO]  sat generated.\n*******************\n\n");
-
-
+        if(mode_paths_found)
+            printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
+    }
+    
 
     Z3_del_context(ctx);
-    printf("Context deleted, memory is now clean.\n");
+    printf("\n\nContext deleted, memory is now clean.\n");
  
 
 
@@ -79,29 +122,59 @@ Graph loadGraph (char* argv){
         Graph null_graph;
         return null_graph;
     }
-
-    printf("--- Graph: %s\n", argv);
+    
 
     Graph graph = getGraphFromFile(argv);
+    if(mode_verbose){
+        printf("--- Graph: %s\n", argv);
 
-    // printGraph(graph);
+        printGraph(graph);
 
-    // printf("detailed informations:\n");
+        if(mode_extended_verbose) {
+            printf("detailed informations:\n");
 
-    // printf("- There are %d vertices.\n",orderG(graph));
-    // printf("- There are %d edges.\n",sizeG(graph));
+            printf("- There are %d vertices.\n",orderG(graph));
+            printf("- There are %d edges.\n",sizeG(graph));
 
-    // printf("\n Note: all graphs provided will have a single source and single target.\n");
-    int node;
-    for(node=0;node<orderG(graph) && !isSource(graph,node);node++);
-    printf("----- The source is %s. At ID: %d.\n",getNodeName(graph,node), node);
+            printf("\n Note: all graphs provided will have a single source and single target.\n");
+            int node;
+            for(node=0;node<orderG(graph) && !isSource(graph,node);node++);
+            printf("----- The source is %s. At ID: %d.\n",getNodeName(graph,node), node);
 
-    for(node=0;node<orderG(graph) && !isTarget(graph,node);node++);
-    printf("----- The target is %s. At ID: %d\n",getNodeName(graph,node), node);
+            for(node=0;node<orderG(graph) && !isTarget(graph,node);node++);
+            printf("----- The target is %s. At ID: %d\n",getNodeName(graph,node), node);
 
-    // if(isEdge(graph,0,1)) printf(" There is an edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
-    // else printf("\n There is no edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
+            if(isEdge(graph,0,1)) printf(" There is an edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
+            else printf("\n There is no edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
+        }
+    }
 
     return graph;
 
+}
+
+
+void printHelp() {
+    //  NOTE -- flags are ignored until the relevant assignment.
+//  Some of the flags are interpreted here; some in system.cc.
+//
+	printf (
+        "Usage:\n"
+        "./equalPath -v/V <verbose flag> -F <full formula>\n"
+        "       -t <display paths found> -f <output file>\n"
+        "       -o <NAME.dot> <GRAPHS.dot TO TEST>\n"
+        "Example:\n"
+        "./equalPath -v -F -t graphs/assignment-instance/triangle.dot graphs/assignment-instance/G1.dot \n"
+        "Options:\n"
+        "* DEBUG:\n"
+        "   -h Displays this help\n"
+        "   -v Activate the Verbose Mode (displays parsed graphes)\n"
+        "   -V Activate the Extended Verbose Mode (More for debugging)\n"
+        "   -F Displays the formula computed\n"
+        "   -t Displays the paths found on the terminal [if not present, only displays the existence of the path].\n"
+        "\n"
+        "* FILE:\n"
+        "   TODO: -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
+        "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
+    );
 }
