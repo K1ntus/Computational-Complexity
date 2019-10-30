@@ -9,15 +9,15 @@ This file contains functions to easily and transparently manipulate the Z3 S\+MT
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-Z3\+\_\+context \hyperlink{Z3Tools_8h_af26a399e190083fd05af90f5703ac031}{make\+Context} (void)
+Z3\+\_\+context \mbox{\hyperlink{Z3Tools_8h_af26a399e190083fd05af90f5703ac031}{make\+Context}} (void)
 \begin{DoxyCompactList}\small\item\em Creates a basic Z3 context with basic config (sufficient for this project). Must be freed at end of program with Z3\+\_\+del\+\_\+context. \end{DoxyCompactList}\item 
-Z3\+\_\+ast \hyperlink{Z3Tools_8h_a397d6e03e2538ff0df36aad6e02030ae}{mk\+\_\+bool\+\_\+var} (Z3\+\_\+context ctx, const char $\ast$name)
+Z3\+\_\+ast \mbox{\hyperlink{Z3Tools_8h_a397d6e03e2538ff0df36aad6e02030ae}{mk\+\_\+bool\+\_\+var}} (Z3\+\_\+context ctx, const char $\ast$name)
 \begin{DoxyCompactList}\small\item\em Creates a formula containing a single variable whose name is given in parameter. Example mk\+\_\+bool\+\_\+var(ctx,\char`\"{}toto\char`\"{}) will create the formula «toto». Each call with same name will produce the same formula (so it can be used to have the same variable in different formulae.) \end{DoxyCompactList}\item 
-Z3\+\_\+lbool \hyperlink{Z3Tools_8h_a8e5e30f93d16ec6ded9cc5305965bde9}{is\+Formula\+Sat} (Z3\+\_\+context ctx, Z3\+\_\+ast formula)
+Z3\+\_\+lbool \mbox{\hyperlink{Z3Tools_8h_a8e5e30f93d16ec6ded9cc5305965bde9}{is\+Formula\+Sat}} (Z3\+\_\+context ctx, Z3\+\_\+ast formula)
 \begin{DoxyCompactList}\small\item\em Tells if a formula is satisfiable, unsatisfiable, or cannot be decided. \end{DoxyCompactList}\item 
-Z3\+\_\+model \hyperlink{Z3Tools_8h_af0a664d156e6a157814aae9d070d1d73}{get\+Model\+From\+Sat\+Formula} (Z3\+\_\+context ctx, Z3\+\_\+ast formula)
+Z3\+\_\+model \mbox{\hyperlink{Z3Tools_8h_af0a664d156e6a157814aae9d070d1d73}{get\+Model\+From\+Sat\+Formula}} (Z3\+\_\+context ctx, Z3\+\_\+ast formula)
 \begin{DoxyCompactList}\small\item\em Returns an assignment of variables satisfying the formula if it is satisfiable. Exits the program if the formula is unsatisfiable. \end{DoxyCompactList}\item 
-bool \hyperlink{Z3Tools_8h_ab767b4ee9a64aecc0da2d762ee5c6786}{value\+Of\+Var\+In\+Model} (Z3\+\_\+context ctx, Z3\+\_\+model model, Z3\+\_\+ast variable)
+bool \mbox{\hyperlink{Z3Tools_8h_ab767b4ee9a64aecc0da2d762ee5c6786}{value\+Of\+Var\+In\+Model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, Z3\+\_\+ast variable)
 \begin{DoxyCompactList}\small\item\em Returns the truth value of the formula {\ttfamily variable} in the variable assignment {\ttfamily model}. Very usefull if {\ttfamily variable} is a formula containing a single variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 

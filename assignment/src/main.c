@@ -6,8 +6,7 @@
 #include <Parsing.h>
 #include "Solving.h"
 
-
-Graph loadGraph (char* argv);
+Graph loadGraph(char *argv);
 void printHelp(void);
 
 bool mode_verbose = false;
@@ -15,63 +14,66 @@ bool mode_extended_verbose = false;
 bool mode_display_formula = false;
 bool mode_paths_found = false;
 
-int main ( int argc, char* argv[] ) {
+int main(int argc, char *argv[])
+{
     int begin_args_graph = 1;
-    if(argc < 2) {
+    if (argc < 2)
+    {
         return EXIT_FAILURE;
     }
 
-
-    if (argc > 1 && !strcmp(argv[1], "-h")) { // print help 
+    if (argc > 1 && !strcmp(argv[1], "-h"))
+    { // print help
         printHelp();
         return EXIT_SUCCESS;
     }
 
-    if (argc > 1 && !strcmp (argv[1], "-V")) { // activate verbose
+    if (argc > 1 && !strcmp(argv[1], "-V"))
+    { // activate verbose
         mode_extended_verbose = true;
         mode_verbose = true;
         mode_display_formula = true;
         mode_paths_found = true;
         begin_args_graph += 1;
-    } else if (argc > 1 && !strcmp (argv[1], "-v")) { // activate verbose
+    }
+    else if (argc > 1 && !strcmp(argv[1], "-v"))
+    { // activate verbose
         mode_verbose = true;
         begin_args_graph += 1;
     }
 
-    if ((argc > 2 && !strcmp (argv[2], "-F")) || (argc > 1 && !strcmp (argv[1], "-F")) ) { // activate verbose
+    if ((argc > 2 && !strcmp(argv[2], "-F")) || (argc > 1 && !strcmp(argv[1], "-F")))
+    { // activate verbose
         mode_display_formula = true;
         begin_args_graph += 1;
     }
 
-    if ((argc > 3 && !strcmp (argv[3], "-t")) || (argc > 2 && !strcmp (argv[2], "-t")) ) { // activate verbose
+    if ((argc > 2 && !strcmp(argv[1], "-t")) || (argc > 2 && !strcmp(argv[2], "-t")))
+    { // activate verbose
         mode_paths_found = true;
         begin_args_graph += 1;
     }
 
-    
-    
     /**
      * 
      * 
      * 
      * 
      */
-    Graph * graphList =  (Graph *) malloc(sizeof(Graph) * (argc-1));
-        printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
-        int nbGraph = 0;
-        for(; nbGraph+begin_args_graph < argc; nbGraph++){
-            printf("- Loading Graph: %d\n", nbGraph);
-            Graph tmp = loadGraph(argv[begin_args_graph+nbGraph]);
-            graphList[nbGraph] = tmp;
-        }
+    Graph *graphList = (Graph *)malloc(sizeof(Graph) * (argc - 1));
+    printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
+    int nbGraph = 0;
+    for (; nbGraph + begin_args_graph < argc; nbGraph++)
+    {
+        printf("- Loading Graph: %d\n", nbGraph);
+        Graph tmp = loadGraph(argv[begin_args_graph + nbGraph]);
+        graphList[nbGraph] = tmp;
+    }
 
-        printf("\n\n*******************\n* [INFO] %d graph loaded.\n*******************\n\n", nbGraph);
-
+    printf("\n\n*******************\n* [INFO] %d graph loaded.\n*******************\n\n", nbGraph);
 
     Z3_context ctx = makeContext();
     printf("* [INFO] Creating the context. Must be destroyed at the end of the program.\n");
-
-
 
     /**
      * 
@@ -83,82 +85,109 @@ int main ( int argc, char* argv[] ) {
 
     int pathLength = 2; //Make variable
     Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
- 
-    if(res!=NULL){
-        if(mode_display_formula){
+
+    if (res != NULL)
+    {
+        if (mode_display_formula)
+        {
             printf("graphsToPathFormula-----> %s\n", Z3_ast_to_string(ctx, res));
         }
         printf("\n\n*******************\n* [INFO] Sat Generated.\n*******************\n\n");
 
         Z3_model model = getModelFromSatFormula(ctx, res);
 
-        if(mode_paths_found)
+        if (mode_paths_found)
             printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
     }
-    
+
+    // graphsToFullFormula test
+    Z3_ast fullFormula = graphsToFullFormula(ctx, graphList, nbGraph);
+    if (fullFormula)
+    {
+        printf("graphsToFullFormula-----> YES, all graphs contains an accepting path of common length!\n");
+        if (mode_display_formula)
+        {
+            printf("graphsToFullFormula-----> %s\n", Z3_ast_to_string(ctx, fullFormula));
+        }
+        if (mode_paths_found)
+        {
+            Z3_model fullFormula_model = getModelFromSatFormula(ctx, fullFormula);
+            printPathsFromModel(ctx, fullFormula_model, graphList, nbGraph, pathLength);
+        }
+    }
+    else
+    {
+        printf("graphsToFullFormula-----> NON, all graphs does not contain an accepting path of common length!\n");
+    }
+
+    //getSolutionLengthFromModel test
+    Z3_model solutionLength_model = getModelFromSatFormula(ctx, res);
+    int solution_length = getSolutionLengthFromModel(ctx, solutionLength_model, graphList);
+    printf("Solutin length %d\n", solution_length);
 
     Z3_del_context(ctx);
     printf("\n\nContext deleted, memory is now clean.\n");
- 
 
-
-
-    for(int i = 0; i < nbGraph; i++){
+    for (int i = 0; i < nbGraph; i++)
+    {
         printf("Deleting Graph: %d.\n", i);
         deleteGraph(graphList[i]);
     }
     free(graphList);
     printf("Graphes successfully deleted.\n");
 
-
-
     return 0;
 }
 
-
-Graph loadGraph (char* argv){
-    if(argv == 0x0){
+Graph loadGraph(char *argv)
+{
+    if (argv == 0x0)
+    {
         printf("--- Graph: NULL\n", argv);
         Graph null_graph;
         return null_graph;
     }
-    
 
     Graph graph = getGraphFromFile(argv);
-    if(mode_verbose){
+    if (mode_verbose)
+    {
         printf("--- Graph: %s\n", argv);
 
         printGraph(graph);
 
-        if(mode_extended_verbose) {
+        if (mode_extended_verbose)
+        {
             printf("detailed informations:\n");
 
-            printf("- There are %d vertices.\n",orderG(graph));
-            printf("- There are %d edges.\n",sizeG(graph));
+            printf("- There are %d vertices.\n", orderG(graph));
+            printf("- There are %d edges.\n", sizeG(graph));
 
             printf("\n Note: all graphs provided will have a single source and single target.\n");
             int node;
-            for(node=0;node<orderG(graph) && !isSource(graph,node);node++);
-            printf("----- The source is %s. At ID: %d.\n",getNodeName(graph,node), node);
+            for (node = 0; node < orderG(graph) && !isSource(graph, node); node++)
+                ;
+            printf("----- The source is %s. At ID: %d.\n", getNodeName(graph, node), node);
 
-            for(node=0;node<orderG(graph) && !isTarget(graph,node);node++);
-            printf("----- The target is %s. At ID: %d\n",getNodeName(graph,node), node);
+            for (node = 0; node < orderG(graph) && !isTarget(graph, node); node++)
+                ;
+            printf("----- The target is %s. At ID: %d\n", getNodeName(graph, node), node);
 
-            if(isEdge(graph,0,1)) printf(" There is an edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
-            else printf("\n There is no edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
+            if (isEdge(graph, 0, 1))
+                printf(" There is an edge between %s and %s.\n", getNodeName(graph, 0), getNodeName(graph, 1));
+            else
+                printf("\n There is no edge between %s and %s.\n", getNodeName(graph, 0), getNodeName(graph, 1));
         }
     }
 
     return graph;
-
 }
 
-
-void printHelp() {
+void printHelp()
+{
     //  NOTE -- flags are ignored until the relevant assignment.
-//  Some of the flags are interpreted here; some in system.cc.
-//
-	printf (
+    //  Some of the flags are interpreted here; some in system.cc.
+    //
+    printf(
         "Usage:\n"
         "./equalPath -v/V <verbose flag> -F <full formula>\n"
         "       -t <display paths found> -f <output file>\n"
@@ -175,6 +204,5 @@ void printHelp() {
         "\n"
         "* FILE:\n"
         "   TODO: -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
-        "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
-    );
+        "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n");
 }

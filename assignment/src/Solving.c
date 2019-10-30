@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include "Z3Tools.h"
 #include <string.h> // <cstring> en C++
+#include <assert.h>
 
 
 extern bool mode_verbose;
 extern bool mode_extended_verbose;
 
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
-Z3_ast graphsToExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula);
 
 int binomialCoeff(int n, int k);
@@ -44,7 +44,6 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
 
     if (mode_extended_verbose)
         printf("\n\n+ Path between edges +\n");
-    // Z3_ast edge_between_nodes = graphsToExistsPath(ctx, graphs, numGraphs, pathLength);
     Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
 
     testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
@@ -66,14 +65,27 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
 
 Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs)
 {
-
+    assert(graphs);
+    Z3_ast res_final_formula; //The final formula which concatene every graphs formula
+    //Pick the number of first graph's vertex -1 as the max pathLength.
+    int max_pathLength = orderG(graphs[0])-1;
+    for (int k = max_pathLength; k >=1; k--)
+    {
+        res_final_formula = graphsToPathFormula(ctx, graphs, numGraphs,k);
+        if(res_final_formula!=NULL){
+            return res_final_formula;
+        }
+    }
     return NULL;
 }
 
 int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
 {
+    assert(model);
+    assert(graphs);
+    int pathLength ;
 
-    return 0;
+    return pathLength;
 }
 
 void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength)
@@ -424,77 +436,6 @@ Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGrap
     return res_final_formula;
 }
 
-Z3_ast graphsToExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
-{
-    Z3_ast res_all_graph[numGraphs + 1];
-    Z3_ast res_final_formula;
-    Z3_ast formula_for_source_id;
-    Z3_ast res_graph;
-    int size_nb_paire = 0;
-
-    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
-    {
-        if (mode_extended_verbose){
-            printf("- Graph Number: %d\n", graph_number);
-            printf("--- Graph have: %d nodes.\n", orderG(graphs[graph_number]));
-        }
-
-        // printGraph(graphs[graph_number]);
-
-        Z3_ast source = NULL;
-        Z3_ast target = NULL;
-        formula_for_source_id = NULL;
-
-        Z3_ast *res_graph_formula = (Z3_ast *)malloc(sizeof(Z3_ast) * sizeG(graphs[graph_number]));
-        size_nb_paire = 0;
-        for (unsigned int source_id = 0; source_id < orderG(graphs[graph_number]); source_id++)
-        { //should we Check if last has edge to previous nodes ?
-            Graph tmp_graph = graphs[graph_number];
-            if (mode_extended_verbose)
-                printf("--- Source Number: %d\n", source_id);
-
-            for (unsigned int target_id = 0; target_id < orderG(tmp_graph); target_id++)
-            {
-                if (mode_extended_verbose)
-                    printf("--- Target Number: %d\n", target_id);
-
-                if (isEdge(tmp_graph, source_id, target_id) && target_id != source_id)
-                {
-                    source = getNodeVariable(ctx, graph_number, source_id, pathLength, source_id);
-                    target = getNodeVariable(ctx, graph_number, source_id + 1, pathLength, target_id);
-                    if (mode_extended_verbose)
-                        printf("* Found an edge.\n");
-                }
-                else
-                {
-                    continue;
-                }
-
-                Z3_ast node[2] = {source, target};
-                res_graph_formula[size_nb_paire] = Z3_mk_and(ctx, 2, node);
-                size_nb_paire += 1;
-            }
-        }
-
-        res_all_graph[graph_number] = Z3_mk_or(ctx, size_nb_paire, res_graph_formula);
-
-        if (mode_extended_verbose) {
-            printf("--- Formula %s created.\n", Z3_ast_to_string(ctx, res_all_graph[graph_number]));
-            printf("\n");
-        }
-        free(res_graph_formula);
-    }
-
-    //Concatene each formula coming from each graph
-    for (int i = 0; i < numGraphs; i++)
-    {
-        res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
-    }
-    if (mode_extended_verbose)
-        printf("-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
-
-    return res_final_formula;
-}
 
 void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes){
     if (mode_extended_verbose) {
