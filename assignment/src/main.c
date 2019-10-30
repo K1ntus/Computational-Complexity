@@ -54,12 +54,7 @@ int main(int argc, char *argv[])
         begin_args_graph += 1;
     }
 
-    /**
-     * 
-     * 
-     * 
-     * 
-     */
+
     Graph *graphList = (Graph *)malloc(sizeof(Graph) * (argc - 1));
     printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
     int nbGraph = 0;
@@ -75,15 +70,11 @@ int main(int argc, char *argv[])
     Z3_context ctx = makeContext();
     printf("* [INFO] Creating the context. Must be destroyed at the end of the program.\n");
 
-    /**
-     * 
-     * 
-     * 
-     * 
-     */
+
     printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************");
 
-    int pathLength = 2; //Make variable
+    printf("\n\n*******************\n* [INFO] graphsToPathFormula Test ...\n*******************\n\n");
+    int pathLength = 3; //Make variable
     Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
 
     if (res != NULL)
@@ -101,6 +92,7 @@ int main(int argc, char *argv[])
     }
 
     // graphsToFullFormula test
+    printf("\n\n*******************\n* [INFO] graphsToFullFormula Test ...\n*******************\n\n");
     Z3_ast fullFormula = graphsToFullFormula(ctx, graphList, nbGraph);
     if (fullFormula)
     {
@@ -120,10 +112,18 @@ int main(int argc, char *argv[])
         printf("graphsToFullFormula-----> NON, all graphs does not contain an accepting path of common length!\n");
     }
 
+
     //getSolutionLengthFromModel test
-    Z3_model solutionLength_model = getModelFromSatFormula(ctx, res);
-    int solution_length = getSolutionLengthFromModel(ctx, solutionLength_model, graphList);
-    printf("Solutin length %d\n", solution_length);
+    printf("\n\n*******************\n* [INFO] getSolutionLengthFromModel Test ...\n*******************\n\n");
+    if (res != NULL){
+        Z3_model solutionLength_model = getModelFromSatFormula(ctx, res);
+        int solution_length = getSolutionLengthFromModel(ctx, solutionLength_model, graphList);
+        printf("Solutin length %d\n", solution_length);
+    }else{
+        printf("Can't find a solution length : failed to create model\n");
+    }
+        
+
 
     Z3_del_context(ctx);
     printf("\n\nContext deleted, memory is now clean.\n");

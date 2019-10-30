@@ -4,12 +4,12 @@
 #include <string.h> // <cstring> en C++
 #include <assert.h>
 
-
 extern bool mode_verbose;
 extern bool mode_extended_verbose;
 
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula);
+int sat_checker_print(Z3_context ctx, Z3_ast formula);
 
 int binomialCoeff(int n, int k);
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
@@ -19,7 +19,6 @@ Z3_ast atMostOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int nu
 Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 
 void sortAndDisplayPath(Graph g, int nodes[], int pathLength);
-
 
 void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes);
 Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node)
@@ -35,32 +34,26 @@ Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node
 
 Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
 {
-    if (mode_extended_verbose)
-        printf("\n\n+ Graphes validity +\n");
     Z3_ast valide_formula = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
     Z3_ast phi1_1 = uniqueVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
     Z3_ast phi1_2 = atLeastOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
     Z3_ast phi1_3 = atMostOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
 
-    if (mode_extended_verbose)
-        printf("\n\n+ Path between edges +\n");
+
     Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
 
     testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
     Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
     Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
-    if (mode_extended_verbose)
+    if (mode_extended_verbose){
         printf("- Check Final Formula\n");
-
-    if (sat_checker(ctx, res_formula) == 1)
-    {
-        return res_formula;
+        if (sat_checker_print(ctx, res_formula) == 1)
+            return res_formula;
+    }else{
+        if (sat_checker(ctx, res_formula) == 1)
+            return res_formula;
     }
-    else
-    {
-        return NULL;
-    }
-    
+    return NULL;
 }
 
 Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs)
@@ -68,24 +61,56 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     assert(graphs);
     Z3_ast res_final_formula; //The final formula which concatene every graphs formula
     //Pick the number of first graph's vertex -1 as the max pathLength.
-    int max_pathLength = orderG(graphs[0])-1;
-    for (int k = max_pathLength; k >=1; k--)
+    int max_pathLength = orderG(graphs[0]) - 1;
+    for (int k = max_pathLength; k >= 1; k--)
     {
-        res_final_formula = graphsToPathFormula(ctx, graphs, numGraphs,k);
-        if(res_final_formula!=NULL){
+        res_final_formula = graphsToPathFormula(ctx, graphs, numGraphs, k);
+        if (res_final_formula != NULL)
+        {
             return res_final_formula;
         }
     }
     return NULL;
 }
 
+/*
+* @brief if all graphs of @p graphs contain an accepting path of common length, then the first graph also.
+*       Test only with the first graph.
+* @param ctx The solver context.
+* @param model A variable assignment.
+* @param graphs An array of graphs.
+* @return int The length of a common simple accepting path in all graphs from @p graphs.
+*/
 int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
 {
     assert(model);
     assert(graphs);
-    int pathLength ;
+    int resPathLength = 0;
+    Graph firstGraph = graphs[0];
+    int sizeGraph = orderG(firstGraph);
+    int maxPathLength = sizeGraph - 1;
+    
 
-    return pathLength;
+    // try all pathLength
+    for (int pathLength = maxPathLength; pathLength >= 1; pathLength--)
+    {
+        // loop through nodes
+        for (unsigned int node_number = 0; node_number < sizeGraph; node_number++)
+        {
+            // loop through pathLength
+            for(int j = 0; j<= pathLength;j++){
+                Z3_ast tmpVar = graphsToPathFormula(ctx, graphs, 1, pathLength);
+                bool satisfiedCheck = valueOfVarInModel(ctx, model, tmpVar);
+                if (satisfiedCheck)
+                {
+                    return pathLength;
+                }
+            }
+
+        }
+    }
+
+    return resPathLength;
 }
 
 void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength)
@@ -113,9 +138,11 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
                     {
                         //reserve first index for source
                         nodes[0] = node_number;
-                    }else if(isTarget(graphs[graph_number],node_number)){
+                    }
+                    else if (isTarget(graphs[graph_number], node_number))
+                    {
                         //reserve last index for target
-                        nodes[nb_vertex_positions-1] = node_number;
+                        nodes[nb_vertex_positions - 1] = node_number;
                     }
                     else
                     {
@@ -128,7 +155,7 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
             }
         }
         // check for pathLength
-        if (nodes_counter != pathLength-1)
+        if (nodes_counter != pathLength - 1)
         {
             printf("printPathsFromModel-->Failed on Graph N°%d\n", graph_number);
         }
@@ -160,8 +187,8 @@ void sortAndDisplayPath(Graph g, int nodes[], int nb_vertex_positions)
         {
             if (isEdge(g, path[path_index], nodes[node_index]))
             {
-                    path[path_index + 1] = nodes[node_index];
-                    break;
+                path[path_index + 1] = nodes[node_index];
+                break;
             }
         }
     }
@@ -371,7 +398,8 @@ Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGrap
     // Search every graphe
     for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
     {
-        if (mode_extended_verbose){
+        if (mode_extended_verbose)
+        {
             printf("- Graph Number: %d\n", graph_number);
             printf("--- Graph have: %d nodes.\n", graphs[graph_number].numNodes);
         }
@@ -421,8 +449,6 @@ Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGrap
             res_two_node = mk_bool_var(ctx, "false");
         }
         res_all_graph[graph_number] = res_two_node;
-
-        printf("\n");
     }
 
     //Concatene each formula coming from each graph
@@ -436,9 +462,10 @@ Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGrap
     return res_final_formula;
 }
 
-
-void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes){
-    if (mode_extended_verbose) {
+void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes)
+{
+    if (mode_extended_verbose)
+    {
         printf("\n\n");
         printf("- Check Phi1.1 Formula\n");
         sat_checker(ctx, phi1_1);
@@ -462,6 +489,24 @@ int sat_checker(Z3_context ctx, Z3_ast formula)
     switch (isSat)
     {
     case Z3_L_FALSE:
+        break;
+
+    case Z3_L_UNDEF:
+        break;
+
+    case Z3_L_TRUE:
+        return 1;
+    }
+    return 0;
+}
+int sat_checker_print(Z3_context ctx, Z3_ast formula)
+{
+
+    Z3_lbool isSat = isFormulaSat(ctx, formula);
+
+    switch (isSat)
+    {
+    case Z3_L_FALSE:
         printf("--- This formula is not sat-solvable.\n", Z3_ast_to_string(ctx, formula));
         break;
 
@@ -471,15 +516,11 @@ int sat_checker(Z3_context ctx, Z3_ast formula)
 
     case Z3_L_TRUE:
         printf("--- This formula is sat-solvable.\n", Z3_ast_to_string(ctx, formula));
-        // Z3_model model = getModelFromSatFormula(ctx,easy);
-        // printf("Model obtained for %s:\n",Z3_ast_to_string(ctx,easy));
-        // printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,x),valueOfVarInModel(ctx,model,x));
-        // printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,y),valueOfVarInModel(ctx,model,y));
-        // printf("    The value of %s is %d\n",Z3_ast_to_string(ctx,negX),valueOfVarInModel(ctx,model,negX));
         return 1;
     }
     return 0;
 }
+
 int binomialCoeff(int n, int k)
 {
     // Base Cases
