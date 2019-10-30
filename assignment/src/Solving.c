@@ -1,6 +1,8 @@
 #include "Solving.h"
 #include <stdlib.h>
 #include "Z3Tools.h"
+#include <unistd.h> //pipe
+#include <stdio.h>  //File
 #include <string.h> // <cstring> en C++
 
 
@@ -19,6 +21,10 @@ Z3_ast atMostOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int nu
 Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 
 void sortAndDisplayPath(Graph g, int nodes[], int pathLength);
+
+
+void sortAndDisplayDotPath(Graph g, int nodes[], int pathLength);
+void printDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength);
 
 
 void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes);
@@ -74,6 +80,110 @@ int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
 {
 
     return 0;
+}
+
+
+void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char* name) {
+    FILE * save_file;
+    if(name == 0x0)
+        save_file = fopen("output/NAME-lLENGTH.dot", "w");
+    else
+        save_file = fopen(name, "w");
+    
+    int file_descriptor = fileno(save_file);
+    int fd_stdout = dup(1);
+    dup2(file_descriptor, 1); 
+
+
+    printf("digraph G{\n");
+    printDotPathsFromModel(ctx, model, graphs, numGraph, pathLength);
+    for(int i = 0; i < numGraph; i++){
+        printf("\tsubgraph %d{\n", i);
+        {
+            int node;
+            for(node=0;node<orderG(graphs[i]);node++){
+                    if(isTarget(graphs[i],node))
+                        printf("\t\t%s [final=1,color=red];\n",getNodeName(graphs[i],node));
+                    else if (isSource(graphs[i], node))
+                        printf("\t\t%s [initial=1,color=green];\n",getNodeName(graphs[i],node));
+                    else
+                        printf("\t\t%s;\n",getNodeName(graphs[i],node));
+
+                for(int node2 = 0; node2 < orderG(graphs[i]); node2++){
+                    if(isEdge(graphs[i], node, node2)){
+                        printf("\t\t%s->%s;\n",getNodeName(graphs[i],node), getNodeName(graphs[i],node2));
+                    }
+                }
+            }
+
+            int edge;
+            for(edge = 0; edge < sizeG(graphs[i]); edge++){
+
+            }
+            printf("\t\tlabel = \"Graphe %d\";\n", i);
+        }
+        printf("\t}\n");
+    }
+    printf("}\n");
+
+    dup2(fd_stdout, 1);
+
+    close(file_descriptor);
+    close(fd_stdout);
+    fclose(save_file);
+}
+
+void printDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength)
+{
+    //loop through graphs
+    for (unsigned int graph_number = 0; graph_number < numGraph; graph_number++)
+    {
+
+        int nb_vertex_positions = pathLength + 1;
+        int nodes[nb_vertex_positions];
+        int nodes_counter = 0;
+        //loop through nodes
+        int size_graph = orderG(graphs[graph_number]);
+        for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+        {
+
+            //loop through pathLength
+            for (int j = 0; j <= pathLength; j++)
+            {
+                Z3_ast tmp_var = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+                bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
+                if (satisfied_var)
+                {
+                    if (isSource(graphs[graph_number], node_number))
+                    {
+                        //reserve first index for source
+                        nodes[0] = node_number;
+                    }else if(isTarget(graphs[graph_number],node_number)){
+                        //reserve last index for target
+                        nodes[nb_vertex_positions-1] = node_number;
+                    }
+                    else
+                    {
+                        //rest index for other satisfied variable
+                        nodes_counter++;
+                        nodes[nodes_counter] = node_number;
+                    }
+                    break;
+                }
+            }
+        }
+        // check for pathLength
+        if (nodes_counter != pathLength-1)
+        {
+            printf("printPathsFromModel-->Failed on Graph N°%d\n", graph_number);
+        }
+        else
+        {
+            //create path;
+            sortAndDisplayDotPath(graphs[graph_number], nodes, nb_vertex_positions);
+        }
+    }
+    return;
 }
 
 void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength)
@@ -167,11 +277,39 @@ void sortAndDisplayPath(Graph g, int nodes[], int nb_vertex_positions)
     }
 }
 
-void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char *name)
-{
 
-    return;
+void sortAndDisplayDotPath(Graph g, int nodes[], int nb_vertex_positions)
+{
+    int path[nb_vertex_positions];
+    // printf("nb_vertex %d\n",nb_vertex_positions);
+    //first index contains a path's source
+    path[0] = nodes[0];
+    int path_index = 0;
+    for (int path_index = 0; path_index < nb_vertex_positions; path_index++)
+    {
+        for (int node_index = 1; node_index < nb_vertex_positions; node_index++)
+        {
+            if (isEdge(g, path[path_index], nodes[node_index]))
+            {
+                    path[path_index + 1] = nodes[node_index];
+                    break;
+            }
+        }
+    }
+
+    for (int i = 0; i < nb_vertex_positions; i++)
+    {
+        if (i != nb_vertex_positions - 1)
+        {
+            printf("%s->", getNodeName(g, path[i]));
+        }
+        else
+        {
+            printf("%s [color=blue];\n", getNodeName(g, path[i]));
+        }
+    }
 }
+
 
 Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
 {

@@ -1,0 +1,29 @@
+digraph G{
+s1->q2->t1 [color=blue];
+s2->q->t2 [color=blue];
+	subgraph 0{
+		s1 [initial=1,color=green];
+		s1->q1;
+		s1->q2;
+		t1 [final=1,color=red];
+		q1;
+		q1->t1;
+		q1->q3;
+		q2;
+		q2->t1;
+		q2->q1;
+		q2->q3;
+		q3;
+		q3->t1;
+		label = "Graphe 0";
+	}
+	subgraph 1{
+		s2 [initial=1,color=green];
+		s2->q;
+		t2 [final=1,color=red];
+		t2->s2;
+		q;
+		q->t2;
+		label = "Graphe 1";
+	}
+}
