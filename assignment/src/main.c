@@ -10,6 +10,9 @@
 Graph loadGraph (char* argv);
 void printHelp(void);
 
+
+
+#define MAX_NUM_ARGS 7
 bool mode_verbose = false;
 bool mode_extended_verbose = false;
 bool mode_display_formula = false;
@@ -27,29 +30,32 @@ int main ( int argc, char* argv[] ) {
         return EXIT_SUCCESS;
     }
 
-    if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-v")) { // activate verbose
-        mode_verbose = true;
-        begin_args_graph += 1;
-    }
+    for(int i = 0; i < MAX_NUM_ARGS; i++) {
+        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-v")) { // activate verbose
+            mode_verbose = true;
+            begin_args_graph += 1;
+        }
 
-    if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-V")) { // activate verbose
-        mode_extended_verbose = true;
-        mode_verbose = true;
-        mode_display_formula = true;
-        mode_paths_found = true;
-        begin_args_graph += 1;
-    }
+        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-V")) { // activate verbose
+            mode_extended_verbose = true;
+            mode_verbose = true;
+            mode_display_formula = true;
+            mode_paths_found = true;
+            begin_args_graph += 1;
+        }
 
-    if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-F"))) { // activate verbose
-        mode_display_formula = true;
-        begin_args_graph += 1;
-    }
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-F"))) { // activate verbose
+            mode_display_formula = true;
+            begin_args_graph += 1;
+        }
 
-    if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-t"))) { // activate verbose
-        mode_paths_found = true;
-        begin_args_graph += 1;
-    }
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-t"))) { // activate verbose
+            mode_paths_found = true;
+            begin_args_graph += 1;
+        }
 
+
+    }
     
     
     /**

@@ -1,29 +1,25 @@
 digraph G{
-s1->q2->t1 [color=blue];
-s2->q->t2 [color=blue];
 	subgraph 0{
-		s1 [initial=1,color=green];
-		s1->q1;
-		s1->q2;
-		t1 [final=1,color=red];
-		q1;
-		q1->t1;
-		q1->q3;
-		q2;
-		q2->t1;
-		q2->q1;
-		q2->q3;
-		q3;
-		q3->t1;
+		G0_s2 [initial=1,color=green];
+		G0_t2 [final=1,color=red];
+		G0_t2->G0_s2;
+		G0_q;
+		G0_s2->G0_q->G0_t2 [color=blue];
 		label = "Graphe 0";
 	}
 	subgraph 1{
-		s2 [initial=1,color=green];
-		s2->q;
-		t2 [final=1,color=red];
-		t2->s2;
-		q;
-		q->t2;
+		G1_s1 [initial=1,color=green];
+		G1_s1->G1_q1;
+		G1_t1 [final=1,color=red];
+		G1_q1;
+		G1_q1->G1_t1;
+		G1_q1->G1_q3;
+		G1_q2;
+		G1_q2->G1_q1;
+		G1_q2->G1_q3;
+		G1_q3;
+		G1_q3->G1_t1;
+		G1_s1->G1_q2->G1_t1 [color=blue];
 		label = "Graphe 1";
 	}
 }
