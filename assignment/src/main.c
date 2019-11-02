@@ -1,6 +1,9 @@
 #include <stdlib.h>
-
 #include <string.h>
+//MKDIR
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include "Z3Tools.h"
 #include <Graph.h>
 #include <Parsing.h>
@@ -17,6 +20,7 @@ bool mode_verbose = false;
 bool mode_extended_verbose = false;
 bool mode_display_formula = false;
 bool mode_paths_found = false;
+bool mode_save_dot_file = false;
 
 int main ( int argc, char* argv[] ) {
     int begin_args_graph = 1;
@@ -51,6 +55,11 @@ int main ( int argc, char* argv[] ) {
 
         if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-t"))) { // activate verbose
             mode_paths_found = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-f"))) { // activate verbose
+            mode_save_dot_file = true;
             begin_args_graph += 1;
         }
 
@@ -103,7 +112,10 @@ int main ( int argc, char* argv[] ) {
         if(mode_paths_found)
             printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
 
-        createDotFromModel(ctx, model, graphList, nbGraph, pathLength, "totoIsBG.dot");
+        if(mode_save_dot_file){
+            mkdir("output", 0755);
+            createDotFromModel(ctx, model, graphList, nbGraph, pathLength, NULL);
+        }
     }
     
 
