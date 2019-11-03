@@ -1,6 +1,9 @@
 #include <stdlib.h>
-
 #include <string.h>
+//MKDIR
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include "Z3Tools.h"
 #include <Graph.h>
 #include <Parsing.h>
@@ -9,10 +12,14 @@
 Graph loadGraph(char *argv);
 void printHelp(void);
 
+
+
+#define MAX_NUM_ARGS 7
 bool mode_verbose = false;
 bool mode_extended_verbose = false;
 bool mode_display_formula = false;
 bool mode_paths_found = false;
+bool mode_save_dot_file = false;
 
 int main(int argc, char *argv[])
 {
@@ -28,30 +35,36 @@ int main(int argc, char *argv[])
         return EXIT_SUCCESS;
     }
 
-    if (argc > 1 && !strcmp(argv[1], "-V"))
-    { // activate verbose
-        mode_extended_verbose = true;
-        mode_verbose = true;
-        mode_display_formula = true;
-        mode_paths_found = true;
-        begin_args_graph += 1;
-    }
-    else if (argc > 1 && !strcmp(argv[1], "-v"))
-    { // activate verbose
-        mode_verbose = true;
-        begin_args_graph += 1;
-    }
+    for(int i = 0; i < MAX_NUM_ARGS; i++) {
+        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-v")) { // activate verbose
+            mode_verbose = true;
+            begin_args_graph += 1;
+        }
 
-    if ((argc > 2 && !strcmp(argv[2], "-F")) || (argc > 1 && !strcmp(argv[1], "-F")))
-    { // activate verbose
-        mode_display_formula = true;
-        begin_args_graph += 1;
-    }
+        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-V")) { // activate verbose
+            mode_extended_verbose = true;
+            mode_verbose = true;
+            mode_display_formula = true;
+            mode_paths_found = true;
+            begin_args_graph += 1;
+        }
 
-    if ((argc > 2 && !strcmp(argv[1], "-t")) || (argc > 2 && !strcmp(argv[2], "-t")))
-    { // activate verbose
-        mode_paths_found = true;
-        begin_args_graph += 1;
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-F"))) { // activate verbose
+            mode_display_formula = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-t"))) { // activate verbose
+            mode_paths_found = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-f"))) { // activate verbose
+            mode_save_dot_file = true;
+            begin_args_graph += 1;
+        }
+
+
     }
 
 
@@ -89,6 +102,11 @@ int main(int argc, char *argv[])
 
         if (mode_paths_found)
             printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
+
+        if(mode_save_dot_file){
+            mkdir("output", 0755);
+            createDotFromModel(ctx, model, graphList, nbGraph, pathLength, NULL);
+        }
     }
 
     // graphsToFullFormula test
@@ -203,6 +221,7 @@ void printHelp()
         "   -t Displays the paths found on the terminal [if not present, only displays the existence of the path].\n"
         "\n"
         "* FILE:\n"
-        "   TODO: -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
-        "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n");
+        "   -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
+        "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
+    );
 }
