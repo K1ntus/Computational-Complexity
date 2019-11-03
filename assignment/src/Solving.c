@@ -22,10 +22,8 @@ Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pat
 
 void sortAndDisplayPath(Graph g, int nodes[], int pathLength);
 
-
-int* sortDotPath(Graph g, int nodes[], int pathLength);
-int* getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number);
-
+int *sortDotPath(Graph g, int nodes[], int pathLength);
+int *getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number);
 
 void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes);
 Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node)
@@ -46,17 +44,19 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     Z3_ast phi1_2 = atLeastOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
     Z3_ast phi1_3 = atMostOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
 
-
     Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
 
     testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
     Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
     Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
-    if (mode_extended_verbose){
+    if (mode_extended_verbose)
+    {
         printf("- Check Final Formula\n");
         if (sat_checker_print(ctx, res_formula) == 1)
             return res_formula;
-    }else{
+    }
+    else
+    {
         if (sat_checker(ctx, res_formula) == 1)
             return res_formula;
     }
@@ -69,7 +69,7 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     Z3_ast res_final_formula; //The final formula which concatene every graphs formula
     //Pick the number of first graph's vertex -1 as the max pathLength.
     int max_pathLength = orderG(graphs[0]) - 1;
-    for (int k = max_pathLength; k >= 1; k--)
+    for (int k = max_pathLength; k >= 0; k--)
     {
         res_final_formula = graphsToPathFormula(ctx, graphs, numGraphs, k);
         if (res_final_formula != NULL)
@@ -96,89 +96,89 @@ int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
     Graph firstGraph = graphs[0];
     int sizeGraph = orderG(firstGraph);
     int maxPathLength = sizeGraph - 1;
-    
 
     // try all pathLength
-    for (int pathLength = maxPathLength; pathLength >= 1; pathLength--)
+    for (int pathLength = maxPathLength; pathLength >= 0; pathLength--)
     {
-        // loop through nodes
-        for (unsigned int node_number = 0; node_number < sizeGraph; node_number++)
-        {
-            // loop through pathLength
-            for(int j = 0; j<= pathLength;j++){
-                Z3_ast tmpVar = graphsToPathFormula(ctx, graphs, 1, pathLength);
-                bool satisfiedCheck = valueOfVarInModel(ctx, model, tmpVar);
-                if (satisfiedCheck)
-                {
-                    return pathLength;
-                }
-            }
 
+        // loop through pathLength
+        for (int j = 0; j <= pathLength; j++)
+        {
+            Z3_ast tmpVar = graphsToPathFormula(ctx, graphs, 1, pathLength);
+            bool satisfiedCheck = valueOfVarInModel(ctx, model, tmpVar);
+            if (satisfiedCheck)
+            {
+                return pathLength;
+            }
         }
     }
 
     return resPathLength;
 }
 
-size_t FindIndex( int * a, size_t size, int value )
+size_t FindIndex(int *a, size_t size, int value)
 {
     size_t index = 0;
 
-    while ( index < size && a[index] != value ) ++index;
+    while (index < size && a[index] != value)
+        ++index;
 
-    return ( index == size ? -1 : index );
+    return (index == size ? -1 : index);
 }
 
-void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char* name) {
-    FILE * save_file;
-    if(name == 0x0)
+void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char *name)
+{
+    FILE *save_file;
+    if (name == 0x0)
         save_file = fopen("output/NAME-lLENGTH.dot", "w");
     else
         save_file = fopen(name, "w");
-    
+
     int file_descriptor = fileno(save_file);
     int fd_stdout = dup(1);
-    dup2(file_descriptor, 1); 
-
+    dup2(file_descriptor, 1);
 
     printf("digraph G{\n");
-    for(int graph_number = 0; graph_number < numGraph; graph_number++){
+    for (int graph_number = 0; graph_number < numGraph; graph_number++)
+    {
         printf("\tsubgraph %d{\n", graph_number);
-        int * nodes = getDotPathsFromModel(ctx, model, graphs, numGraph, pathLength, graph_number);
+        int *nodes = getDotPathsFromModel(ctx, model, graphs, numGraph, pathLength, graph_number);
         {
-            for(int node_id=0;node_id<orderG(graphs[graph_number]);node_id++){
-                    if(isTarget(graphs[graph_number],node_id))
-                        printf("\t\tG%d_%s [final=1,color=red];\n", graph_number, getNodeName(graphs[graph_number],node_id));
-                    else if (isSource(graphs[graph_number], node_id))
-                        printf("\t\tG%d_%s [initial=1,color=green];\n", graph_number, getNodeName(graphs[graph_number],node_id));
-                    else
-                        printf("\t\tG%d_%s;\n", graph_number, getNodeName(graphs[graph_number],node_id));
+            for (int node_id = 0; node_id < orderG(graphs[graph_number]); node_id++)
+            {
+                if (isTarget(graphs[graph_number], node_id))
+                    printf("\t\tG%d_%s [final=1,color=red];\n", graph_number, getNodeName(graphs[graph_number], node_id));
+                else if (isSource(graphs[graph_number], node_id))
+                    printf("\t\tG%d_%s [initial=1,color=green];\n", graph_number, getNodeName(graphs[graph_number], node_id));
+                else
+                    printf("\t\tG%d_%s;\n", graph_number, getNodeName(graphs[graph_number], node_id));
 
                 size_t indexValue = FindIndex(nodes, pathLength, node_id);
-                for(int node2 = 0; node2 < orderG(graphs[graph_number]); node2++){
-                    if(isEdge(graphs[graph_number], node_id, node2)) {
-                        if((indexValue == -1) || getNodeName(graphs[graph_number], nodes[indexValue+1]) != getNodeName(graphs[graph_number], node2))
-                            printf("\t\tG%d_%s->G%d_%s;\n", graph_number, getNodeName(graphs[graph_number],node_id), graph_number, getNodeName(graphs[graph_number],node2));
+                for (int node2 = 0; node2 < orderG(graphs[graph_number]); node2++)
+                {
+                    if (isEdge(graphs[graph_number], node_id, node2))
+                    {
+                        if ((indexValue == -1) || getNodeName(graphs[graph_number], nodes[indexValue + 1]) != getNodeName(graphs[graph_number], node2))
+                            printf("\t\tG%d_%s->G%d_%s;\n", graph_number, getNodeName(graphs[graph_number], node_id), graph_number, getNodeName(graphs[graph_number], node2));
                     }
                 }
             }
 
             printf("\t\t");
-            for(int j = 0; j < pathLength; j++){
-                    printf("G%d_%s->", graph_number, getNodeName(graphs[graph_number], nodes[j]));
+            for (int j = 0; j < pathLength; j++)
+            {
+                printf("G%d_%s->", graph_number, getNodeName(graphs[graph_number], nodes[j]));
             }
             printf("G%d_%s [color=blue];\n", graph_number, getNodeName(graphs[graph_number], nodes[pathLength]));
 
             int edge;
-            for(edge = 0; edge < sizeG(graphs[graph_number]); edge++){
-
+            for (edge = 0; edge < sizeG(graphs[graph_number]); edge++)
+            {
             }
             printf("\t\tlabel = \"Graphe %d\";\n", graph_number);
-
         }
         free(nodes);
         printf("\t}\n");
-        
     }
     printf("}\n");
 
@@ -189,43 +189,45 @@ void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGr
     fclose(save_file);
 }
 
-int* getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number)
+int *getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number)
 {
 
-        int nb_vertex_positions = pathLength + 1;
-        int * nodes = (int*) malloc(sizeof(int) * nb_vertex_positions);
-        int nodes_counter = 0;
-        //loop through nodes
-        int size_graph = orderG(graphs[graph_number]);
-        for (unsigned int node_number = 0; node_number < size_graph; node_number++)
-        {
+    int nb_vertex_positions = pathLength + 1;
+    int *nodes = (int *)malloc(sizeof(int) * nb_vertex_positions);
+    int nodes_counter = 0;
+    //loop through nodes
+    int size_graph = orderG(graphs[graph_number]);
+    for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+    {
 
-            //loop through pathLength
-            for (int j = 0; j <= pathLength; j++)
+        //loop through pathLength
+        for (int j = 0; j <= pathLength; j++)
+        {
+            Z3_ast tmp_var = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+            bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
+            if (satisfied_var)
             {
-                Z3_ast tmp_var = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
-                bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
-                if (satisfied_var)
+                if (isSource(graphs[graph_number], node_number))
                 {
-                    if (isSource(graphs[graph_number], node_number))
-                    {
-                        //reserve first index for source
-                        nodes[0] = node_number;
-                    }else if(isTarget(graphs[graph_number],node_number)){
-                        //reserve last index for target
-                        nodes[nb_vertex_positions-1] = node_number;
-                    }
-                    else
-                    {
-                        //rest index for other satisfied variable
-                        nodes_counter++;
-                        nodes[nodes_counter] = node_number;
-                    }
-                    break;
+                    //reserve first index for source
+                    nodes[0] = node_number;
                 }
+                else if (isTarget(graphs[graph_number], node_number))
+                {
+                    //reserve last index for target
+                    nodes[nb_vertex_positions - 1] = node_number;
+                }
+                else
+                {
+                    //rest index for other satisfied variable
+                    nodes_counter++;
+                    nodes[nodes_counter] = node_number;
+                }
+                break;
             }
         }
-        
+    }
+
     return nodes;
 }
 
@@ -322,10 +324,9 @@ void sortAndDisplayPath(Graph g, int nodes[], int nb_vertex_positions)
     }
 }
 
-
-int* sortDotPath(Graph g, int nodes[], int nb_vertex_positions)
+int *sortDotPath(Graph g, int nodes[], int nb_vertex_positions)
 {
-    int * path = (int *) malloc(sizeof(int) * nb_vertex_positions);
+    int *path = (int *)malloc(sizeof(int) * nb_vertex_positions);
     // printf("nb_vertex %d\n",nb_vertex_positions);
     //first index contains a path's source
     path[0] = nodes[0];
@@ -336,8 +337,8 @@ int* sortDotPath(Graph g, int nodes[], int nb_vertex_positions)
         {
             if (isEdge(g, path[path_index], nodes[node_index]))
             {
-                    path[path_index + 1] = nodes[node_index];
-                    break;
+                path[path_index + 1] = nodes[node_index];
+                break;
             }
         }
     }
@@ -355,7 +356,6 @@ int* sortDotPath(Graph g, int nodes[], int nb_vertex_positions)
     //     }
     // }
 }
-
 
 Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
 {
