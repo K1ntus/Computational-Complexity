@@ -638,7 +638,10 @@ int sat_checker_print(Z3_context ctx, Z3_ast formula)
 int binomialCoeff(int n, int k)
 {
     // Base Cases
-    if (k == 0 || k == n)
+    if(k > n)
+        return 0;
+
+    if (k == 0 || k == n || n == 1)
         return 1;
 
     // Recur
