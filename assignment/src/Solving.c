@@ -51,35 +51,30 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
     Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
     Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
-    if (mode_extended_verbose)
-    {
-        printf("- Check Final Formula\n");
-        if (sat_checker_print(ctx, res_formula) == 1)
-            return res_formula;
-    }
-    else
-    {
-        if (sat_checker(ctx, res_formula) == 1)
-            return res_formula;
-    }
-    return NULL;
+    return res_formula;
 }
 
 Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs)
 {
     assert(graphs);
-    Z3_ast res_final_formula; //The final formula which concatene every graphs formula
+    Z3_ast res_final_formula; //The final formula which concatene every graphs formula that is satisfiable
     //Pick the number of first graph's vertex -1 as the max pathLength.
     int max_pathLength = orderG(graphs[0]) - 1;
+    //Array used to store a satisfaible SAT formule for each pathLength in max_pathLength range
+    Z3_ast graphFormula[max_pathLength];
+    int graphFormula_counter=0; 
     for (int k = max_pathLength; k >= 0; k--)
     {
-        res_final_formula = graphsToPathFormula(ctx, graphs, numGraphs, k);
-        if (res_final_formula != NULL)
+        Z3_ast tmp_formula = graphsToPathFormula(ctx, graphs, numGraphs, k);
+        //Improvement: the final formule contains only satisfiable sub-formule.
+        if (sat_checker_print(ctx, res_final_formula) == 1)
         {
-            return res_final_formula;
+            graphFormula[graphFormula_counter] = tmp_formula;
+            graphFormula_counter++;
         }
     }
-    return NULL;
+    res_final_formula = Z3_mk_or(ctx, graphFormula_counter, graphFormula);
+    return res_final_formula;
 }
 
 /*
@@ -94,7 +89,6 @@ int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
 {
     assert(model);
     assert(graphs);
-    int resPathLength = 0;
     Graph firstGraph = graphs[0];
     int sizeGraph = orderG(firstGraph);
     int maxPathLength = sizeGraph - 1;
@@ -115,7 +109,7 @@ int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
         }
     }
 
-    return resPathLength;
+    return -1;
 }
 
 size_t FindIndex(int *a, size_t size, int value)
@@ -254,8 +248,6 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
                 bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
                 if (satisfied_var)
                 {
-                    // indexNodeArr[indexNode_counter]->index = j;
-                    // indexNodeArr[indexNode_counter]->node = node_number;
                     indexNode_counter++;
                     path[j]=node_number;
                 }
@@ -331,6 +323,13 @@ Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGr
     Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
     Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
     int nb_vertex_positions = pathLength + 1;
+
+    Z3_ast termA;
+    Z3_ast negTermA;
+    Z3_ast termB;
+    Z3_ast negTermB;
+    int nb_subset = binomialCoeff(nb_vertex_positions, 2);
+    Z3_ast subset_formula[nb_subset];
     //Loop through each graph
     int graph_count = 0;
     for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
@@ -338,8 +337,6 @@ Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGr
         //Loop every node in the graph
         int size_graph = orderG(graphs[graph_number]);
         Z3_ast all_vertex_formula[size_graph];
-        int nb_subset = binomialCoeff(nb_vertex_positions, 2);
-        Z3_ast subset_formula[nb_subset];
 
         for (unsigned int node_number = 0; node_number < size_graph; node_number++)
         {
@@ -348,12 +345,12 @@ Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGr
             //creat terms for subset of 2 elements from nb_vertex_positions
             for (int i = 0; i <= pathLength; i++)
             {
-                Z3_ast termA = getNodeVariable(ctx, graph_number, i, pathLength, node_number);
-                Z3_ast negTermA = Z3_mk_not(ctx, termA);
+                termA = getNodeVariable(ctx, graph_number, i, pathLength, node_number);
+                negTermA = Z3_mk_not(ctx, termA);
                 for (int j = i + 1; j <= pathLength; j++)
                 {
-                    Z3_ast termB = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
-                    Z3_ast negTermB = Z3_mk_not(ctx, termB);
+                    termB = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+                    negTermB = Z3_mk_not(ctx, termB);
                     Z3_ast node[2] = {negTermA, negTermB};
                     subset_formula[subset_count] = Z3_mk_or(ctx, 2, node);
                     subset_count++;
@@ -637,6 +634,8 @@ int sat_checker_print(Z3_context ctx, Z3_ast formula)
 
 int binomialCoeff(int n, int k)
 {
+    if(k>n)
+        return 0;
     // Base Cases
     if (k == 0 || k == n)
         return 1;
