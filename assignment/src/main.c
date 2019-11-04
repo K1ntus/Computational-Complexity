@@ -20,7 +20,7 @@ bool mode_extended_verbose = false;
 bool mode_display_formula = false;
 bool mode_paths_found = false;
 
-bool mode_test_all_depth = false;
+bool mode_first_depth_sat = false;
 bool mode_explore_decreasing_order = false;
 bool mode_every_solutions = false;
 
@@ -53,17 +53,17 @@ int main(int argc, char *argv[])
     // printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************");
 
     // printf("\n\n*******************\n* [INFO] graphsToPathFormula Test ...\n*******************\n\n");
-    int pathLength = GetMaxK(graphList, nbGraph); //Make variable
+    // int pathLength = GetMaxK(graphList, nbGraph); //Make variable
     // Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
     Z3_ast fullFormula = graphsToFullFormula(ctx, graphList, nbGraph);
-    Z3_model model = getModelFromSatFormula(ctx, fullFormula);
-    pathLength = getSolutionLengthFromModel(ctx, model, graphList);
 
-    if (fullFormula != NULL)
+    if (fullFormula)
     {
+        Z3_model model = getModelFromSatFormula(ctx, fullFormula);
+        int pathLength = getSolutionLengthFromModel(ctx, model, graphList);
         if (mode_display_formula)
         {
-            printf("graphsToPathFormula-----> %s\n", Z3_ast_to_string(ctx, fullFormula));
+            printf("Full Formula : %s\n", Z3_ast_to_string(ctx, fullFormula));
         }
         // printf("\n\n*******************\n* [INFO] Sat Generated.\n*******************\n\n");
 
@@ -78,32 +78,21 @@ int main(int argc, char *argv[])
         }
     }
 
-    // graphsToFullFormula test
-    // printf("\n\n*******************\n* [INFO] graphsToFullFormula Test ...\n*******************\n\n");
-    // Z3_ast fullFormula = graphsToFullFormula(ctx, graphList, nbGraph);
-    if (fullFormula)
-    {
-        if (mode_paths_found)
-        {
-            Z3_model fullFormula_model = getModelFromSatFormula(ctx, fullFormula);
-            printPathsFromModel(ctx, fullFormula_model, graphList, nbGraph, pathLength);
-        }
-    }
 
     //getSolutionLengthFromModel test
     // printf("\n\n*******************\n* [INFO] getSolutionLengthFromModel Test ...\n*******************\n\n");
-    if (fullFormula != NULL){
-        Z3_model solutionLength_model = getModelFromSatFormula(ctx, fullFormula);
-        int solution_length = getSolutionLengthFromModel(ctx, solutionLength_model, graphList);
-        printf("Solutin length %d\n", solution_length);
-    }else{
-        printf("Can't find a solution length : failed to create model\n");
-    }
+    // if (fullFormula != NULL){
+    //     Z3_model solutionLength_model = getModelFromSatFormula(ctx, fullFormula);
+    //     int solution_length = getSolutionLengthFromModel(ctx, solutionLength_model, graphList);
+    //     printf("Solutin length %d\n", solution_length);
+    // }else{
+    //     printf("Can't find a solution length : failed to create model\n");
+    // }
         
 
 
     Z3_del_context(ctx);
-    printf("\n\nContext deleted, memory is now clean.\n");
+    printf("\nContext deleted, memory is now clean.\n");
 
     for (int i = 0; i < nbGraph; i++)
     {
@@ -178,9 +167,9 @@ void printHelp()
         "   -V  Activate the Extended Verbose Mode (More for debugging)\n"
         "   -F  Displays the formula computed\n"
         "   -t  Displays the paths found on the terminal [if not present, only displays the existence of the path].\n"
-        "   TODO: -s  Test every formula by depth.\n"
-        "   TODO: -d  [If -s present] Explore the length by decreasing order.\n"
-        "   TODO: -a  [If -s present] Compute every length instead of the first found.\n"
+        "   -s  Test every formula by depth.\n"
+        "   -d  [If -s present] Explore the length by decreasing order.\n"
+        "   -a  [If -s present] Compute every length instead of the first found.\n"
         "\n"
         "* FILE:\n"
         "   -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
@@ -237,7 +226,7 @@ int defineUserMode(int argc, char * argv[]){
         }
 
         if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-s"))) { // activate verbose
-            mode_test_all_depth = true;
+            mode_first_depth_sat = true;
             begin_args_graph += 1;
         }
 
