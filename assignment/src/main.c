@@ -14,59 +14,25 @@ void printHelp(void);
 
 
 
-#define MAX_NUM_ARGS 7
+#define MAX_NUM_ARGS 8
 bool mode_verbose = false;
 bool mode_extended_verbose = false;
 bool mode_display_formula = false;
 bool mode_paths_found = false;
+
+bool mode_test_all_depth = false;
+bool mode_explore_decreasing_order = false;
+bool mode_every_solutions = false;
+
 bool mode_save_dot_file = false;
+// bool mode_save_dot_file = false;
+
+int defineUserMode(int argc, char* argv[]);
+int GetMaxK(Graph * graphs, int nb_graphs);
 
 int main(int argc, char *argv[])
 {
-    int begin_args_graph = 1;
-    if (argc < 2)
-    {
-        return EXIT_FAILURE;
-    }
-
-    if (argc > 1 && !strcmp(argv[1], "-h"))
-    { // print help
-        printHelp();
-        return EXIT_SUCCESS;
-    }
-
-    for(int i = 0; i < MAX_NUM_ARGS; i++) {
-        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-v")) { // activate verbose
-            mode_verbose = true;
-            begin_args_graph += 1;
-        }
-
-        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-V")) { // activate verbose
-            mode_extended_verbose = true;
-            mode_verbose = true;
-            mode_display_formula = true;
-            mode_paths_found = true;
-            begin_args_graph += 1;
-        }
-
-        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-F"))) { // activate verbose
-            mode_display_formula = true;
-            begin_args_graph += 1;
-        }
-
-        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-t"))) { // activate verbose
-            mode_paths_found = true;
-            begin_args_graph += 1;
-        }
-
-        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-f"))) { // activate verbose
-            mode_save_dot_file = true;
-            begin_args_graph += 1;
-        }
-
-
-    }
-
+    int begin_args_graph = defineUserMode(argc, argv);
 
     Graph *graphList = (Graph *)malloc(sizeof(Graph) * (argc - 1));
     printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
@@ -87,7 +53,7 @@ int main(int argc, char *argv[])
     printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************");
 
     printf("\n\n*******************\n* [INFO] graphsToPathFormula Test ...\n*******************\n\n");
-    int pathLength = 3; //Make variable
+    int pathLength = GetMaxK(graphList, nbGraph); //Make variable
     Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
 
     if (res != NULL)
@@ -214,14 +180,102 @@ void printHelp()
         "./equalPath -v -F -t graphs/assignment-instance/triangle.dot graphs/assignment-instance/G1.dot \n"
         "Options:\n"
         "* DEBUG:\n"
-        "   -h Displays this help\n"
-        "   -v Activate the Verbose Mode (displays parsed graphes)\n"
-        "   -V Activate the Extended Verbose Mode (More for debugging)\n"
-        "   -F Displays the formula computed\n"
-        "   -t Displays the paths found on the terminal [if not present, only displays the existence of the path].\n"
+        "   -h  Displays this help\n"
+        "   -v  Activate the Verbose Mode (displays parsed graphes)\n"
+        "   -V  Activate the Extended Verbose Mode (More for debugging)\n"
+        "   -F  Displays the formula computed\n"
+        "   -t  Displays the paths found on the terminal [if not present, only displays the existence of the path].\n"
+        "   TODO: -s  Test every formula by depth.\n"
+        "   TODO: -d  [If -s present] Explore the length by decreasing order.\n"
+        "   TODO: -a  [If -s present] Compute every length instead of the first found.\n"
         "\n"
         "* FILE:\n"
         "   -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
         "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
     );
+}
+
+int defineUserMode(int argc, char * argv[]){
+
+    int begin_args_graph = 1;
+    if (argc < 2)
+    {
+        return EXIT_FAILURE;
+    }
+
+    if (argc > 1 && !strcmp(argv[1], "-h"))
+    { // print help
+        printHelp();
+        exit(EXIT_SUCCESS);
+    }
+
+    for(int i = 0; i < MAX_NUM_ARGS; i++) {
+        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-v")) { // activate verbose
+            mode_verbose = true;
+            begin_args_graph += 1;
+        }
+
+        if (argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-V")) { // activate verbose
+            mode_extended_verbose = true;
+            mode_verbose = true;
+            mode_display_formula = true;
+            mode_paths_found = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-F"))) { // activate verbose
+            mode_display_formula = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-t"))) { // activate verbose
+            mode_paths_found = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-f"))) { // activate verbose
+            mode_save_dot_file = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-a"))) { // activate verbose
+            mode_every_solutions = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-s"))) { // activate verbose
+            mode_test_all_depth = true;
+            begin_args_graph += 1;
+        }
+
+        if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-d"))) { // activate verbose
+            mode_explore_decreasing_order = true;
+            begin_args_graph += 1;
+        }
+
+
+    }
+
+    return begin_args_graph;
+}
+
+
+
+int GetMaxK(Graph * graphs, int nb_graphs) {
+    if(nb_graphs < 0)
+        return 0;
+    int min_value = orderG(graphs[0]);
+    if(nb_graphs < 1)
+        return min_value;
+
+
+    for(int i = 1; i < nb_graphs; i++){
+        if(min_value > orderG(graphs[i])){
+            min_value = orderG(graphs[i]);
+        }
+    }
+
+    printf("Max K Found = %d\n", min_value);
+
+    return min_value;
 }
