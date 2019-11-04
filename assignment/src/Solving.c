@@ -9,18 +9,20 @@
 extern bool mode_verbose;
 extern bool mode_extended_verbose;
 
+
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula);
 int sat_checker_print(Z3_context ctx, Z3_ast formula);
 
 int binomialCoeff(int n, int k);
+
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 Z3_ast atLeastOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 Z3_ast atMostOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 
-void sortAndDisplayPath(Graph g, int nodes[], int pathLength);
+void displayPath(Graph g,int graphNum,int * path, int pathLength);
 
 int *sortDotPath(Graph g, int nodes[], int pathLength);
 int *getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number);
@@ -236,15 +238,15 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
     //loop through graphs
     for (unsigned int graph_number = 0; graph_number < numGraph; graph_number++)
     {
-
         int nb_vertex_positions = pathLength + 1;
-        int nodes[nb_vertex_positions];
-        int nodes_counter = 0;
+        // strIndexNode **indexNodeArr = createIndexNodeArray(nb_vertex_positions);
+        int * path = (int *)malloc(sizeof(int)*nb_vertex_positions);
+        
+        int indexNode_counter = 0;
         //loop through nodes
         int size_graph = orderG(graphs[graph_number]);
         for (unsigned int node_number = 0; node_number < size_graph; node_number++)
         {
-
             //loop through pathLength
             for (int j = 0; j <= pathLength; j++)
             {
@@ -252,74 +254,41 @@ void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numG
                 bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
                 if (satisfied_var)
                 {
-                    if (isSource(graphs[graph_number], node_number))
-                    {
-                        //reserve first index for source
-                        nodes[0] = node_number;
-                    }
-                    else if (isTarget(graphs[graph_number], node_number))
-                    {
-                        //reserve last index for target
-                        nodes[nb_vertex_positions - 1] = node_number;
-                    }
-                    else
-                    {
-                        //rest index for other satisfied variable
-                        nodes_counter++;
-                        nodes[nodes_counter] = node_number;
-                    }
-                    break;
+                    // indexNodeArr[indexNode_counter]->index = j;
+                    // indexNodeArr[indexNode_counter]->node = node_number;
+                    indexNode_counter++;
+                    path[j]=node_number;
                 }
             }
         }
         // check for pathLength
-        if (nodes_counter != pathLength - 1)
-        {
+        if (indexNode_counter != nb_vertex_positions)
             printf("printPathsFromModel-->Failed on Graph N°%d\n", graph_number);
-        }
         else
-        {
-            //create path;
-            sortAndDisplayPath(graphs[graph_number], nodes, nb_vertex_positions);
-        }
-    }
+            displayPath(graphs[graph_number], graph_number, path, nb_vertex_positions);
+        }   
     return;
 }
 /*
- * @brief sort array nodes @p nodes and display the correct path
+ * @brief display the correct path
  * 
  * @param g A graph.
- * @param nodes An array of nodes, first index must be source and last index must be target.
+ * @param graphNum the number of an graph
+ * @param path An array of nodes, first index must be source and last index must be target.
  * @param nb_vertex_positions The size of the array.
 */
-void sortAndDisplayPath(Graph g, int nodes[], int nb_vertex_positions)
+void displayPath(Graph g, int graphNum, int * path, int nb_vertex_positions)
 {
-    int path[nb_vertex_positions];
-    // printf("nb_vertex %d\n",nb_vertex_positions);
-    //first index contains a path's source
-    path[0] = nodes[0];
-    int path_index = 0;
-    for (int path_index = 0; path_index < nb_vertex_positions; path_index++)
-    {
-        for (int node_index = 1; node_index < nb_vertex_positions; node_index++)
-        {
-            if (isEdge(g, path[path_index], nodes[node_index]))
-            {
-                path[path_index + 1] = nodes[node_index];
-                break;
-            }
-        }
-    }
-
+    printf("Path in graph %d\n",graphNum);
     for (int i = 0; i < nb_vertex_positions; i++)
     {
         if (i != nb_vertex_positions - 1)
         {
-            printf("%s->", getNodeName(g, path[i]));
+            printf("%d: pos %d: %s-> ",graphNum, i, getNodeName(g, path[i]));
         }
         else
         {
-            printf("%s\n", getNodeName(g, path[i]));
+            printf("%d: pos %d: %s\n",graphNum, i, getNodeName(g, path[i]));
         }
     }
 }
