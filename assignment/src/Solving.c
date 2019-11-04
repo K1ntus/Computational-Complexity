@@ -637,7 +637,10 @@ int binomialCoeff(int n, int k)
     if(k>n)
         return 0;
     // Base Cases
-    if (k == 0 || k == n)
+    if(k > n)
+        return 0;
+
+    if (k == 0 || k == n || n == 1)
         return 1;
 
     // Recur
