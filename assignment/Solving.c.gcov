@@ -1,0 +1,652 @@
+        -:    0:Source:src/Solving.c
+        -:    0:Graph:build/Solving.gcno
+        -:    0:Data:build/Solving.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "Solving.h"
+        -:    2:#include <stdlib.h>
+        -:    3:#include "Z3Tools.h"
+        -:    4:#include <unistd.h> //pipe
+        -:    5:#include <stdio.h>  //File
+        -:    6:#include <string.h> // <cstring> en C++
+        -:    7:#include <assert.h>
+        -:    8:
+        -:    9:extern bool mode_verbose;
+        -:   10:extern bool mode_extended_verbose;
+        -:   11:
+        -:   12:extern int GetMaxK(Graph * graphs, int nb_graphs);
+        -:   13:
+        -:   14:Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+        -:   15:int sat_checker(Z3_context ctx, Z3_ast formula);
+        -:   16:int sat_checker_print(Z3_context ctx, Z3_ast formula);
+        -:   17:
+        -:   18:int binomialCoeff(int n, int k);
+        -:   19:
+        -:   20:Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+        -:   21:Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+        -:   22:Z3_ast atLeastOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+        -:   23:Z3_ast atMostOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+        -:   24:Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
+        -:   25:
+        -:   26:void displayPath(Graph g,int graphNum,int * path, int pathLength);
+        -:   27:
+        -:   28:int *sortDotPath(Graph g, int nodes[], int pathLength);
+        -:   29:int *getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number);
+        -:   30:
+        -:   31:void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes);
+      208:   32:Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node)
+        -:   33:{
+        -:   34:    char buffer[64];
+      208:   35:    sprintf(buffer, "x %d,%d,%d,%d", number, position, k, node);
+      208:   36:    Z3_ast res = mk_bool_var(ctx, buffer);
+        -:   37:
+      208:   38:    if (mode_extended_verbose)
+    #####:   39:        printf("----- Variable %s created.\n", Z3_ast_to_string(ctx, res));
+      208:   40:    return res;
+        -:   41:}
+        -:   42:
+        1:   43:Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+        -:   44:{
+        1:   45:    Z3_ast valide_formula = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
+        1:   46:    Z3_ast phi1_1 = uniqueVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
+        1:   47:    Z3_ast phi1_2 = atLeastOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
+        1:   48:    Z3_ast phi1_3 = atMostOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
+        -:   49:
+        1:   50:    Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
+        -:   51:
+        1:   52:    testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
+        1:   53:    Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
+        1:   54:    Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
+        1:   55:    if (mode_extended_verbose)
+        -:   56:    {
+    #####:   57:        printf("- Check Final Formula\n");
+    #####:   58:        if (sat_checker_print(ctx, res_formula) == 1)
+    #####:   59:            return res_formula;
+        -:   60:    }
+        -:   61:    else
+        -:   62:    {
+        1:   63:        if (sat_checker(ctx, res_formula) == 1)
+    #####:   64:            return res_formula;
+        -:   65:    }
+        1:   66:    return NULL;
+        -:   67:}
+        -:   68:
+        1:   69:Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs)
+        -:   70:{
+        1:   71:    assert(graphs);
+        -:   72:    Z3_ast res_final_formula; //The final formula which concatene every graphs formula
+        -:   73:    //Pick the number of first graph's vertex -1 as the max pathLength.
+        1:   74:    int max_pathLength = orderG(graphs[0]) - 1;
+        1:   75:    for (int k = 0; k >= max_pathLength; k++)
+        -:   76:    {
+    #####:   77:        res_final_formula = graphsToPathFormula(ctx, graphs, numGraphs, k);
+    #####:   78:        if (res_final_formula != NULL)
+        -:   79:        {
+    #####:   80:            return res_final_formula;
+        -:   81:        }
+        -:   82:    }
+        1:   83:    return NULL;
+        -:   84:}
+        -:   85:
+        -:   86:/*
+        -:   87:* @brief if all graphs of @p graphs contain an accepting path of common length, then the first graph also.
+        -:   88:*       Test only with the first graph.
+        -:   89:* @param ctx The solver context.
+        -:   90:* @param model A variable assignment.
+        -:   91:* @param graphs An array of graphs.
+        -:   92:* @return int The length of a common simple accepting path in all graphs from @p graphs.
+        -:   93:*/
+    #####:   94:int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
+        -:   95:{
+    #####:   96:    assert(model);
+    #####:   97:    assert(graphs);
+    #####:   98:    int resPathLength = 0;
+    #####:   99:    Graph firstGraph = graphs[0];
+    #####:  100:    int sizeGraph = orderG(firstGraph);
+    #####:  101:    int maxPathLength = sizeGraph - 1;
+        -:  102:
+        -:  103:    // try all pathLength
+    #####:  104:    for (int pathLength = maxPathLength; pathLength >= 0; pathLength--)
+        -:  105:    {
+        -:  106:
+        -:  107:        // loop through pathLength
+    #####:  108:        for (int j = 0; j <= pathLength; j++)
+        -:  109:        {
+    #####:  110:            Z3_ast tmpVar = graphsToPathFormula(ctx, graphs, 1, pathLength);
+    #####:  111:            bool satisfiedCheck = valueOfVarInModel(ctx, model, tmpVar);
+    #####:  112:            if (satisfiedCheck)
+        -:  113:            {
+    #####:  114:                return pathLength;
+        -:  115:            }
+        -:  116:        }
+        -:  117:    }
+        -:  118:
+    #####:  119:    return resPathLength;
+        -:  120:}
+        -:  121:
+    #####:  122:size_t FindIndex(int *a, size_t size, int value)
+        -:  123:{
+    #####:  124:    size_t index = 0;
+        -:  125:
+    #####:  126:    while (index < size && a[index] != value)
+    #####:  127:        ++index;
+        -:  128:
+    #####:  129:    return (index == size ? -1 : index);
+        -:  130:}
+        -:  131:
+    #####:  132:void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, char *name)
+        -:  133:{
+        -:  134:    FILE *save_file;
+    #####:  135:    if (name == 0x0)
+    #####:  136:        save_file = fopen("output/NAME-lLENGTH.dot", "w");
+        -:  137:    else
+    #####:  138:        save_file = fopen(name, "w");
+        -:  139:
+    #####:  140:    int file_descriptor = fileno(save_file);
+    #####:  141:    int fd_stdout = dup(1);
+    #####:  142:    dup2(file_descriptor, 1);
+        -:  143:
+    #####:  144:    printf("digraph G{\n");
+    #####:  145:    for (int graph_number = 0; graph_number < numGraph; graph_number++)
+        -:  146:    {
+    #####:  147:        printf("\tsubgraph %d{\n", graph_number);
+    #####:  148:        int *nodes = getDotPathsFromModel(ctx, model, graphs, numGraph, pathLength, graph_number);
+        -:  149:        {
+    #####:  150:            for (int node_id = 0; node_id < orderG(graphs[graph_number]); node_id++)
+        -:  151:            {
+    #####:  152:                if (isTarget(graphs[graph_number], node_id))
+    #####:  153:                    printf("\t\tG%d_%s [final=1,color=red];\n", graph_number, getNodeName(graphs[graph_number], node_id));
+    #####:  154:                else if (isSource(graphs[graph_number], node_id))
+    #####:  155:                    printf("\t\tG%d_%s [initial=1,color=green];\n", graph_number, getNodeName(graphs[graph_number], node_id));
+        -:  156:                else
+    #####:  157:                    printf("\t\tG%d_%s;\n", graph_number, getNodeName(graphs[graph_number], node_id));
+        -:  158:
+    #####:  159:                size_t indexValue = FindIndex(nodes, pathLength, node_id);
+    #####:  160:                for (int node2 = 0; node2 < orderG(graphs[graph_number]); node2++)
+        -:  161:                {
+    #####:  162:                    if (isEdge(graphs[graph_number], node_id, node2))
+        -:  163:                    {
+    #####:  164:                        if ((indexValue == -1) || getNodeName(graphs[graph_number], nodes[indexValue + 1]) != getNodeName(graphs[graph_number], node2))
+    #####:  165:                            printf("\t\tG%d_%s->G%d_%s;\n", graph_number, getNodeName(graphs[graph_number], node_id), graph_number, getNodeName(graphs[graph_number], node2));
+        -:  166:                    }
+        -:  167:                }
+        -:  168:            }
+        -:  169:
+    #####:  170:            printf("\t\t");
+    #####:  171:            for (int j = 0; j < pathLength; j++)
+        -:  172:            {
+    #####:  173:                printf("G%d_%s->", graph_number, getNodeName(graphs[graph_number], nodes[j]));
+        -:  174:            }
+    #####:  175:            printf("G%d_%s [color=blue];\n", graph_number, getNodeName(graphs[graph_number], nodes[pathLength]));
+        -:  176:
+        -:  177:            int edge;
+    #####:  178:            for (edge = 0; edge < sizeG(graphs[graph_number]); edge++)
+        -:  179:            {
+        -:  180:            }
+    #####:  181:            printf("\t\tlabel = \"Graphe %d\";\n", graph_number);
+        -:  182:        }
+    #####:  183:        free(nodes);
+    #####:  184:        printf("\t}\n");
+        -:  185:    }
+    #####:  186:    printf("}\n");
+        -:  187:
+    #####:  188:    dup2(fd_stdout, 1);
+        -:  189:
+    #####:  190:    close(file_descriptor);
+    #####:  191:    close(fd_stdout);
+    #####:  192:    fclose(save_file);
+    #####:  193:}
+        -:  194:
+    #####:  195:int *getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number)
+        -:  196:{
+        -:  197:
+    #####:  198:    int nb_vertex_positions = pathLength + 1;
+    #####:  199:    int *nodes = (int *)malloc(sizeof(int) * nb_vertex_positions);
+    #####:  200:    int nodes_counter = 0;
+        -:  201:    //loop through nodes
+    #####:  202:    int size_graph = orderG(graphs[graph_number]);
+    #####:  203:    for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+        -:  204:    {
+        -:  205:
+        -:  206:        //loop through pathLength
+    #####:  207:        for (int j = 0; j <= pathLength; j++)
+        -:  208:        {
+    #####:  209:            Z3_ast tmp_var = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+    #####:  210:            bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
+    #####:  211:            if (satisfied_var)
+        -:  212:            {
+    #####:  213:                if (isSource(graphs[graph_number], node_number))
+        -:  214:                {
+        -:  215:                    //reserve first index for source
+    #####:  216:                    nodes[0] = node_number;
+        -:  217:                }
+    #####:  218:                else if (isTarget(graphs[graph_number], node_number))
+        -:  219:                {
+        -:  220:                    //reserve last index for target
+    #####:  221:                    nodes[nb_vertex_positions - 1] = node_number;
+        -:  222:                }
+        -:  223:                else
+        -:  224:                {
+        -:  225:                    //rest index for other satisfied variable
+    #####:  226:                    nodes_counter++;
+    #####:  227:                    nodes[nodes_counter] = node_number;
+        -:  228:                }
+    #####:  229:                break;
+        -:  230:            }
+        -:  231:        }
+        -:  232:    }
+        -:  233:
+    #####:  234:    return nodes;
+        -:  235:}
+        -:  236:
+    #####:  237:void printPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength)
+        -:  238:{
+        -:  239:    //loop through graphs
+    #####:  240:    for (unsigned int graph_number = 0; graph_number < numGraph; graph_number++)
+        -:  241:    {
+    #####:  242:        int nb_vertex_positions = pathLength + 1;
+        -:  243:        // strIndexNode **indexNodeArr = createIndexNodeArray(nb_vertex_positions);
+    #####:  244:        int * path = (int *)malloc(sizeof(int)*nb_vertex_positions);
+        -:  245:        
+    #####:  246:        int indexNode_counter = 0;
+        -:  247:        //loop through nodes
+    #####:  248:        int size_graph = orderG(graphs[graph_number]);
+    #####:  249:        for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+        -:  250:        {
+        -:  251:            //loop through pathLength
+    #####:  252:            for (int j = 0; j <= pathLength; j++)
+        -:  253:            {
+    #####:  254:                Z3_ast tmp_var = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+    #####:  255:                bool satisfied_var = valueOfVarInModel(ctx, model, tmp_var);
+    #####:  256:                if (satisfied_var)
+        -:  257:                {
+        -:  258:                    // indexNodeArr[indexNode_counter]->index = j;
+        -:  259:                    // indexNodeArr[indexNode_counter]->node = node_number;
+    #####:  260:                    indexNode_counter++;
+    #####:  261:                    path[j]=node_number;
+        -:  262:                }
+        -:  263:            }
+        -:  264:        }
+        -:  265:        // check for pathLength
+    #####:  266:        if (indexNode_counter != nb_vertex_positions)
+    #####:  267:            printf("printPathsFromModel-->Failed on Graph N°%d\n", graph_number);
+        -:  268:        else
+    #####:  269:            displayPath(graphs[graph_number], graph_number, path, nb_vertex_positions);
+        -:  270:        }   
+    #####:  271:    return;
+        -:  272:}
+        -:  273:/*
+        -:  274: * @brief display the correct path
+        -:  275: * 
+        -:  276: * @param g A graph.
+        -:  277: * @param graphNum the number of an graph
+        -:  278: * @param path An array of nodes, first index must be source and last index must be target.
+        -:  279: * @param nb_vertex_positions The size of the array.
+        -:  280:*/
+    #####:  281:void displayPath(Graph g, int graphNum, int * path, int nb_vertex_positions)
+        -:  282:{
+    #####:  283:    printf("Path in graph %d\n",graphNum);
+    #####:  284:    for (int i = 0; i < nb_vertex_positions; i++)
+        -:  285:    {
+    #####:  286:        if (i != nb_vertex_positions - 1)
+        -:  287:        {
+    #####:  288:            printf("%d: pos %d: %s-> ",graphNum, i, getNodeName(g, path[i]));
+        -:  289:        }
+        -:  290:        else
+        -:  291:        {
+    #####:  292:            printf("%d: pos %d: %s\n",graphNum, i, getNodeName(g, path[i]));
+        -:  293:        }
+        -:  294:    }
+    #####:  295:}
+        -:  296:
+    #####:  297:int *sortDotPath(Graph g, int nodes[], int nb_vertex_positions)
+        -:  298:{
+    #####:  299:    int *path = (int *)malloc(sizeof(int) * nb_vertex_positions);
+        -:  300:    // printf("nb_vertex %d\n",nb_vertex_positions);
+        -:  301:    //first index contains a path's source
+    #####:  302:    path[0] = nodes[0];
+    #####:  303:    int path_index = 0;
+    #####:  304:    for (int path_index = 0; path_index < nb_vertex_positions; path_index++)
+        -:  305:    {
+    #####:  306:        for (int node_index = 1; node_index < nb_vertex_positions; node_index++)
+        -:  307:        {
+    #####:  308:            if (isEdge(g, path[path_index], nodes[node_index]))
+        -:  309:            {
+    #####:  310:                path[path_index + 1] = nodes[node_index];
+    #####:  311:                break;
+        -:  312:            }
+        -:  313:        }
+        -:  314:    }
+        -:  315:
+    #####:  316:    return path;
+        -:  317:    // for (int i = 0; i < nb_vertex_positions; i++)
+        -:  318:    // {
+        -:  319:    //     if (i != nb_vertex_positions - 1)
+        -:  320:    //     {
+        -:  321:    //         printf("%s->", getNodeName(g, path[i]));
+        -:  322:    //     }
+        -:  323:    //     else
+        -:  324:    //     {
+        -:  325:    //         printf("%s [color=blue];\n", getNodeName(g, path[i]));
+        -:  326:    //     }
+        -:  327:    // }
+        -:  328:}
+        -:  329:
+        1:  330:Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+        -:  331:{
+        1:  332:    Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
+        -:  333:    Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
+        1:  334:    int nb_vertex_positions = pathLength + 1;
+        -:  335:    //Loop through each graph
+        1:  336:    int graph_count = 0;
+        3:  337:    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+        -:  338:    {
+        -:  339:        //Loop every node in the graph
+        2:  340:        int size_graph = orderG(graphs[graph_number]);
+        2:  341:        Z3_ast all_vertex_formula[size_graph];
+        2:  342:        int nb_subset = binomialCoeff(nb_vertex_positions, 2);
+        2:  343:        Z3_ast subset_formula[nb_subset];
+        -:  344:
+        9:  345:        for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+        -:  346:        {
+        -:  347:
+        7:  348:            int subset_count = 0;
+        -:  349:            //creat terms for subset of 2 elements from nb_vertex_positions
+       35:  350:            for (int i = 0; i <= pathLength; i++)
+        -:  351:            {
+       28:  352:                Z3_ast termA = getNodeVariable(ctx, graph_number, i, pathLength, node_number);
+       28:  353:                Z3_ast negTermA = Z3_mk_not(ctx, termA);
+       70:  354:                for (int j = i + 1; j <= pathLength; j++)
+        -:  355:                {
+       42:  356:                    Z3_ast termB = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+       42:  357:                    Z3_ast negTermB = Z3_mk_not(ctx, termB);
+       42:  358:                    Z3_ast node[2] = {negTermA, negTermB};
+       42:  359:                    subset_formula[subset_count] = Z3_mk_or(ctx, 2, node);
+       42:  360:                    subset_count++;
+        -:  361:                }
+        -:  362:            }
+        -:  363:
+        7:  364:            all_vertex_formula[node_number] = Z3_mk_and(ctx, nb_subset, subset_formula);
+        -:  365:        }
+        2:  366:        res_all_graph[graph_count] = Z3_mk_and(ctx, size_graph, all_vertex_formula);
+        2:  367:        graph_count++;
+        2:  368:    }
+        1:  369:    res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+        1:  370:    if (mode_extended_verbose)
+    #####:  371:        printf("uniqueVertexAtEachIndex-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
+        -:  372:
+        2:  373:    return res_final_formula;
+        -:  374:}
+        -:  375:
+        1:  376:Z3_ast atLeastOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+        -:  377:{
+        1:  378:    Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
+        -:  379:    Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
+        1:  380:    int nb_vertex_positions = pathLength + 1;
+        -:  381:    //Loop through each graph
+        3:  382:    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+        -:  383:    {
+        -:  384:        // loop every index of pathLength
+        2:  385:        Z3_ast index_formula[nb_vertex_positions];
+        2:  386:        int index_count = 0;
+       10:  387:        for (int j = 0; j <= pathLength; j++)
+        -:  388:        {
+        -:  389:            // loop every node in the graph
+        8:  390:            int size_graph = orderG(graphs[graph_number]);
+        8:  391:            Z3_ast vertex_formula[size_graph];
+       36:  392:            for (unsigned int node_number = 0; node_number < size_graph; node_number++)
+        -:  393:            {
+       28:  394:                Z3_ast term = getNodeVariable(ctx, graph_number, j, pathLength, node_number);
+       28:  395:                vertex_formula[node_number] = term;
+        -:  396:            }
+        8:  397:            index_formula[index_count] = Z3_mk_or(ctx, size_graph, vertex_formula);
+        8:  398:            index_count++;
+        8:  399:        }
+        2:  400:        res_all_graph[graph_number] = Z3_mk_and(ctx, nb_vertex_positions, index_formula);
+        2:  401:    }
+        1:  402:    res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+        1:  403:    if (mode_extended_verbose)
+    #####:  404:        printf("atLeastOneVertexAtEachIndex-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
+        -:  405:
+        2:  406:    return res_final_formula;
+        -:  407:}
+        -:  408:
+        1:  409:Z3_ast atMostOneVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+        -:  410:{
+        1:  411:    Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
+        -:  412:    Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
+        1:  413:    int nb_vertex_positions = pathLength + 1;
+        -:  414:    //Loop through each graph
+        3:  415:    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+        -:  416:    {
+        -:  417:        // loop every index of pathLength
+        2:  418:        Z3_ast index_formula[nb_vertex_positions];
+        2:  419:        int index_count = 0;
+        -:  420:
+        2:  421:        int size_graph = orderG(graphs[graph_number]);
+        -:  422:
+       10:  423:        for (int j = 0; j <= pathLength; j++)
+        -:  424:        {
+        -:  425:            // loop every node in the graph
+        8:  426:            int nb_subset = binomialCoeff(size_graph, 2);
+        8:  427:            Z3_ast subset_formula[nb_subset];
+        8:  428:            int subset_count = 0;
+       36:  429:            for (unsigned int node_number_A = 0; node_number_A < size_graph; node_number_A++)
+        -:  430:            {
+        -:  431:
+       28:  432:                Z3_ast termA = getNodeVariable(ctx, graph_number, j, pathLength, node_number_A);
+       28:  433:                Z3_ast negTermA = Z3_mk_not(ctx, termA);
+        -:  434:                // loop every node in the graph
+       64:  435:                for (unsigned int node_number_B = node_number_A + 1; node_number_B < size_graph; node_number_B++)
+        -:  436:                {
+       36:  437:                    Z3_ast termB = getNodeVariable(ctx, graph_number, j, pathLength, node_number_B);
+       36:  438:                    Z3_ast negTermB = Z3_mk_not(ctx, termB);
+       36:  439:                    Z3_ast node[2] = {negTermA, negTermB};
+       36:  440:                    subset_formula[subset_count] = Z3_mk_or(ctx, 2, node);
+       36:  441:                    subset_count++;
+        -:  442:                }
+        -:  443:            }
+        8:  444:            index_formula[index_count] = Z3_mk_and(ctx, nb_subset, subset_formula);
+        8:  445:            index_count++;
+        8:  446:        }
+        -:  447:
+        2:  448:        res_all_graph[graph_number] = Z3_mk_and(ctx, nb_vertex_positions, index_formula);
+        2:  449:    }
+        1:  450:    res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+        1:  451:    if (mode_extended_verbose)
+    #####:  452:        printf("atMostOneVertexAtEachIndex-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
+        -:  453:
+        2:  454:    return res_final_formula;
+        -:  455:}
+        -:  456:
+        1:  457:Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+        -:  458:{
+        1:  459:    Z3_ast res_all_graph[numGraphs]; //Array that will contains every z3 formula for each graph
+        -:  460:    Z3_ast res_final_formula;        //The final formula which concatene every graphs formula
+        1:  461:    int nb_vertex_positions = pathLength;
+        -:  462:
+        -:  463:    //Loop through each graph
+        3:  464:    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+        -:  465:    {
+        -:  466:        // loop every index of pathLength
+        2:  467:        Z3_ast index_formula[nb_vertex_positions];
+        2:  468:        int index_count = 0;
+        -:  469:
+        2:  470:        int size_graph = orderG(graphs[graph_number]);
+        -:  471:
+        8:  472:        for (int j = 0; j < pathLength; j++)
+        -:  473:        {
+        -:  474:            // loop every node in the graph
+        6:  475:            int nb_subset = sizeG(graphs[graph_number]);
+        6:  476:            Z3_ast subset_formula[nb_subset];
+        6:  477:            int subset_count = 0;
+       27:  478:            for (unsigned int node_number_A = 0; node_number_A < size_graph; node_number_A++)
+        -:  479:            {
+        -:  480:                // loop every node in the graph
+       96:  481:                for (unsigned int node_number_B = 0; node_number_B < size_graph; node_number_B++)
+        -:  482:                {
+       75:  483:                    if (isEdge(graphs[graph_number], node_number_A, node_number_B))
+        -:  484:                    {
+       21:  485:                        Z3_ast termA = getNodeVariable(ctx, graph_number, j, pathLength, node_number_A);
+       21:  486:                        Z3_ast termB = getNodeVariable(ctx, graph_number, j + 1, pathLength, node_number_B);
+       21:  487:                        Z3_ast node[2] = {termA, termB};
+       21:  488:                        subset_formula[subset_count] = Z3_mk_and(ctx, 2, node);
+       21:  489:                        subset_count++;
+        -:  490:                    }
+        -:  491:                }
+        -:  492:            }
+        6:  493:            index_formula[index_count] = Z3_mk_or(ctx, nb_subset, subset_formula);
+        6:  494:            index_count++;
+        6:  495:        }
+        -:  496:
+        2:  497:        res_all_graph[graph_number] = Z3_mk_and(ctx, nb_vertex_positions, index_formula);
+        2:  498:    }
+        1:  499:    res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+        1:  500:    if (mode_extended_verbose)
+    #####:  501:        printf("ExistsPath-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
+        -:  502:
+        2:  503:    return res_final_formula;
+        -:  504:}
+        -:  505:
+        1:  506:Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
+        -:  507:{
+        -:  508:
+        1:  509:    Z3_ast res_all_graph[numGraphs + 1]; //Array that will contains every z3 formula for each graph
+        -:  510:    Z3_ast res_final_formula;            //The final formula which concatene every graphs formula
+        1:  511:    Z3_ast res_two_node = NULL;          //A node that will contain two valuation of a graph
+        -:  512:
+        -:  513:    // Search every graphe
+        3:  514:    for (unsigned int graph_number = 0; graph_number < numGraphs; graph_number++)
+        -:  515:    {
+        2:  516:        if (mode_extended_verbose)
+        -:  517:        {
+    #####:  518:            printf("- Graph Number: %d\n", graph_number);
+    #####:  519:            printf("--- Graph have: %d nodes.\n", graphs[graph_number].numNodes);
+        -:  520:        }
+        -:  521:
+        2:  522:        Z3_ast source = NULL; //Node that will contains the source
+        2:  523:        Z3_ast target = NULL; //Node that will contains the target
+        2:  524:        res_two_node = NULL;  //reinitialize the value of the node
+        -:  525:
+        -:  526:        // Look every node of the graph
+        4:  527:        for (unsigned int node_number = 0; node_number < orderG(graphs[graph_number]); node_number++)
+        -:  528:        {
+        4:  529:            Graph tmp_graph = graphs[graph_number]; //Local copy bcz more useful
+        4:  530:            if (mode_extended_verbose)
+    #####:  531:                printf("--- Node Number: %d\n", node_number);
+        -:  532:
+        4:  533:            if (isSource(tmp_graph, node_number))
+        -:  534:            { //If node is the source, then save a sat valuation
+        2:  535:                if (mode_extended_verbose)
+    #####:  536:                    printf("----- Found source. \n");
+        2:  537:                source = getNodeVariable(ctx, graph_number, 0, pathLength, node_number);
+        -:  538:            }
+        4:  539:            if (isTarget(tmp_graph, node_number))
+        -:  540:            { //If node is the target, then save a sat valuation
+        2:  541:                if (mode_extended_verbose)
+    #####:  542:                    printf("----- Found target. \n");
+        2:  543:                target = getNodeVariable(ctx, graph_number, pathLength, pathLength, node_number);
+        -:  544:            }
+        -:  545:
+        -:  546:            //If not both source or target nodes are defined
+        -:  547:            // next iteration and search for new source or target
+        4:  548:            if (source == NULL || target == NULL)
+        2:  549:                continue;
+        -:  550:
+        -:  551:            //Reached when source and target nodes has been find
+        2:  552:            Z3_ast node[2] = {source, target};
+        -:  553:
+        -:  554:            //Set a new and node with source and destination for this graph
+        2:  555:            res_two_node = Z3_mk_and(ctx, 2, node);
+        2:  556:            if (mode_extended_verbose)
+    #####:  557:                printf("+ Formula %s created.\n", Z3_ast_to_string(ctx, res_two_node));
+        2:  558:            break;
+        -:  559:        }
+        -:  560:
+        2:  561:        if (res_two_node == NULL)
+        -:  562:        {
+    #####:  563:            printf("----- Lack of at least the source or the target edge.\n");
+    #####:  564:            res_two_node = mk_bool_var(ctx, "false");
+        -:  565:        }
+        2:  566:        res_all_graph[graph_number] = res_two_node;
+        -:  567:    }
+        -:  568:
+        -:  569:    //Concatene each formula coming from each graph
+        3:  570:    for (int i = 0; i < numGraphs; i++)
+        -:  571:    {
+        2:  572:        res_final_formula = Z3_mk_and(ctx, numGraphs, res_all_graph);
+        -:  573:    }
+        1:  574:    if (mode_extended_verbose)
+    #####:  575:        printf("-----> %s\n", Z3_ast_to_string(ctx, res_final_formula));
+        -:  576:
+        2:  577:    return res_final_formula;
+        -:  578:}
+        -:  579:
+        1:  580:void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes)
+        -:  581:{
+        1:  582:    if (mode_extended_verbose)
+        -:  583:    {
+    #####:  584:        printf("\n\n");
+    #####:  585:        printf("- Check Phi1.1 Formula\n");
+    #####:  586:        sat_checker(ctx, phi1_1);
+    #####:  587:        printf("- Check Phi1.2 Formula\n");
+    #####:  588:        sat_checker(ctx, phi1_2);
+    #####:  589:        printf("- Check Phi1.3 Formula\n");
+    #####:  590:        sat_checker(ctx, phi1_3);
+    #####:  591:        printf("- Check Path Formula\n");
+    #####:  592:        sat_checker(ctx, edge_between_nodes);
+    #####:  593:        printf("- Check Valide Formula\n");
+    #####:  594:        sat_checker(ctx, valide_formula);
+    #####:  595:        printf("\n\n- Merge sub-formula\n");
+        -:  596:    }
+        1:  597:}
+        -:  598:
+        1:  599:int sat_checker(Z3_context ctx, Z3_ast formula)
+        -:  600:{
+        -:  601:
+        1:  602:    Z3_lbool isSat = isFormulaSat(ctx, formula);
+        -:  603:
+        1:  604:    switch (isSat)
+        -:  605:    {
+        -:  606:    case Z3_L_FALSE:
+        1:  607:        break;
+        -:  608:
+        -:  609:    case Z3_L_UNDEF:
+    #####:  610:        break;
+        -:  611:
+        -:  612:    case Z3_L_TRUE:
+    #####:  613:        return 1;
+        -:  614:    }
+        1:  615:    return 0;
+        -:  616:}
+    #####:  617:int sat_checker_print(Z3_context ctx, Z3_ast formula)
+        -:  618:{
+        -:  619:
+    #####:  620:    Z3_lbool isSat = isFormulaSat(ctx, formula);
+        -:  621:
+    #####:  622:    switch (isSat)
+        -:  623:    {
+        -:  624:    case Z3_L_FALSE:
+    #####:  625:        printf("--- This formula is not sat-solvable.\n", Z3_ast_to_string(ctx, formula));
+    #####:  626:        break;
+        -:  627:
+        -:  628:    case Z3_L_UNDEF:
+    #####:  629:        printf("--- We don't know if %s is sat-solvable.\n", Z3_ast_to_string(ctx, formula));
+    #####:  630:        break;
+        -:  631:
+        -:  632:    case Z3_L_TRUE:
+    #####:  633:        printf("--- This formula is sat-solvable.\n", Z3_ast_to_string(ctx, formula));
+    #####:  634:        return 1;
+        -:  635:    }
+    #####:  636:    return 0;
+        -:  637:}
+        -:  638:
+       86:  639:int binomialCoeff(int n, int k)
+        -:  640:{
+        -:  641:    // Base Cases
+       86:  642:    if (k == 0 || k == n)
+       48:  643:        return 1;
+        -:  644:
+        -:  645:    // Recur
+       38:  646:    return binomialCoeff(n - 1, k - 1) + binomialCoeff(n - 1, k);
+        -:  647:}

@@ -12,7 +12,7 @@ extern bool mode_extended_verbose;
 
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula);
-int sat_checker_print(Z3_context ctx, Z3_ast formula);
+int sat_checker_print(Z3_context ctx, Z3_ast formula, int k);
 
 int binomialCoeff(int n, int k);
 
@@ -48,7 +48,7 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
 
     Z3_ast edge_between_nodes = ExistsPath(ctx, graphs, numGraphs, pathLength);
 
-    testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
+    // testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes);
     Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
     Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
     return res_formula;
@@ -63,11 +63,11 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     //Array used to store a satisfaible SAT formule for each pathLength in max_pathLength range
     Z3_ast graphFormula[max_pathLength];
     int graphFormula_counter=0; 
-    for (int k = max_pathLength; k >= 0; k--)
+    for (int k = 0; k <= max_pathLength; k++)
     {
         Z3_ast tmp_formula = graphsToPathFormula(ctx, graphs, numGraphs, k);
         //Improvement: the final formule contains only satisfiable sub-formule.
-        if (sat_checker_print(ctx, res_final_formula) == 1)
+        if (sat_checker_print(ctx, tmp_formula, k) == 1)
         {
             graphFormula[graphFormula_counter] = tmp_formula;
             graphFormula_counter++;
@@ -610,7 +610,7 @@ int sat_checker(Z3_context ctx, Z3_ast formula)
     }
     return 0;
 }
-int sat_checker_print(Z3_context ctx, Z3_ast formula)
+int sat_checker_print(Z3_context ctx, Z3_ast formula, int k)
 {
 
     Z3_lbool isSat = isFormulaSat(ctx, formula);
@@ -618,15 +618,15 @@ int sat_checker_print(Z3_context ctx, Z3_ast formula)
     switch (isSat)
     {
     case Z3_L_FALSE:
-        printf("--- This formula is not sat-solvable.\n", Z3_ast_to_string(ctx, formula));
+        printf("No simple valid path of length %d in all graphs.\n", k);
         break;
 
     case Z3_L_UNDEF:
-        printf("--- We don't know if %s is sat-solvable.\n", Z3_ast_to_string(ctx, formula));
+        printf("We do not know if there is a simple valid path of length %d in all graphs.\n", k);
         break;
 
     case Z3_L_TRUE:
-        printf("--- This formula is sat-solvable.\n", Z3_ast_to_string(ctx, formula));
+        printf("There is a simple valid path of length %d in all graphs.\n", k);
         return 1;
     }
     return 0;

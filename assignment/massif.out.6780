@@ -1,0 +1,3102 @@
+desc: --stacks=yes
+cmd: ./equalPath -t ./graphs/assignment-instance/square.dot graphs/assignment-instance/triangle.dot
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1981989
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=1656
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=4113622
+mem_heap_B=248282
+mem_heap_extra_B=3750
+mem_stacks_B=2576
+heap_tree=detailed
+n5: 248282 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n9: 149840 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n4: 90200 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n4: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A09723: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A114B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 16400 0x5A08EB3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A114F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 16400 0x5A08FD8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A11592: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 8200 0x59CF0C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+   n1: 16400 0x5A11444: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 8200 0x1103D9: main (main.c:49)
+      n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+   n1: 8200 0x5B602FD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B92787: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B79EF9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EB006C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5BCD28B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F16542: Z3_mk_config (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFD8: makeContext() (Z3Tools.c:8)
+          n0: 8200 0x1103D9: main (main.c:49)
+   n1: 8200 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5BB41FC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x599E7A7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x598FAE3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+  n0: 17176 in 65 places, all below massif's threshold (1.00%)
+  n3: 12304 0x5B6F8C9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 8200 0x5B7BE17: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x4EAD068: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+   n1: 4104 0x59774DB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 4104 0x598FA6B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 4104 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 4104 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 4104 0x10FFE8: makeContext() (Z3Tools.c:9)
+        n0: 4104 0x1103D9: main (main.c:49)
+   n0: 0 in 4 places, all below massif's threshold (1.00%)
+  n1: 8200 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 8200 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B6F636: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4EB0067: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5BCD28B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F16542: Z3_mk_config (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x10FFD8: makeContext() (Z3Tools.c:8)
+         n0: 8200 0x1103D9: main (main.c:49)
+  n2: 6144 0x5371910: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 6144 0x5A033BD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 6144 0x5A0685A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6144 0x59CEE75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6144 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6144 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6144 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6144 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6144 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 6144 0x1103D9: main (main.c:49)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n1: 5776 0x5A14700: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 5776 0x5A067DC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 5128 0x59CEE75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 5128 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 5128 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 5128 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 5128 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 5128 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 5128 0x1103D9: main (main.c:49)
+    n0: 648 in 4 places, all below massif's threshold (1.00%)
+  n1: 3592 0x4F15C19: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 3592 0x10FFE8: makeContext() (Z3Tools.c:9)
+    n0: 3592 0x1103D9: main (main.c:49)
+  n2: 3360 0x5A0684C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 3072 0x59CEE75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 3072 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 3072 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 3072 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 3072 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 3072 0x10FFE8: makeContext() (Z3Tools.c:9)
+         n0: 3072 0x1103D9: main (main.c:49)
+   n0: 288 in 4 places, all below massif's threshold (1.00%)
+  n1: 3088 0x5B7BB83: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 3088 in 2 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 18720 0x6903B3E: __new_exitfn (cxa_atexit.c:101)
+  n2: 18720 0x6903BE7: __cxa_atexit (cxa_atexit.c:35)
+   n1: 15600 0x400F798: call_init.part.0 (dl-init.c:72)
+    n1: 15600 0x400F8A9: _dl_init (dl-init.c:30)
+     n1: 15600 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+      n1: 15600 0x2: ???
+       n1: 15600 0xFFEFFFEA9: ???
+        n1: 15600 0xFFEFFFEB5: ???
+         n1: 15600 0xFFEFFFEB8: ???
+          n0: 15600 0xFFEFFFEE0: ???
+   n0: 3120 in 3 places, all below massif's threshold (1.00%)
+ n2: 5448 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n1: 2992 0x5B791F8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 2992 0x59CED6F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 2992 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 2992 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 2992 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 2992 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 2992 0x10FFE8: makeContext() (Z3Tools.c:9)
+         n0: 2992 0x1103D9: main (main.c:49)
+  n0: 2456 in 8 places, all below massif's threshold (1.00%)
+ n0: 1570 in 19 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=5538534
+mem_heap_B=405074
+mem_heap_extra_B=9870
+mem_stacks_B=2320
+heap_tree=detailed
+n5: 405074 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n10: 296540 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n8: 147600 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n4: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A09723: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A114B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 16400 0x5A08EB3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A114F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 16400 0x5A08FD8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A11592: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 8200 0x59CF0C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+   n2: 24600 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 16400 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5BB41FC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x599E7A7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x598FAE3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+     n1: 8200 0x4F154A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+        n0: 8200 0x1103D9: main (main.c:49)
+    n1: 8200 0x4EE7BED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+        n0: 8200 0x1103D9: main (main.c:49)
+   n1: 16400 0x5A11444: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 8200 0x1103D9: main (main.c:49)
+      n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+   n1: 16400 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 16400 0x4F1FC9F: Z3_mk_and (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x10E9F6: uniqueVertexAtEachIndex(_Z3_context*, Graph*, unsigned int, int) (Solving.c:363)
+       n1: 8200 0x10D779: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:45)
+        n0: 8200 0x110430: main (main.c:57)
+      n1: 8200 0x10D82E: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:53)
+       n0: 8200 0x110430: main (main.c:57)
+   n1: 8200 0x5B602FD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B92787: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B79EF9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EB006C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5BCD28B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F16542: Z3_mk_config (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFD8: makeContext() (Z3Tools.c:8)
+          n0: 8200 0x1103D9: main (main.c:49)
+   n1: 8200 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EE7BFE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+   n1: 8200 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4EE7BFE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+         n0: 8200 0x1103D9: main (main.c:49)
+   n1: 8200 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EE7BFE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+  n0: 60924 in 376 places, all below massif's threshold (1.00%)
+  n1: 18488 0x5B85363: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 18488 0x5B7BE32: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 6184 in 22 places, all below massif's threshold (1.00%)
+    n1: 6152 0x4EAF352: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6152 0x4EADFE9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6152 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6152 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6152 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6152 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6152 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 6152 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 6152 0x1103D9: main (main.c:49)
+    n1: 6152 0x4EAFCAC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6152 0x4EAE261: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6152 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6152 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6152 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6152 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6152 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 6152 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 6152 0x1103D9: main (main.c:49)
+  n2: 16400 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 8200 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B6F636: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4EB0067: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5BCD28B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F16542: Z3_mk_config (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x10FFD8: makeContext() (Z3Tools.c:8)
+         n0: 8200 0x1103D9: main (main.c:49)
+   n1: 8200 0x5B78A1A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B6F9E7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B7BE17: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EAF6F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4EAE261: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+  n2: 16392 0x5B6F8C9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 16392 0x5B7BE17: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16392 0x4EAFC5A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16392 0x4EAE261: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16392 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 16392 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 16392 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 16392 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 16392 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 16392 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 16392 0x1103D9: main (main.c:49)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+  n1: 10896 0x5A14700: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 10896 0x5A067DC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 10248 0x5A0ADB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 10248 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 10248 0x4F1EDA8: Z3_mk_const (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 10248 0x110040: mk_var(_Z3_context*, char const*, _Z3_sort*) (Z3Tools.c:17)
+        n1: 10248 0x110079: mk_bool_var(_Z3_context*, char const*) (Z3Tools.c:23)
+         n1: 10248 0x10D6F7: getNodeVariable(_Z3_context*, int, int, int, int) (Solving.c:35)
+          n1: 10248 0x10E8F9: uniqueVertexAtEachIndex(_Z3_context*, Graph*, unsigned int, int) (Solving.c:351)
+           n1: 10248 0x10D779: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:45)
+            n0: 10248 0x110430: main (main.c:57)
+    n0: 648 in 5 places, all below massif's threshold (1.00%)
+  n2: 7784 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 4448 0x5802968: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 4448 in 4 places, all below massif's threshold (1.00%)
+   n0: 3336 in 2 places, all below massif's threshold (1.00%)
+  n2: 7704 0x5B7BB83: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 6160 0x5BDA629: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 6160 in 3 places, all below massif's threshold (1.00%)
+   n0: 1544 in 1 place, below massif's threshold (1.00%)
+  n2: 6144 0x5371910: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 6144 0x5A033BD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 6144 0x5A0685A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6144 0x59CEE75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6144 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6144 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6144 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6144 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6144 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 6144 0x1103D9: main (main.c:49)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n1: 4208 0x5B0BBEC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 4208 in 4 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 18720 0x6903B3E: __new_exitfn (cxa_atexit.c:101)
+  n2: 18720 0x6903BE7: __cxa_atexit (cxa_atexit.c:35)
+   n1: 15600 0x400F798: call_init.part.0 (dl-init.c:72)
+    n1: 15600 0x400F8A9: _dl_init (dl-init.c:30)
+     n1: 15600 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+      n1: 15600 0x2: ???
+       n1: 15600 0xFFEFFFEA9: ???
+        n1: 15600 0xFFEFFFEB5: ???
+         n1: 15600 0xFFEFFFEB8: ???
+          n0: 15600 0xFFEFFFEE0: ???
+   n0: 3120 in 3 places, all below massif's threshold (1.00%)
+ n2: 15496 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 9800 in 12 places, all below massif's threshold (1.00%)
+  n2: 5696 0x4F121F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 5696 0x4F1FDD0: Z3_mk_or (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 5696 0x10F616: ExistsPath(_Z3_context*, Graph*, unsigned int, int) (Solving.c:492)
+     n1: 5696 0x10D7C7: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:49)
+      n0: 5696 0x110430: main (main.c:57)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+ n0: 1614 in 20 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=4
+#-----------
+time=7285616
+mem_heap_B=1203796
+mem_heap_extra_B=28820
+mem_stacks_B=1976
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=8516402
+mem_heap_B=1411166
+mem_heap_extra_B=45218
+mem_stacks_B=1736
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=10121514
+mem_heap_B=1698042
+mem_heap_extra_B=65974
+mem_stacks_B=2016
+heap_tree=detailed
+n5: 1698042 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n16: 1564116 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 395808 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 197904 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 197904 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 197904 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+   n1: 197904 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 197904 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 197904 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+  n0: 339796 in 581 places, all below massif's threshold (1.00%)
+  n6: 270600 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 73800 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 65600 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5772533: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n1: 24600 0x57318F1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5731AD3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x4FDD6DD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n0: 16400 in 2 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n0: 41000 in 3 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n2: 147600 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 139400 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 73800 in 5 places, all below massif's threshold (1.00%)
+    n1: 32800 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 32800 in 2 places, all below massif's threshold (1.00%)
+    n1: 32800 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 32800 in 2 places, all below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 137888 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 75616 0x5802968: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 75616 in 24 places, all below massif's threshold (1.00%)
+   n1: 27800 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 27800 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 27800 in 6 places, all below massif's threshold (1.00%)
+   n1: 25576 0x580E142: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 25576 in 11 places, all below massif's threshold (1.00%)
+   n0: 8896 in 4 places, all below massif's threshold (1.00%)
+  n2: 77376 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 76880 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 30752 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 30752 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 30752 in 7 places, all below massif's threshold (1.00%)
+    n1: 30752 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 30752 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 30752 in 7 places, all below massif's threshold (1.00%)
+    n0: 15376 in 16 places, all below massif's threshold (1.00%)
+   n0: 496 in 1 place, below massif's threshold (1.00%)
+  n1: 29760 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 29760 in 18 places, all below massif's threshold (1.00%)
+  n1: 21136 0x5A14700: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 21136 0x5A067DC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 20488 0x5A0ADB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 20488 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 20488 0x586EF5E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 20488 0x586F568: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 20488 0x586F9F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 20488 0x54A61B6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 20488 0x5489174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 20488 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 20488 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 20488 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 20488 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 20488 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                n1: 20488 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                 n1: 20488 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                  n1: 20488 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                   n1: 20488 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                    n1: 20488 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                     n1: 20488 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                      n1: 20488 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                       n1: 20488 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                        n0: 20488 0x110430: main (main.c:57)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 648 in 5 places, all below massif's threshold (1.00%)
+  n1: 18488 0x5B85363: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 18488 0x5B7BE32: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 18488 in 24 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BC3AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BC07B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BC25E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BC1BD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BC11C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BBFDA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+  n1: 17952 0x59BC302: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 17952 in 4 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 40304 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 40304 in 33 places, all below massif's threshold (1.00%)
+ n1: 18720 0x6903B3E: __new_exitfn (cxa_atexit.c:101)
+  n1: 18720 0x6903BE7: __cxa_atexit (cxa_atexit.c:35)
+   n0: 18720 in 4 places, all below massif's threshold (1.00%)
+ n0: 2198 in 27 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=7
+#-----------
+time=11304251
+mem_heap_B=1732034
+mem_heap_extra_B=68486
+mem_stacks_B=2000
+heap_tree=detailed
+n5: 1732034 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n16: 1595788 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 395808 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 197904 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 197904 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 197904 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+   n1: 197904 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 197904 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 197904 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+  n0: 350884 in 593 places, all below massif's threshold (1.00%)
+  n6: 278800 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 82000 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 73800 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57318F1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x5731AD3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x4FDD6DD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 24600 0x5772533: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 16400 in 2 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n0: 41000 in 3 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n2: 147600 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 139400 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 73800 in 5 places, all below massif's threshold (1.00%)
+    n1: 32800 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 32800 in 2 places, all below massif's threshold (1.00%)
+    n1: 32800 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 32800 in 2 places, all below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 142336 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 77840 0x5802968: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 77840 in 26 places, all below massif's threshold (1.00%)
+   n1: 28912 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 28912 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 28912 in 7 places, all below massif's threshold (1.00%)
+   n1: 26688 0x580E142: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 26688 in 12 places, all below massif's threshold (1.00%)
+   n0: 8896 in 4 places, all below massif's threshold (1.00%)
+  n2: 80352 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 79856 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31744 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 31744 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 31744 in 7 places, all below massif's threshold (1.00%)
+    n1: 31744 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 31744 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 31744 in 7 places, all below massif's threshold (1.00%)
+    n0: 16368 in 18 places, all below massif's threshold (1.00%)
+   n0: 496 in 1 place, below massif's threshold (1.00%)
+  n1: 30912 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 30912 in 20 places, all below massif's threshold (1.00%)
+  n1: 21136 0x5A14700: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 21136 0x5A067DC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 20488 0x5A0ADB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 20488 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 20488 0x586EF5E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 20488 0x586F568: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 20488 0x586F9F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 20488 0x54A61B6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 20488 0x5489174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 20488 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 20488 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 20488 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 20488 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 20488 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                n1: 20488 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                 n1: 20488 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                  n1: 20488 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                   n1: 20488 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                    n1: 20488 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                     n1: 20488 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                      n1: 20488 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                       n1: 20488 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                        n0: 20488 0x110430: main (main.c:57)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 648 in 5 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BC302: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BC3AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BBFDA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BC07B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BC11C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BC1BD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18496 0x59BC25E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 18496 in 4 places, all below massif's threshold (1.00%)
+  n1: 18488 0x5B85363: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 18488 0x5B7BE32: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 18488 in 24 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 42560 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 42560 in 36 places, all below massif's threshold (1.00%)
+ n1: 18720 0x6903B3E: __new_exitfn (cxa_atexit.c:101)
+  n1: 18720 0x6903BE7: __cxa_atexit (cxa_atexit.c:35)
+   n0: 18720 in 4 places, all below massif's threshold (1.00%)
+ n0: 2262 in 27 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=8
+#-----------
+time=12614624
+mem_heap_B=1776396
+mem_heap_extra_B=72780
+mem_stacks_B=1952
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=13818692
+mem_heap_B=2076194
+mem_heap_extra_B=75222
+mem_stacks_B=1568
+heap_tree=detailed
+n4: 2076194 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 1929140 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 593712 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 296856 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n0: 98952 0x110430: main (main.c:57)
+   n1: 296856 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n0: 98952 0x110430: main (main.c:57)
+  n0: 569940 in 609 places, all below massif's threshold (1.00%)
+  n6: 278800 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 82000 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 73800 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57318F1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x5731AD3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x4FDD6DD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 24600 0x5772533: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 16400 in 2 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n0: 41000 in 3 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n2: 213200 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n7: 205000 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 49200 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n2: 49200 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54266A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x549DE7F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5489277: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x55F92BC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5337150: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542661C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54B8A7D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54A7DF1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5489089: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 152344 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 84512 0x5802968: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 84512 in 32 places, all below massif's threshold (1.00%)
+   n1: 31136 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31136 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 31136 in 9 places, all below massif's threshold (1.00%)
+   n1: 27800 0x580E142: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 27800 in 13 places, all below massif's threshold (1.00%)
+   n0: 8896 in 4 places, all below massif's threshold (1.00%)
+  n2: 87544 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 86800 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 33976 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33976 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33976 in 7 places, all below massif's threshold (1.00%)
+    n1: 33976 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33976 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33976 in 7 places, all below massif's threshold (1.00%)
+    n0: 18848 in 20 places, all below massif's threshold (1.00%)
+   n0: 744 in 1 place, below massif's threshold (1.00%)
+  n1: 33600 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 33600 in 22 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 53280 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 53280 in 36 places, all below massif's threshold (1.00%)
+ n0: 21070 in 29 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=10
+#-----------
+time=15860385
+mem_heap_B=2102932
+mem_heap_extra_B=75404
+mem_stacks_B=1080
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=17298206
+mem_heap_B=2081148
+mem_heap_extra_B=75868
+mem_stacks_B=1920
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=18705219
+mem_heap_B=2078684
+mem_heap_extra_B=75860
+mem_stacks_B=1768
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=20313240
+mem_heap_B=2077244
+mem_heap_extra_B=75924
+mem_stacks_B=1848
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=22122187
+mem_heap_B=2121676
+mem_heap_extra_B=76132
+mem_stacks_B=6368
+heap_tree=detailed
+n4: 2121676 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 1973918 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 593712 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 296856 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n0: 98952 0x110430: main (main.c:57)
+   n1: 296856 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n0: 98952 0x110430: main (main.c:57)
+  n0: 573966 in 673 places, all below massif's threshold (1.00%)
+  n8: 319800 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 82000 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 73800 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57311E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 2 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 24600 0x577AC5C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 16400 in 4 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n0: 32800 in 3 places, all below massif's threshold (1.00%)
+   n1: 24600 0x4F3F49C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x58AE7DA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 24600 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 24600 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 24600 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+             n1: 24600 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+              n1: 24600 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+               n0: 24600 0x110430: main (main.c:57)
+   n1: 24600 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 24600 in 2 places, all below massif's threshold (1.00%)
+  n2: 213200 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n7: 205000 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 49200 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n2: 49200 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54266A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x549DE7F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5489277: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x55F92BC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5337150: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542661C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54B8A7D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54A7DF1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5489089: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 152344 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 84512 0x58027C2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 82288 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 58936 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 25576 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 25576 in 3 places, all below massif's threshold (1.00%)
+      n1: 23352 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 23352 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 23352 in 2 places, all below massif's threshold (1.00%)
+      n0: 10008 in 1 place, below massif's threshold (1.00%)
+     n2: 23352 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 22240 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 22240 in 3 places, all below massif's threshold (1.00%)
+      n0: 1112 in 1 place, below massif's threshold (1.00%)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 2224 in 1 place, below massif's threshold (1.00%)
+   n1: 31136 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31136 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 31136 in 9 places, all below massif's threshold (1.00%)
+   n1: 27800 0x580E476: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 27800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24464 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24464 in 3 places, all below massif's threshold (1.00%)
+     n0: 3336 in 1 place, below massif's threshold (1.00%)
+   n0: 8896 in 8 places, all below massif's threshold (1.00%)
+  n2: 87296 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 86552 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 33976 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33976 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33976 in 11 places, all below massif's threshold (1.00%)
+    n1: 33728 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33728 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33728 in 11 places, all below massif's threshold (1.00%)
+    n0: 18848 in 28 places, all below massif's threshold (1.00%)
+   n0: 744 in 1 place, below massif's threshold (1.00%)
+  n1: 33600 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 33600 in 30 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 53984 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 53984 in 42 places, all below massif's threshold (1.00%)
+ n0: 21070 in 30 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=15
+#-----------
+time=23479677
+mem_heap_B=2160184
+mem_heap_extra_B=76376
+mem_stacks_B=2288
+heap_tree=peak
+n4: 2160184 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 2012786 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 593712 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 296856 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n0: 98952 0x110430: main (main.c:57)
+   n1: 296856 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n0: 98952 0x110430: main (main.c:57)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n1: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n0: 98952 0x110430: main (main.c:57)
+  n0: 579098 in 673 places, all below massif's threshold (1.00%)
+  n8: 352600 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 90200 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 82000 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57311E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 32800 0x577AC5C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 32800 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 32800 in 3 places, all below massif's threshold (1.00%)
+     n0: 16400 in 4 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n1: 41000 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 41000 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 41000 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 32800 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 32800 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 32800 in 3 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 41000 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 41000 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 41000 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 32800 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 32800 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 32800 in 3 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 41000 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 41000 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 32800 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 32800 in 3 places, all below massif's threshold (1.00%)
+     n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n0: 32800 in 3 places, all below massif's threshold (1.00%)
+   n1: 24600 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 24600 in 2 places, all below massif's threshold (1.00%)
+   n1: 24600 0x4F3F49C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x58AE7DA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 24600 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 24600 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 24600 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+             n1: 24600 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+              n1: 24600 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+               n0: 24600 0x110430: main (main.c:57)
+  n2: 213200 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n7: 205000 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 49200 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n2: 49200 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54266A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x549DE7F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5489277: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x55F92BC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5337150: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542661C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54B8A7D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54A7DF1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5489089: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 152344 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 84512 0x58027C2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 84512 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 60048 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 26688 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 26688 in 4 places, all below massif's threshold (1.00%)
+      n1: 23352 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 23352 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 23352 in 3 places, all below massif's threshold (1.00%)
+      n0: 10008 in 2 places, all below massif's threshold (1.00%)
+     n1: 23352 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 23352 in 2 places, all below massif's threshold (1.00%)
+     n0: 1112 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 31136 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31136 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 31136 in 9 places, all below massif's threshold (1.00%)
+   n2: 27800 0x580E476: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 27800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24464 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24464 in 4 places, all below massif's threshold (1.00%)
+     n0: 3336 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 8896 in 8 places, all below massif's threshold (1.00%)
+  n2: 88040 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 87296 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 33976 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33976 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33976 in 11 places, all below massif's threshold (1.00%)
+    n1: 33976 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33976 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33976 in 11 places, all below massif's threshold (1.00%)
+    n0: 19344 in 28 places, all below massif's threshold (1.00%)
+   n0: 744 in 1 place, below massif's threshold (1.00%)
+  n1: 33792 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 33792 in 30 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 53624 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 53624 in 42 places, all below massif's threshold (1.00%)
+ n0: 21070 in 30 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=16
+#-----------
+time=25087666
+mem_heap_B=2120164
+mem_heap_extra_B=76700
+mem_stacks_B=2264
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=27097597
+mem_heap_B=2121252
+mem_heap_extra_B=77020
+mem_stacks_B=1856
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=29051239
+mem_heap_B=2120884
+mem_heap_extra_B=76956
+mem_stacks_B=1352
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=30223450
+mem_heap_B=561776
+mem_heap_extra_B=16096
+mem_stacks_B=2352
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=31395598
+mem_heap_B=1237510
+mem_heap_extra_B=28106
+mem_stacks_B=1952
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=33349196
+mem_heap_B=1580398
+mem_heap_extra_B=53466
+mem_stacks_B=2088
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=34521415
+mem_heap_B=1755370
+mem_heap_extra_B=66798
+mem_stacks_B=2400
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=36084300
+mem_heap_B=1817172
+mem_heap_extra_B=72668
+mem_stacks_B=2216
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=37256453
+mem_heap_B=1819956
+mem_heap_extra_B=72884
+mem_stacks_B=1848
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=38819338
+mem_heap_B=2134932
+mem_heap_extra_B=75612
+mem_stacks_B=1136
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=39998985
+mem_heap_B=2147220
+mem_heap_extra_B=75612
+mem_stacks_B=1184
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=41561914
+mem_heap_B=2124172
+mem_heap_extra_B=75956
+mem_stacks_B=1776
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=43515584
+mem_heap_B=2122948
+mem_heap_extra_B=76404
+mem_stacks_B=1864
+heap_tree=detailed
+n4: 2122948 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 1972550 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 593712 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 296856 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 98952 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 98952 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+              n0: 98952 0x11051D: main (main.c:80)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 296856 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 98952 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 98952 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+              n0: 98952 0x11051D: main (main.c:80)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 570550 in 674 places, all below massif's threshold (1.00%)
+  n8: 319800 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 82000 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 73800 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57311E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 24600 0x577AC5C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+     n0: 16400 in 4 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 24600 in 4 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 24600 in 4 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+     n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n0: 32800 in 3 places, all below massif's threshold (1.00%)
+   n1: 24600 0x4F3F49C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x58AE7DA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 24600 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 24600 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 24600 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+             n1: 24600 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+              n1: 24600 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+               n0: 24600 0x110430: main (main.c:57)
+   n1: 24600 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 24600 in 2 places, all below massif's threshold (1.00%)
+  n2: 213200 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n7: 205000 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 49200 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n2: 49200 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54266A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x549DE7F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5489277: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x55F92BC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5337150: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542661C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54B8A7D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54A7DF1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5489089: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 153456 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 74504 0x58027C2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 74504 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 54488 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 30024 in 4 places, all below massif's threshold (1.00%)
+      n1: 24464 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24464 in 5 places, all below massif's threshold (1.00%)
+     n0: 20016 in 4 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 31136 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31136 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 31136 in 9 places, all below massif's threshold (1.00%)
+   n2: 25576 0x580E476: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 25576 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 22240 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 22240 in 5 places, all below massif's threshold (1.00%)
+     n0: 3336 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 22240 in 8 places, all below massif's threshold (1.00%)
+  n2: 88040 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 87296 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 34224 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 34224 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 34224 in 11 places, all below massif's threshold (1.00%)
+    n1: 34224 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 34224 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 34224 in 11 places, all below massif's threshold (1.00%)
+    n0: 18848 in 28 places, all below massif's threshold (1.00%)
+   n0: 744 in 1 place, below massif's threshold (1.00%)
+  n1: 33792 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 33792 in 30 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 56624 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 56624 in 43 places, all below massif's threshold (1.00%)
+ n0: 21070 in 30 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=45469159
+mem_heap_B=2121044
+mem_heap_extra_B=76276
+mem_stacks_B=1600
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=46641334
+mem_heap_B=2123164
+mem_heap_extra_B=76572
+mem_stacks_B=2312
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=47791701
+mem_heap_B=2122620
+mem_heap_extra_B=76724
+mem_stacks_B=2400
+heap_tree=detailed
+n4: 2122620 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 1972222 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 593712 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 296856 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 98952 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 98952 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+              n0: 98952 0x11051D: main (main.c:80)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 296856 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 98952 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 98952 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+              n0: 98952 0x11051D: main (main.c:80)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 570566 in 674 places, all below massif's threshold (1.00%)
+  n8: 319800 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 82000 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 73800 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57311E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 24600 0x577AC5C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+     n0: 16400 in 4 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 24600 in 4 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n0: 24600 in 4 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x577AC70: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+     n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n0: 32800 in 3 places, all below massif's threshold (1.00%)
+   n1: 24600 0x4F3F49C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x58AE7DA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 24600 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 24600 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 24600 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+             n1: 24600 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+              n1: 24600 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+               n0: 24600 0x110430: main (main.c:57)
+   n1: 24600 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 24600 in 2 places, all below massif's threshold (1.00%)
+  n2: 213200 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n7: 205000 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 49200 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n2: 49200 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54266A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x549DE7F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5489277: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x55F92BC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5337150: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542661C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54B8A7D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54A7DF1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5489089: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n0: 8200 in 1 place, below massif's threshold (1.00%)
+  n4: 153456 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 85624 0x58027C2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 85624 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 61160 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 26688 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 26688 in 5 places, all below massif's threshold (1.00%)
+      n1: 24464 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24464 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24464 in 4 places, all below massif's threshold (1.00%)
+      n0: 10008 in 3 places, all below massif's threshold (1.00%)
+     n2: 23352 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 22240 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 22240 in 5 places, all below massif's threshold (1.00%)
+      n0: 1112 in 1 place, below massif's threshold (1.00%)
+     n0: 1112 in 3 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 31136 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31136 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 31136 in 9 places, all below massif's threshold (1.00%)
+   n2: 27800 0x580E476: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 27800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24464 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24464 in 5 places, all below massif's threshold (1.00%)
+     n0: 3336 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 8896 in 8 places, all below massif's threshold (1.00%)
+  n2: 87792 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 87048 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 34224 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 34224 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 34224 in 11 places, all below massif's threshold (1.00%)
+    n1: 33976 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 33976 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 33976 in 11 places, all below massif's threshold (1.00%)
+    n0: 18848 in 28 places, all below massif's threshold (1.00%)
+   n0: 744 in 1 place, below massif's threshold (1.00%)
+  n1: 33696 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 33696 in 30 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 56624 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 56624 in 43 places, all below massif's threshold (1.00%)
+ n0: 21070 in 30 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=32
+#-----------
+time=49517277
+mem_heap_B=2123372
+mem_heap_extra_B=77188
+mem_stacks_B=1800
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=50667645
+mem_heap_B=2163208
+mem_heap_extra_B=77464
+mem_stacks_B=1728
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=51818025
+mem_heap_B=2120916
+mem_heap_extra_B=77132
+mem_stacks_B=1672
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=52968387
+mem_heap_B=2133508
+mem_heap_extra_B=77180
+mem_stacks_B=960
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=54118763
+mem_heap_B=561136
+mem_heap_extra_B=14920
+mem_stacks_B=2104
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=55269139
+mem_heap_B=1249598
+mem_heap_extra_B=28042
+mem_stacks_B=2272
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=56994741
+mem_heap_B=1558882
+mem_heap_extra_B=50350
+mem_stacks_B=2104
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=58145119
+mem_heap_B=1726698
+mem_heap_extra_B=64534
+mem_stacks_B=2392
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=59870668
+mem_heap_B=1829476
+mem_heap_extra_B=72724
+mem_stacks_B=2272
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=62171397
+mem_heap_B=2146836
+mem_heap_extra_B=75636
+mem_stacks_B=1128
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=63896992
+mem_heap_B=2159684
+mem_heap_extra_B=75636
+mem_stacks_B=1216
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=65622537
+mem_heap_B=2136708
+mem_heap_extra_B=76020
+mem_stacks_B=1856
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=67348139
+mem_heap_B=2136636
+mem_heap_extra_B=76460
+mem_stacks_B=1936
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=68498501
+mem_heap_B=2133508
+mem_heap_extra_B=76268
+mem_stacks_B=3056
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=70224091
+mem_heap_B=2135628
+mem_heap_extra_B=76484
+mem_stacks_B=2256
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=71374467
+mem_heap_B=2135492
+mem_heap_extra_B=76836
+mem_stacks_B=2272
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=73100024
+mem_heap_B=2135492
+mem_heap_extra_B=77348
+mem_stacks_B=2296
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=75400738
+mem_heap_B=2135836
+mem_heap_extra_B=77372
+mem_stacks_B=1744
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=76551118
+mem_heap_B=1707418
+mem_heap_extra_B=64302
+mem_stacks_B=3032
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=77701489
+mem_heap_B=591728
+mem_heap_extra_B=17808
+mem_stacks_B=2208
+heap_tree=detailed
+n5: 591728 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n11: 474664 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n10: 221400 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n4: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A09723: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A114B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 16400 0x5A08EB3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A114F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 16400 0x5A08FD8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16400 0x5A11592: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+        n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+             n0: 8200 0x1103D9: main (main.c:49)
+    n1: 8200 0x59CF0C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+   n2: 32800 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n4: 24600 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5BB41FC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x599E7A7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x598FAE3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+     n1: 8200 0x4F154A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+        n0: 8200 0x1103D9: main (main.c:49)
+     n1: 8200 0x5772533: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 8200 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 8200 0x4FDC79F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4FC853A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4FAEC87: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 8200 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 8200 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 8200 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 8200 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 8200 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+    n1: 8200 0x4EE7BED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+        n0: 8200 0x1103D9: main (main.c:49)
+   n1: 24600 0x4F3F49C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x58AE7DA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 24600 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 24600 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 24600 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+             n1: 24600 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+              n1: 24600 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+               n0: 24600 0x110430: main (main.c:57)
+   n1: 24600 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 24600 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 16400 0x4F1FC9F: Z3_mk_and (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x10E9F6: uniqueVertexAtEachIndex(_Z3_context*, Graph*, unsigned int, int) (Solving.c:363)
+       n1: 8200 0x10D779: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:45)
+        n0: 8200 0x110430: main (main.c:57)
+      n1: 8200 0x10D82E: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:53)
+       n0: 8200 0x110430: main (main.c:57)
+     n1: 8200 0x595D954: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x595E7E3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x58F9362: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x58FB416: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x58FBEE3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x5802C23: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x588D61C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x58934C8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x58934C8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 8200 0x58945DE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 8200 0x5897632: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                n1: 8200 0x5897B38: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                 n1: 8200 0x56FF367: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                  n1: 8200 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                   n1: 8200 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                    n1: 8200 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                     n1: 8200 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+                      n1: 8200 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                       n1: 8200 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                        n0: 8200 0x110430: main (main.c:57)
+   n1: 16400 0x5A11444: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 16400 0x5A0B903: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5A0BF75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5A0C529: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 8200 0x1103D9: main (main.c:49)
+      n1: 8200 0x5A0C4F9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5667688: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F14AED: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 8200 0x1103D9: main (main.c:49)
+   n1: 16400 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 16400 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EE7BFE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+      n1: 8200 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 8200 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n2: 8200 0x4FDC79F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4FC853A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4FAEC87: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 8200 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 8200 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 8200 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 8200 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 8200 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 8200 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+         n0: 0 in 1 place, below massif's threshold (1.00%)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 16400 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 16400 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4EE7BFE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+         n0: 8200 0x1103D9: main (main.c:49)
+     n1: 8200 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 8200 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 8200 0x4FDC79F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4FC853A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4FAEC87: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 8200 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 8200 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 8200 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 8200 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 8200 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 16400 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16400 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 16400 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EE7BFE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F15494: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+          n0: 8200 0x1103D9: main (main.c:49)
+      n1: 8200 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n2: 8200 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n2: 8200 0x4FDC79F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x4FC853A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4FAEC87: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 8200 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 8200 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 8200 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 8200 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 8200 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 8200 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+         n0: 0 in 1 place, below massif's threshold (1.00%)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 8200 0x58AE6AB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+            n1: 8200 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+             n1: 8200 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+              n0: 8200 0x110430: main (main.c:57)
+   n1: 8200 0x5B602FD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B92787: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B79EF9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EB006C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x5BCD28B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x4F16542: Z3_mk_config (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x10FFD8: makeContext() (Z3Tools.c:8)
+          n0: 8200 0x1103D9: main (main.c:49)
+  n0: 106208 in 672 places, all below massif's threshold (1.00%)
+  n3: 28912 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 17792 0x5802968: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 17792 in 32 places, all below massif's threshold (1.00%)
+   n1: 6672 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 6672 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 6672 in 9 places, all below massif's threshold (1.00%)
+   n0: 4448 in 9 places, all below massif's threshold (1.00%)
+  n2: 24600 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 16400 0x5B78A1A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 16400 0x5B6F9E7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x5B7BE17: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x4EAF6F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4EAE261: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 8200 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 8200 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 8200 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 8200 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 8200 0x10FFE8: makeContext() (Z3Tools.c:9)
+              n0: 8200 0x1103D9: main (main.c:49)
+     n1: 8200 0x4F1E769: Z3_mk_string_symbol (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x110025: mk_var(_Z3_context*, char const*, _Z3_sort*) (Z3Tools.c:16)
+       n1: 8200 0x110079: mk_bool_var(_Z3_context*, char const*) (Z3Tools.c:23)
+        n1: 8200 0x10D6F7: getNodeVariable(_Z3_context*, int, int, int, int) (Solving.c:35)
+         n1: 8200 0x10E959: uniqueVertexAtEachIndex(_Z3_context*, Graph*, unsigned int, int) (Solving.c:355)
+          n1: 8200 0x10D779: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:45)
+           n1: 8200 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+            n0: 8200 0x11051D: main (main.c:80)
+   n2: 8200 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 8200 0x5B6F636: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 8200 0x4EB0067: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 8200 0x5BCD28B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 8200 0x4F16542: Z3_mk_config (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 8200 0x10FFD8: makeContext() (Z3Tools.c:8)
+         n0: 8200 0x1103D9: main (main.c:49)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+  n1: 21136 0x5A14700: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 21136 0x5A067DC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 20488 0x5A0ADB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 20488 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 20488 0x586EF5E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 20488 0x586F568: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 20488 0x586F9F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 20488 0x54A61B6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 20488 0x5489174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 20488 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 20488 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 20488 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 20488 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 20488 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                n1: 20488 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                 n1: 20488 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                  n1: 20488 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                   n1: 20488 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                    n1: 20488 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+                     n1: 20488 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                      n1: 20488 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                       n1: 20488 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                        n0: 20488 0x110430: main (main.c:57)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 648 in 5 places, all below massif's threshold (1.00%)
+  n1: 18488 0x5B85363: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 18488 0x5B7BE32: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 6184 in 27 places, all below massif's threshold (1.00%)
+    n2: 6152 0x4EAF352: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6152 0x4EADFE9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6152 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6152 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6152 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6152 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6152 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 6152 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 6152 0x1103D9: main (main.c:49)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+    n1: 6152 0x4EAFCAC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6152 0x4EAE261: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6152 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6152 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6152 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6152 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6152 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 6152 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 6152 0x1103D9: main (main.c:49)
+  n2: 16392 0x5B6F8C9: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 16392 0x5B7BE17: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 16392 0x4EAFC5A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 16392 0x4EAE261: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 16392 0x5BDDA4E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 16392 0x5BDBD05: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 16392 0x55715A2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 16392 0x4F153E2: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 16392 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 16392 0x10FFE8: makeContext() (Z3Tools.c:9)
+            n0: 16392 0x1103D9: main (main.c:49)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 5 places, all below massif's threshold (1.00%)
+  n2: 14880 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 14880 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 6448 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6448 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 6448 in 11 places, all below massif's threshold (1.00%)
+    n1: 6448 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6448 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 6448 in 11 places, all below massif's threshold (1.00%)
+    n0: 1984 in 28 places, all below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n1: 8416 0x5B0BBEC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 8416 in 4 places, all below massif's threshold (1.00%)
+  n2: 7704 0x5B7BB83: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 6160 0x5BDA629: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 6160 in 3 places, all below massif's threshold (1.00%)
+   n0: 1544 in 1 place, below massif's threshold (1.00%)
+  n2: 6528 0x5371910: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 6528 0x5A033BD: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 6144 0x5A0685A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 6144 0x59CEE75: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 6144 0x5A00C91: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 6144 0x598F9B0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 6144 0x4F14AFC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 6144 0x4F15C29: Z3_mk_context (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 6144 0x10FFE8: makeContext() (Z3Tools.c:9)
+           n0: 6144 0x1103D9: main (main.c:49)
+    n0: 384 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n2: 23960 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 12800 0x4F121F7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 12800 0x4F1EDB6: Z3_mk_const (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 12800 0x110040: mk_var(_Z3_context*, char const*, _Z3_sort*) (Z3Tools.c:17)
+     n1: 12800 0x110079: mk_bool_var(_Z3_context*, char const*) (Z3Tools.c:23)
+      n2: 12800 0x10D6F7: getNodeVariable(_Z3_context*, int, int, int, int) (Solving.c:35)
+       n1: 12800 0x10E959: uniqueVertexAtEachIndex(_Z3_context*, Graph*, unsigned int, int) (Solving.c:355)
+        n1: 12800 0x10D779: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:45)
+         n1: 12800 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+          n0: 12800 0x11051D: main (main.c:80)
+       n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 11160 in 42 places, all below massif's threshold (1.00%)
+ n1: 18720 0x6903B3E: __new_exitfn (cxa_atexit.c:101)
+  n2: 18720 0x6903BE7: __cxa_atexit (cxa_atexit.c:35)
+   n1: 15600 0x400F798: call_init.part.0 (dl-init.c:72)
+    n1: 15600 0x400F8A9: _dl_init (dl-init.c:30)
+     n1: 15600 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+      n1: 15600 0x2: ???
+       n1: 15600 0xFFEFFFEA9: ???
+        n1: 15600 0xFFEFFFEB5: ???
+         n1: 15600 0xFFEFFFEB8: ???
+          n0: 15600 0xFFEFFFEE0: ???
+   n0: 3120 in 3 places, all below massif's threshold (1.00%)
+ n0: 1680 in 29 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=52
+#-----------
+time=78851869
+mem_heap_B=1260548
+mem_heap_extra_B=29068
+mem_stacks_B=2080
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=80002236
+mem_heap_B=1460684
+mem_heap_extra_B=44644
+mem_stacks_B=1976
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=81152605
+mem_heap_B=1656602
+mem_heap_extra_B=58550
+mem_stacks_B=2040
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=82302970
+mem_heap_B=1768690
+mem_heap_extra_B=66870
+mem_stacks_B=2184
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=83453354
+mem_heap_B=1829564
+mem_heap_extra_B=72684
+mem_stacks_B=2264
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=84603733
+mem_heap_B=1832420
+mem_heap_extra_B=72876
+mem_stacks_B=1976
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=85754104
+mem_heap_B=2147396
+mem_heap_extra_B=75684
+mem_stacks_B=1136
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=86904491
+mem_heap_B=2159684
+mem_heap_extra_B=75684
+mem_stacks_B=1080
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=88054892
+mem_heap_B=2160524
+mem_heap_extra_B=75692
+mem_stacks_B=1224
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=89205260
+mem_heap_B=2136708
+mem_heap_extra_B=76228
+mem_stacks_B=1768
+heap_tree=detailed
+n4: 2136708 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 1982046 0x5BCD620: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n2: 593712 0x54AA439: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 296856 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 98952 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 98952 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+              n0: 98952 0x11051D: main (main.c:80)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 296856 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 296856 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n3: 296856 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 98952 0x527FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+               n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                 n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                  n0: 98952 0x11051D: main (main.c:80)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x54517D1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x527FDC5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x5279853: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4FDBE96: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x4FAECAB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 98952 0x4FAE715: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 98952 0x4FAE90D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+             n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+              n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+               n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+                n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+                 n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+                  n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+                   n0: 98952 0x11051D: main (main.c:80)
+                  n0: 0 in 1 place, below massif's threshold (1.00%)
+      n1: 98952 0x53F2D0C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 98952 0x4FAEA6A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 98952 0x4EDE935: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 98952 0x4EDF8B9: Z3_solver_assert (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 98952 0x1100C5: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:29)
+           n1: 98952 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+            n2: 98952 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+             n1: 98952 0x10D916: graphsToFullFormula(_Z3_context*, Graph*, unsigned int) (Solving.c:76)
+              n0: 98952 0x11051D: main (main.c:80)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 571846 in 676 places, all below massif's threshold (1.00%)
+  n8: 319800 0x5B7467E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n2: 82000 0x5B61CB5: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n3: 73800 0x5B94C57: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 32800 0x57311E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n2: 32800 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x588D42B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x588D22C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 4 places, all below massif's threshold (1.00%)
+       n0: 8200 in 1 place, below massif's threshold (1.00%)
+     n1: 24600 0x5772533: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 16400 in 4 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n1: 57400 0x5A06C95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 57400 in 4 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B092BA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B1E4C1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B0FD95: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 32800 0x5B0FFD1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n2: 32800 0x5B0A155: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 2 places, all below massif's threshold (1.00%)
+      n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n1: 32800 0x5B1E3D7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 32800 0x5B0A128: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5772549: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x571F4BF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n0: 24600 in 2 places, all below massif's threshold (1.00%)
+     n0: 8200 in 2 places, all below massif's threshold (1.00%)
+   n0: 32800 in 3 places, all below massif's threshold (1.00%)
+   n1: 24600 0x4F3F49C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x58AE7DA: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x58ABE82: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x58AC250: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x58AD40F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x56FF29E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n1: 24600 0x5700174: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+          n1: 24600 0x5703A4F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+           n1: 24600 0x4EDFE63: Z3_solver_check (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+            n1: 24600 0x1100D8: isFormulaSat(_Z3_context*, _Z3_ast*) (Z3Tools.c:31)
+             n1: 24600 0x10FBE3: sat_checker(_Z3_context*, _Z3_ast*) (Solving.c:601)
+              n1: 24600 0x10D87F: graphsToPathFormula(_Z3_context*, Graph*, unsigned int, int) (Solving.c:62)
+               n0: 24600 0x110430: main (main.c:57)
+   n1: 24600 0x5A0ACC6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 24600 0x5A0A7AF: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 24600 in 2 places, all below massif's threshold (1.00%)
+  n2: 221400 0x5B872E4: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n7: 205000 0x5B78974: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n2: 49200 0x54AA477: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n2: 49200 0x54AA642: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54891B7: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+     n1: 24600 0x54891E6: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54266A8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x549DE7F: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5489277: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x55F92BC: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x5337150: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x542661C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n1: 24600 0x54B8A7D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 24600 0x54A7DF1: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n1: 24600 0x5489089: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+       n1: 24600 0x542663A: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+        n1: 24600 0x5400CD0: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+         n0: 24600 in 3 places, all below massif's threshold (1.00%)
+    n0: 8200 in 1 place, below massif's threshold (1.00%)
+   n0: 16400 in 1 place, below massif's threshold (1.00%)
+  n3: 153456 0x58F4F33: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n1: 67832 0x5802968: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n0: 67832 in 32 places, all below massif's threshold (1.00%)
+   n0: 54488 in 9 places, all below massif's threshold (1.00%)
+   n1: 31136 0x593055E: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 31136 0x57F8CDB: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n0: 31136 in 9 places, all below massif's threshold (1.00%)
+  n2: 88040 0x5A2697C: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n3: 87296 0x590245B: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+    n1: 34224 0x58F6FA3: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 34224 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 34224 in 11 places, all below massif's threshold (1.00%)
+    n1: 34224 0x58F6FCE: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+     n1: 34224 0x58F4F58: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+      n0: 34224 in 11 places, all below massif's threshold (1.00%)
+    n0: 18848 in 28 places, all below massif's threshold (1.00%)
+   n0: 744 in 1 place, below massif's threshold (1.00%)
+  n1: 33792 0x590244D: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+   n0: 33792 in 30 places, all below massif's threshold (1.00%)
+ n1: 72704 0x60BC9BE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22)
+  n1: 72704 0x400F798: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x400F8A9: _dl_init (dl-init.c:30)
+    n1: 72704 0x4000C58: ??? (in /lib/x86_64-linux-gnu/ld-2.24.so)
+     n1: 72704 0x2: ???
+      n1: 72704 0xFFEFFFEA9: ???
+       n1: 72704 0xFFEFFFEB5: ???
+        n1: 72704 0xFFEFFFEB8: ???
+         n0: 72704 0xFFEFFFEE0: ???
+ n1: 60888 0x5BCD6D8: ??? (in /usr/lib/x86_64-linux-gnu/libz3.so.4)
+  n0: 60888 in 43 places, all below massif's threshold (1.00%)
+ n0: 21070 in 30 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=62
+#-----------
+time=90355631
+mem_heap_B=2135548
+mem_heap_extra_B=76636
+mem_stacks_B=1856
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=91505994
+mem_heap_B=2133508
+mem_heap_extra_B=76812
+mem_stacks_B=1904
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=92656357
+mem_heap_B=2133508
+mem_heap_extra_B=76780
+mem_stacks_B=1800
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=93806725
+mem_heap_B=2135700
+mem_heap_extra_B=77180
+mem_stacks_B=2320
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=94957088
+mem_heap_B=2136788
+mem_heap_extra_B=77644
+mem_stacks_B=2216
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=96107503
+mem_heap_B=2135116
+mem_heap_extra_B=77572
+mem_stacks_B=2312
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=97257876
+mem_heap_B=2135564
+mem_heap_extra_B=77724
+mem_stacks_B=1800
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=98408249
+mem_heap_B=2136716
+mem_heap_extra_B=77860
+mem_stacks_B=1784
+heap_tree=empty
