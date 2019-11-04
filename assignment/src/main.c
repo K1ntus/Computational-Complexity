@@ -69,8 +69,8 @@ int main(int argc, char *argv[])
 
         // Z3_model model = getModelFromSatFormula(ctx, fullFormula);
 
-        if (mode_paths_found)
-            printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
+        // if (mode_paths_found)
+        //     printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
 
         if(mode_save_dot_file){
             mkdir("output", 0755);

@@ -11,6 +11,7 @@ extern bool mode_extended_verbose;
 extern bool mode_first_depth_sat;
 extern bool mode_every_solutions;
 extern bool mode_explore_decreasing_order;
+extern bool mode_paths_found;
 
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula, int k);
@@ -80,12 +81,17 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
         }
         Z3_ast tmp_formula = graphsToPathFormula(ctx, graphs, numGraphs, pathLength);
         //Improvement: the final formule contains only satisfiable sub-formule.
+
         if (mode_first_depth_sat && mode_every_solutions)
         {
             if (sat_checker_print(ctx, tmp_formula, pathLength) == 1)
             {
                 graphFormula[graphFormula_counter] = tmp_formula;
                 graphFormula_counter++;
+                if (mode_paths_found){
+                    Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
+                    printPathsFromModel(ctx, tmpModel, graphs, numGraphs, pathLength);
+                }
             }
         }
         else if (mode_first_depth_sat)
@@ -94,6 +100,11 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
             {
                 graphFormula[graphFormula_counter] = tmp_formula;
                 graphFormula_counter++;
+                if (mode_paths_found)
+                {
+                    Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
+                    printPathsFromModel(ctx, tmpModel, graphs, numGraphs, pathLength);
+                }
                 break;
             }
         }
@@ -104,10 +115,16 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
                 graphFormula[graphFormula_counter] = tmp_formula;
                 graphFormula_counter++;
                 sol_pathLength = pathLength;
+                if (mode_paths_found)
+                {
+                    Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
+                    printPathsFromModel(ctx, tmpModel, graphs, numGraphs, pathLength);
+                }
                 break;
             }
         }
     }
+
     if (graphFormula_counter == 0)
     {
         printf("No simple valid path of equal length in all graphs\n");
