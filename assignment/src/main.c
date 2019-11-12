@@ -28,7 +28,7 @@ bool mode_save_dot_file = false;
 // bool mode_save_dot_file = false;
 
 int defineUserMode(int argc, char* argv[]);
-int GetMaxK(Graph * graphs, int nb_graphs);
+
 
 int main(int argc, char *argv[])
 {
@@ -243,21 +243,3 @@ int defineUserMode(int argc, char * argv[]){
 
 
 
-int GetMaxK(Graph * graphs, int nb_graphs) {
-    if(nb_graphs < 0)
-        return 0;
-    int min_value = orderG(graphs[0]);
-    if(nb_graphs < 1)
-        return min_value;
-
-
-    for(int i = 1; i < nb_graphs; i++){
-        if(min_value > orderG(graphs[i])){
-            min_value = orderG(graphs[i]);
-        }
-    }
-
-    printf("Max K Found = %d\n", min_value);
-
-    return min_value;
-}
