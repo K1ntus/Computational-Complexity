@@ -148,7 +148,7 @@ void printHelp()
         "   -a  [If -s present] Compute every length instead of the first found.\n"
         "\n"
         "* FILE:\n"
-        "   -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
+        "   -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'output'.\n"
         "   -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
     );
 }
