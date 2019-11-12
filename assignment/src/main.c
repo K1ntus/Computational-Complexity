@@ -61,9 +61,9 @@ int main(int argc, char *argv[])
         }
         
 
-        if(mode_save_dot_file){
-            createDotFromModel(ctx, model, graphList, nbGraph, pathLength, fileName_buffer);
-        }
+        // if(mode_save_dot_file){
+        //     createDotFromModel(ctx, model, graphList, nbGraph, pathLength, fileName_buffer);
+        // }
     }
 
 
