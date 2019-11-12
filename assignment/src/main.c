@@ -26,6 +26,7 @@ bool mode_every_solutions = false;
 
 bool mode_save_dot_file = false;
 bool mode_custom_namefile = false;
+char * address_to_filename = NULL;
 
 int defineUserMode(int argc, char* argv[],char*val);
 
@@ -34,6 +35,7 @@ int main(int argc, char *argv[])
 {
     char * fileName_buffer = (char*) malloc(sizeof(char)*1024);
     int begin_args_graph = defineUserMode(argc, argv, fileName_buffer);
+    address_to_filename = fileName_buffer;
 
     Graph *graphList = (Graph *)malloc(sizeof(Graph) * (argc - 1));
     int nbGraph = 0;
@@ -60,7 +62,6 @@ int main(int argc, char *argv[])
         
 
         if(mode_save_dot_file){
-            mkdir("output", 0755);
             createDotFromModel(ctx, model, graphList, nbGraph, pathLength, fileName_buffer);
         }
     }
@@ -193,6 +194,7 @@ int defineUserMode(int argc, char * argv[], char* fileName_buffer){
         if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-f"))) { // activate verbose
             mode_save_dot_file = true;
             begin_args_graph += 1;
+            mkdir("output", 0755);
         }
 
         if ((argc > begin_args_graph && !strcmp (argv[begin_args_graph], "-a"))) { // activate verbose
@@ -213,7 +215,6 @@ int defineUserMode(int argc, char * argv[], char* fileName_buffer){
         if ((argc > begin_args_graph +1 && !strcmp (argv[begin_args_graph], "-o"))) { // activate verbose
             mode_custom_namefile = true;
             strcpy(fileName_buffer, argv[begin_args_graph+1]);
-            // fileName_buffer = argv[begin_args_graph+1];
             begin_args_graph += 2;
         }
 
