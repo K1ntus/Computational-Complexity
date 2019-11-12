@@ -25,36 +25,28 @@ bool mode_explore_decreasing_order = false;
 bool mode_every_solutions = false;
 
 bool mode_save_dot_file = false;
-// bool mode_save_dot_file = false;
+bool mode_custom_namefile = false;
 
-int defineUserMode(int argc, char* argv[]);
+int defineUserMode(int argc, char* argv[],char*val);
 
 
 int main(int argc, char *argv[])
 {
-    int begin_args_graph = defineUserMode(argc, argv);
+    char * fileName_buffer = (char*) malloc(sizeof(char)*1024);
+    int begin_args_graph = defineUserMode(argc, argv, fileName_buffer);
 
     Graph *graphList = (Graph *)malloc(sizeof(Graph) * (argc - 1));
-    // printf("\n\n*******************\n* [INFO] Graph Loading ...\n*******************\n\n");
     int nbGraph = 0;
     for (; nbGraph + begin_args_graph < argc; nbGraph++)
     {
-        // printf("- Loading Graph: %d\n", nbGraph);
         Graph tmp = loadGraph(argv[begin_args_graph + nbGraph]);
         graphList[nbGraph] = tmp;
     }
 
-    // printf("\n\n*******************\n* [INFO] %d graph loaded.\n*******************\n\n", nbGraph);
+   
 
     Z3_context ctx = makeContext();
-    // printf("* [INFO] Creating the context. Must be destroyed at the end of the program.\n");
 
-
-    // printf("\n\n*******************\n* [INFO] Sat Generation ...\n*******************");
-
-    // printf("\n\n*******************\n* [INFO] graphsToPathFormula Test ...\n*******************\n\n");
-    // int pathLength = GetMaxK(graphList, nbGraph); //Make variable
-    // Z3_ast res = graphsToPathFormula(ctx, graphList, nbGraph, pathLength);
     Z3_ast fullFormula = graphsToFullFormula(ctx, graphList, nbGraph);
 
     if (fullFormula)
@@ -65,30 +57,13 @@ int main(int argc, char *argv[])
         {
             printf("Full Formula : %s\n", Z3_ast_to_string(ctx, fullFormula));
         }
-        // printf("\n\n*******************\n* [INFO] Sat Generated.\n*******************\n\n");
-
-        // Z3_model model = getModelFromSatFormula(ctx, fullFormula);
-
-        // if (mode_paths_found)
-        //     printPathsFromModel(ctx, model, graphList, nbGraph, pathLength);
+        
 
         if(mode_save_dot_file){
             mkdir("output", 0755);
-            createDotFromModel(ctx, model, graphList, nbGraph, pathLength, NULL);
+            createDotFromModel(ctx, model, graphList, nbGraph, pathLength, fileName_buffer);
         }
     }
-
-
-    //getSolutionLengthFromModel test
-    // printf("\n\n*******************\n* [INFO] getSolutionLengthFromModel Test ...\n*******************\n\n");
-    // if (fullFormula != NULL){
-    //     Z3_model solutionLength_model = getModelFromSatFormula(ctx, fullFormula);
-    //     int solution_length = getSolutionLengthFromModel(ctx, solutionLength_model, graphList);
-    //     printf("Solutin length %d\n", solution_length);
-    // }else{
-    //     printf("Can't find a solution length : failed to create model\n");
-    // }
-        
 
 
     Z3_del_context(ctx);
@@ -173,11 +148,11 @@ void printHelp()
         "\n"
         "* FILE:\n"
         "   -f Writes the result with colors in a .dot file. See next option for the name. These files will be produced in the folder 'sol'.\n"
-        "   TODO: -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
+        "   -o Writes the output in \"NAME-lLENGTH.dot\" where LENGTH is the length of the solution. Writes several files in this format if both -s and -a are present. [if not present: \"result-lLENGTH.dot\"]\n"
     );
 }
 
-int defineUserMode(int argc, char * argv[]){
+int defineUserMode(int argc, char * argv[], char* fileName_buffer){
 
     int begin_args_graph = 1;
     if (argc < 2)
@@ -234,6 +209,14 @@ int defineUserMode(int argc, char * argv[]){
             mode_explore_decreasing_order = true;
             begin_args_graph += 1;
         }
+
+        if ((argc > begin_args_graph +1 && !strcmp (argv[begin_args_graph], "-o"))) { // activate verbose
+            mode_custom_namefile = true;
+            strcpy(fileName_buffer, argv[begin_args_graph+1]);
+            // fileName_buffer = argv[begin_args_graph+1];
+            begin_args_graph += 2;
+        }
+
 
 
     }

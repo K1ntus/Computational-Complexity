@@ -14,12 +14,4 @@ digraph G{
 		G0_s1->G0_q2->G0_t1 [color=blue];
 		label = "Graphe 0";
 	}
-	subgraph 1{
-		G1_s2 [initial=1,color=green];
-		G1_t2 [final=1,color=red];
-		G1_t2->G1_s2;
-		G1_q;
-		G1_s2->G1_q->G1_t2 [color=blue];
-		label = "Graphe 1";
-	}
 }
