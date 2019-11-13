@@ -12,8 +12,10 @@ extern bool mode_first_depth_sat; //option -s
 extern bool mode_every_solutions; //option -a
 extern bool mode_explore_decreasing_order; //option -d
 extern bool mode_paths_found; //option -t
-extern bool mode_save_dot_file;
-extern char * address_to_filename;
+
+extern bool mode_save_dot_file; // -f
+extern bool mode_custom_namefile; // -o <name>
+extern char * address_to_filename;  //Used for file
 
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula, int k);
@@ -92,7 +94,11 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
                 Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
                 char * name=  address_to_filename;
                 char buf[1024];
-                snprintf(buf, 1024, "%s%d", name, k);
+                if(!mode_custom_namefile){
+                    snprintf(buf, 1024, "result-l%d", k);
+                } else {
+                    snprintf(buf, 1024, "%s-l%d", name, k);
+                }
                 createDotFromModel(ctx, tmpModel, graphs, numGraphs, pathLength, buf);
             }
         }
@@ -212,7 +218,8 @@ void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGr
     } else{
         printf("-> Output File = %s\n", name);
         char buffer[1024] = "output/";
-        strcat(buffer, name);
+        // if(mode_custom_namefile)
+            strcat(buffer, name);
         strcat(buffer, ".dot");
         save_file = fopen(buffer, "w");
     }
