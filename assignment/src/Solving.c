@@ -102,17 +102,18 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
                 createDotFromModel(ctx, tmpModel, graphs, numGraphs, pathLength, buf);
             }
         }
+
         if (mode_first_depth_sat && mode_every_solutions)
         {
             if (sat_checker_print(ctx, tmp_formula, pathLength) == 1)
             {
                 graphFormulaArr[graphFormulaCounter] = tmp_formula;
                 graphFormulaCounter++;
+
                 if (mode_paths_found){
                     Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
                     printPathsFromModel(ctx, tmpModel, graphs, numGraphs, pathLength);
                 }
-
             }
         }
         else if (mode_first_depth_sat)
@@ -216,10 +217,8 @@ void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGr
     if (name == 0x0){
         save_file = fopen("output/NAME-lLENGTH.dot", "w");
     } else{
-        printf("-> Output File = %s\n", name);
         char buffer[1024] = "output/";
-        // if(mode_custom_namefile)
-            strcat(buffer, name);
+        strcat(buffer, name);
         strcat(buffer, ".dot");
         save_file = fopen(buffer, "w");
     }
