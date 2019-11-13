@@ -132,8 +132,8 @@ void printHelp()
     printf(
         "Usage:\n"
         "./equalPath -v/V <verbose flag> -F <full formula>\n"
-        "       -t <display paths found> -f <output file>\n"
-        "       -o <NAME.dot> <GRAPHS.dot TO TEST>\n"
+        "       -t <display paths found> -f \n"
+        "       -o <output file> <List Of GRAPHS.dot To Test>\n"
         "Example:\n"
         "./equalPath -v -F -t graphs/assignment-instance/triangle.dot graphs/assignment-instance/G1.dot \n"
         "Options:\n"

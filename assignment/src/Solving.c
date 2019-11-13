@@ -204,16 +204,15 @@ void createDotFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGr
 {
     FILE *save_file;
     if (name == 0x0){
-
-    printf("Output File = NULL\n");
         save_file = fopen("output/NAME-lLENGTH.dot", "w");
     } else{
-    printf("Output File = %s\n", name);
-    char buffer[1024] = "output/";
-    strcat(buffer, name);
-    strcat(buffer, ".dot");
+        printf("-> Output File = %s\n", name);
+        char buffer[1024] = "output/";
+        strcat(buffer, name);
+        strcat(buffer, ".dot");
         save_file = fopen(buffer, "w");
     }
+
     int file_descriptor = fileno(save_file);
     int fd_stdout = dup(1);
     dup2(file_descriptor, 1);
