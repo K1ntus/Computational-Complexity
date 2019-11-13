@@ -85,6 +85,17 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
         Z3_ast tmp_formula = graphsToPathFormula(ctx, graphs, numGraphs, pathLength);
         //Improvement: the final formule contains only satisfiable sub-formule.
 
+
+        if (sat_checker_print(ctx, tmp_formula, pathLength) == 1)
+        {
+            if(mode_save_dot_file){
+                Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
+                char * name=  address_to_filename;
+                char buf[1024];
+                snprintf(buf, 1024, "%s%d", name, k);
+                createDotFromModel(ctx, tmpModel, graphs, numGraphs, pathLength, buf);
+            }
+        }
         if (mode_first_depth_sat && mode_every_solutions)
         {
             if (sat_checker_print(ctx, tmp_formula, pathLength) == 1)
@@ -96,13 +107,6 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
                     printPathsFromModel(ctx, tmpModel, graphs, numGraphs, pathLength);
                 }
 
-                if(mode_save_dot_file){
-                    Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
-                    char * name=  address_to_filename;
-                    char buf[1024];
-                    snprintf(buf, 1024, "%s%d", name, k);
-                    createDotFromModel(ctx, tmpModel, graphs, numGraphs, pathLength, buf);
-                }
             }
         }
         else if (mode_first_depth_sat)
