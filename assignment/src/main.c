@@ -59,11 +59,7 @@ int main(int argc, char *argv[])
         {
             printf("Full Formula : %s\n", Z3_ast_to_string(ctx, fullFormula));
         }
-        
-
-        // if(mode_save_dot_file){
-        //     createDotFromModel(ctx, model, graphList, nbGraph, pathLength, fileName_buffer);
-        // }
+    
     }
 
 
