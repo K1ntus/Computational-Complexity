@@ -35,7 +35,6 @@ Z3_ast ExistsPath(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pat
 
 void displayPath(Graph g, int graphNum, int *path, int pathLength);
 
-int *sortDotPath(Graph g, int nodes[], int pathLength);
 int *getDotPathsFromModel(Z3_context ctx, Z3_model model, Graph *graphs, int numGraph, int pathLength, int graph_number);
 
 void testSubformula(Z3_context ctx, Z3_ast phi1_1, Z3_ast phi1_2, Z3_ast phi1_3, Z3_ast valide_formula, Z3_ast edge_between_nodes, int k);
@@ -396,27 +395,6 @@ void displayPath(Graph g, int graphNum, int *path, int nbVertex)
     }
 }
 
-int *sortDotPath(Graph g, int nodes[], int nb_vertex_positions)
-{
-    int *path = (int *)malloc(sizeof(int) * nb_vertex_positions);
-    // printf("nb_vertex %d\n",nb_vertex_positions);
-    //first index contains a path's source
-    path[0] = nodes[0];
-    int path_index = 0;
-    for (int path_index = 0; path_index < nb_vertex_positions; path_index++)
-    {
-        for (int node_index = 1; node_index < nb_vertex_positions; node_index++)
-        {
-            if (isEdge(g, path[path_index], nodes[node_index]))
-            {
-                path[path_index + 1] = nodes[node_index];
-                break;
-            }
-        }
-    }
-
-    return path;
-}
 
 Z3_ast uniqueVertexAtEachIndex(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
 {
