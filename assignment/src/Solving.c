@@ -88,7 +88,7 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
         //Improvement: the final formule contains only satisfiable sub-formule.
 
 
-        if (sat_checker_print(ctx, tmp_formula, pathLength) == 1)
+        if (sat_checker(ctx, tmp_formula, pathLength) == 1)
         {
             if(mode_save_dot_file){
                 Z3_model tmpModel = getModelFromSatFormula(ctx, tmp_formula);
