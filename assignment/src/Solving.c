@@ -17,6 +17,8 @@ extern bool mode_save_dot_file; // -f
 extern bool mode_custom_namefile; // -o <name>
 extern char * address_to_filename;  //Used for file
 
+int __maxK = 0;
+
 Z3_ast graphsToValideFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength);
 int sat_checker(Z3_context ctx, Z3_ast formula, int k);
 int sat_checker_print(Z3_context ctx, Z3_ast formula, int k);
@@ -49,6 +51,7 @@ Z3_ast getNodeVariable(Z3_context ctx, int number, int position, int k, int node
 
 Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs, int pathLength)
 {
+    // printf("GraphToPahFormula begin.\n");
     Z3_ast valide_formula = graphsToValideFormula(ctx, graphs, numGraphs, pathLength);
     Z3_ast phi1_1 = uniqueVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
     Z3_ast phi1_2 = atLeastOneVertexAtEachIndex(ctx, graphs, numGraphs, pathLength);
@@ -59,6 +62,7 @@ Z3_ast graphsToPathFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     // testSubformula(ctx, phi1_1, phi1_2, phi1_3, valide_formula, edge_between_nodes,pathLength);
     Z3_ast tmp[5] = {phi1_1, phi1_2, phi1_3, edge_between_nodes, valide_formula};
     Z3_ast res_formula = Z3_mk_and(ctx, 5, tmp);
+    // printf("GraphToPahFormula done.\n");
     return res_formula;
 }
 
@@ -68,6 +72,7 @@ Z3_ast graphsToFullFormula(Z3_context ctx, Graph *graphs, unsigned int numGraphs
     Z3_ast res_final_formula; //The final formula which concatene every graphs formula that is satisfiable
     //Pick the number of first graph's vertex -1 as the max pathLength.
     int max_pathLength = GetMaxK(graphs, numGraphs);
+    __maxK = GetMaxK(graphs, numGraphs);
     //Array used to store a satisfaible SAT formule for each pathLength in max_pathLength range
     Z3_ast graphFormulaArr[max_pathLength];
     int graphFormulaCounter = 0;
@@ -180,24 +185,19 @@ int getSolutionLengthFromModel(Z3_context ctx, Z3_model model, Graph *graphs)
     assert(model);
     assert(graphs);
     Graph firstGraph = graphs[0];
-    int maxPathLength = orderG(firstGraph)-1;
+    int maxPathLength = __maxK;
 
     // try all pathLength
     for (int pathLength = maxPathLength; pathLength >= 0; pathLength--)
     {
 
-        // loop through pathLength
-        for (int j = 0; j <= pathLength; j++)
+        Z3_ast tmpVar = graphsToPathFormula(ctx, graphs, 1, pathLength);
+        bool satisfiedCheck = valueOfVarInModel(ctx, model, tmpVar);
+        if (satisfiedCheck)
         {
-            Z3_ast tmpVar = graphsToPathFormula(ctx, graphs, 1, pathLength);
-            bool satisfiedCheck = valueOfVarInModel(ctx, model, tmpVar);
-            if (satisfiedCheck)
-            {
-                return pathLength;
-            }
+            return pathLength;
         }
     }
-
     return -1;
 }
 
